@@ -1,10 +1,10 @@
-# <p style="text-align: center;">DO NOT _accept_ these assigments </p>
+# <p align="center">DO NOT _accept_ these assigments </p>
 
-## <p style="text-align: center;">until you are told to do so by me.</p>
+## <p align="center">until you are told to do so by me.</p>
 
 <br/>
 
-# <p style="text-align: center;">CS 8 Assignment links:</p>
+# <p align="center">CS 8 Assignment links:</p>
 
 ## labs:
 
