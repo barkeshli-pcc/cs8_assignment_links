@@ -1,9 +1,13 @@
-# Assignment links:
+# <p style="text-align: center;">DO NOT _accept_ these assigments until you are told to do so by me.</p>
+
+<br/>
+
+# <p style="text-align: center;">CS 8 Assignment links:</p>
 
 ## labs:
 
 - [`lab-00`](https://github.com/CS3A-classroom/lab0_writeup), [basic_test.cpp](basic_tests/lab-00/basic_test.cpp)<br/>
-- [`lab-01`], [basic_test.cpp]<br/>
+- [`lab-01 Deque`](https://classroom.github.com/a/Dha1UGCk), [basic_test.cpp]<br/>
 - [`lab-02`], [basic_test.cpp]<br/>
 - [`lab-03`], [basic_test.cpp]<br/>
 - [`lab-04`], [basic_test.cpp]<br/>
@@ -11,13 +15,13 @@
 
 ## stack and queue
 
-- [`8.0 stack & queue`], [basic_test.cpp]<br/>
-- [`8.9 airport`], [basic_test.cpp]<br/>
+- [`8.0 stack & queue`](https://classroom.github.com/a/N_waczyu), [basic_test.cpp]<br/>
+- [`8.9 airport`](https://classroom.github.com/a/NHBpCkVF), [basic_test.cpp]<br/>
 
 ## tokenizer
 
-- [`string tokenizer`], [basic_test.cpp]<br/>
-- [`file tokenizer`], [basic_test.cpp]<br/>
+- [`string tokenizer`](https://classroom.github.com/a/WOUymL_Z), [basic_test.cpp]<br/>
+- [`file tokenizer`](https://classroom.github.com/a/C_lZom_a), [basic_test.cpp]<br/>
 
 ## recursion
 
