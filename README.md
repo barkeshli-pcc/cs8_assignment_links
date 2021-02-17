@@ -1,4 +1,6 @@
-# <p style="text-align: center;">DO NOT _accept_ these assigments until you are told to do so by me.</p>
+# <p style="text-align: center;">DO NOT _accept_ these assigments </p>
+
+## <p style="text-align: center;">until you are told to do so by me.</p>
 
 <br/>
 
