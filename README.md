@@ -17,8 +17,8 @@
 
 ## stack and queue
 
-- [`8.0 stack & queue`](https://classroom.github.com/a/N_waczyu), [basic_test.cpp]<br/>
-- [`8.9 airport`](https://classroom.github.com/a/NHBpCkVF), [basic_test.cpp]<br/>
+- [`8.0 stack & queue`](https://classroom.github.com/a/N_waczyu), [basic_test.cpp](basic_tests/08-stack_n_queue/basic_test.cpp)<br/>
+- [`8.9 airport`](https://classroom.github.com/a/NHBpCkVF), [basic_test.cpp](basic_tests/08-airport/basic_test.cpp)<br/>
 
 ## tokenizer
 
