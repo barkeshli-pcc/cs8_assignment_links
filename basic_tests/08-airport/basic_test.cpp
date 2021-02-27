@@ -46,34 +46,16 @@ int main(int argc, char **argv) {
 
 /*
 
-08-airport git:(master) ✗  😊 $> tr
-.
-├── _tests
-│   ├── _test_files
-│   ├── _test_includes
-│   └── other
-│       └── cmake
-├── build
-│   ├── bin
-│   └── lib
-├── cmake
-└── includes
-    ├── airport
-    ├── linked_list_functions
-    ├── node
-    ├── queue
-    └── stack
+08-airport git:(master) ✗  😊 $> tr includes
+includes
+├── airport
+├── linked_list_functions
+├── node
+├── queue
+└── stack
 
-15 directories, 0 files
-08-airport git:(master) ✗  😊 $> cd build
-build git:(master) ✗  😊 $> make && ./bin/basic_test[  7%] Built target gtest
-[ 29%] Built target basic_test
-[ 37%] Built target testA
-[ 44%] Built target testB
-[ 66%] Built target main
-[ 77%] Built target gmock
-[ 92%] Built target gmock_main
-[100%] Built target gtest_main
+5 directories, 0 files
+08-airport git:(master) ✗  😊 $> ./build/bin/basic_test
 
 
 ----------running basic_test.cpp---------
@@ -98,11 +80,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-165 landed
-41 took off
-3 planes crashed. :(
-Average waiting time to land: 9.66061
-Average waiting time to take off: 500.707
+137 landed
+50 took off
+1 planes crashed. :(
+Average waiting time to land: 9.35766
+Average waiting time to take off: 338.82
 
 
 ---------------------- [1] ---------------------------
@@ -116,11 +98,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-152 landed
-45 took off
-4 planes crashed. :(
-Average waiting time to land: 9.34868
-Average waiting time to take off: 417.578
+137 landed
+50 took off
+No planes crashed. :)
+Average waiting time to land: 8.91241
+Average waiting time to take off: 346.44
 
 
 ---------------------- [2] ---------------------------
@@ -134,11 +116,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-125 landed
-55 took off
+140 landed
+49 took off
 No planes crashed. :)
-Average waiting time to land: 9.592
-Average waiting time to take off: 359.6
+Average waiting time to land: 9.97143
+Average waiting time to take off: 548.082
 
 
 ---------------------- [3] ---------------------------
@@ -152,11 +134,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-153 landed
-43 took off
-13 planes crashed. :(
-Average waiting time to land: 11.4379
-Average waiting time to take off: 350.791
+127 landed
+53 took off
+1 planes crashed. :(
+Average waiting time to land: 9.06299
+Average waiting time to take off: 440.528
 
 
 ---------------------- [4] ---------------------------
@@ -170,11 +152,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-152 landed
-45 took off
-4 planes crashed. :(
-Average waiting time to land: 9.59211
-Average waiting time to take off: 467.867
+124 landed
+54 took off
+8 planes crashed. :(
+Average waiting time to land: 9.95968
+Average waiting time to take off: 393.389
 
 
 ---------------------- [5] ---------------------------
@@ -188,11 +170,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-141 landed
-49 took off
-1 planes crashed. :(
-Average waiting time to land: 9.14894
-Average waiting time to take off: 354.878
+142 landed
+48 took off
+5 planes crashed. :(
+Average waiting time to land: 8.84507
+Average waiting time to take off: 443.333
 
 
 ---------------------- [6] ---------------------------
@@ -206,11 +188,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-139 landed
-49 took off
-No planes crashed. :)
-Average waiting time to land: 8.40288
-Average waiting time to take off: 418.673
+128 landed
+52 took off
+7 planes crashed. :(
+Average waiting time to land: 11.4922
+Average waiting time to take off: 258.519
 
 
 ---------------------- [7] ---------------------------
@@ -224,11 +206,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-144 landed
-48 took off
-1 planes crashed. :(
-Average waiting time to land: 8.5
-Average waiting time to take off: 460.188
+128 landed
+53 took off
+No planes crashed. :)
+Average waiting time to land: 9.78906
+Average waiting time to take off: 418.604
 
 
 ---------------------- [8] ---------------------------
@@ -242,11 +224,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-131 landed
-53 took off
-2 planes crashed. :(
-Average waiting time to land: 9.22901
-Average waiting time to take off: 422.34
+134 landed
+51 took off
+1 planes crashed. :(
+Average waiting time to land: 8.81343
+Average waiting time to take off: 427.608
 
 
 ---------------------- [9] ---------------------------
@@ -260,11 +242,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-115 landed
-57 took off
+140 landed
+49 took off
 1 planes crashed. :(
-Average waiting time to land: 9.10435
-Average waiting time to take off: 392.702
+Average waiting time to land: 9.24286
+Average waiting time to take off: 429.51
 
 
 ---------------------- [10] ---------------------------
@@ -278,11 +260,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-125 landed
-54 took off
-No planes crashed. :)
-Average waiting time to land: 9.48
-Average waiting time to take off: 427.611
+137 landed
+50 took off
+2 planes crashed. :(
+Average waiting time to land: 9.09489
+Average waiting time to take off: 446.86
 
 
 ---------------------- [11] ---------------------------
@@ -296,11 +278,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-168 landed
-40 took off
-No planes crashed. :)
-Average waiting time to land: 9.67262
-Average waiting time to take off: 457.55
+137 landed
+50 took off
+2 planes crashed. :(
+Average waiting time to land: 10.0219
+Average waiting time to take off: 280.5
 
 
 ---------------------- [12] ---------------------------
@@ -314,11 +296,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-164 landed
-41 took off
-21 planes crashed. :(
-Average waiting time to land: 11.8232
-Average waiting time to take off: 535.366
+154 landed
+45 took off
+2 planes crashed. :(
+Average waiting time to land: 10.0519
+Average waiting time to take off: 481.311
 
 
 ---------------------- [13] ---------------------------
@@ -332,11 +314,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-147 landed
-47 took off
-1 planes crashed. :(
-Average waiting time to land: 9.2381
-Average waiting time to take off: 382.872
+121 landed
+56 took off
+8 planes crashed. :(
+Average waiting time to land: 10.2231
+Average waiting time to take off: 418.893
 
 
 ---------------------- [14] ---------------------------
@@ -350,11 +332,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-141 landed
-49 took off
-2 planes crashed. :(
-Average waiting time to land: 10.0355
-Average waiting time to take off: 366.918
+131 landed
+52 took off
+No planes crashed. :)
+Average waiting time to land: 9.25954
+Average waiting time to take off: 406.962
 
 
 ---------------------- [15] ---------------------------
@@ -368,11 +350,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-163 landed
-41 took off
-12 planes crashed. :(
-Average waiting time to land: 11.7178
-Average waiting time to take off: 431.341
+153 landed
+45 took off
+7 planes crashed. :(
+Average waiting time to land: 10.3987
+Average waiting time to take off: 418.133
 
 
 ---------------------- [16] ---------------------------
@@ -386,11 +368,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-170 landed
-38 took off
-8 planes crashed. :(
-Average waiting time to land: 10.0765
-Average waiting time to take off: 421.474
+138 landed
+50 took off
+No planes crashed. :)
+Average waiting time to land: 8.80435
+Average waiting time to take off: 410.86
 
 
 ---------------------- [17] ---------------------------
@@ -404,11 +386,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-148 landed
-47 took off
-No planes crashed. :)
-Average waiting time to land: 9.91892
-Average waiting time to take off: 499.277
+160 landed
+42 took off
+18 planes crashed. :(
+Average waiting time to land: 11.5875
+Average waiting time to take off: 427.833
 
 
 ---------------------- [18] ---------------------------
@@ -422,11 +404,11 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-165 landed
-41 took off
-5 planes crashed. :(
-Average waiting time to land: 9.92121
-Average waiting time to take off: 426.902
+128 landed
+53 took off
+No planes crashed. :)
+Average waiting time to land: 9.39844
+Average waiting time to take off: 370.698
 
 
 ---------------------- [19] ---------------------------
@@ -440,22 +422,23 @@ total simulation time : 1440
 
 
 . . . . . . . . . . . . . . . . . . . . . . . 
-136 landed
-50 took off
-6 planes crashed. :(
-Average waiting time to land: 10.1029
-Average waiting time to take off: 366.08
+143 landed
+48 took off
+No planes crashed. :)
+Average waiting time to land: 9.74825
+Average waiting time to take off: 484
 
 
 
 
 ========== END SIMULATION ==================
-[       OK ] TEST_AIRPORT.TestAirport (12 ms)
-[----------] 1 test from TEST_AIRPORT (12 ms total)
+[       OK ] TEST_AIRPORT.TestAirport (30 ms)
+[----------] 1 test from TEST_AIRPORT (30 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test case ran. (12 ms total)
+[==========] 1 test from 1 test case ran. (30 ms total)
 [  PASSED  ] 1 test.
-build git:(master) ✗  😊 $> 
+08-airport git:(master) ✗  😊 $>   
+
 
 */
