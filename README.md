@@ -32,7 +32,7 @@
 
 ## bst / avl
 
-- [`bst functions`], [basic_test.cpp]<br/>
+- [`bst functions`], [basic_test.cpp](basic_tests/bst_functions/basic_test.cpp)<br/>
 - [`bst class`], [basic_test.cpp]<br/>
 - [`avl class`], [basic_test.cpp]<br/>
 
