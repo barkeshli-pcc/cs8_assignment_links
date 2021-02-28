@@ -22,8 +22,8 @@
 
 ## tokenizer
 
-- [`string tokenizer`](https://classroom.github.com/a/WOUymL_Z), [basic_test.cpp]<br/>
-- [`file tokenizer`](https://classroom.github.com/a/C_lZom_a), [basic_test.cpp]<br/>
+- [`string tokenizer`](https://classroom.github.com/a/WOUymL_Z), [basic_test.cpp](basic_tests/string_tokenizer/basic_test.cpp)<br/>
+- [`file tokenizer`](https://classroom.github.com/a/C_lZom_a), [basic_test.cpp](basic_tests/file_tokenizer/basic_test.cpp)<br/>
 
 ## recursion
 
