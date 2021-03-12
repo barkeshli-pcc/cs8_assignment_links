@@ -27,8 +27,8 @@
 
 ## recursion
 
-- [`9.0 extra: recursion drills`], [basic_test.cpp]<br/>
-- [`9.1 recursive functions`], [basic_test.cpp]<br/>
+- [`9.0 extra: recursion drills`](https://classroom.github.com/a/DY35AndX), [basic_test.cpp]<br/>
+- [`9.1 recursive functions`](https://classroom.github.com/a/VNUrGkoZ), [basic_test.cpp]<br/>
 
 ## bst / avl
 
