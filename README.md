@@ -33,21 +33,21 @@
 ## bst / avl
 
 - [`bst functions`], [basic_test.cpp](basic_tests/bst_functions/basic_test.cpp)<br/>
-- [`bst class`], [basic_test.cpp]<br/>
-- [`avl class`], [basic_test.cpp]<br/>
+- [`bst class`](https://classroom.github.com/a/zXduxg_C), [basic_test.cpp]<br/>
+- [`avl class`](https://classroom.github.com/a/D_Evcm5-), [basic_test.cpp]<br/>
 
 ## heap
 
-- [`heap class`], [basic_test.cpp]<br/>
-- [`priority queue`], [basic_test.cpp]<br/>
+- [`heap class`](https://classroom.github.com/a/dggkqqS_), [basic_test.cpp]<br/>
+- [`priority queue`](https://classroom.github.com/a/STPJj2Kp), [basic_test.cpp]<br/>
 
 ## hash
 
-- [`Hash`], [basic_test.cpp]<br/>
+- [`Hash`](https://classroom.github.com/a/8wkuCax6), [basic_test.cpp]<br/>
 
 ## sorts
 
-- [`timing sorts`], [basic_test.cpp]<br/>
+- [`timing sorts`](https://classroom.github.com/a/HkCXjyT1), [basic_test.cpp]<br/>
 
 ## searches
 
@@ -55,14 +55,14 @@
 
 ## btree
 
-- [`btree class`], [basic_test.cpp]<br/>
+- [`btree class`](https://classroom.github.com/a/0woyWQi5), [basic_test.cpp]<br/>
 - [`btree map & mmap classes`], [basic_test.cpp]<br/>
 
 ## b+tree
 
-- [`b+tree class`], [basic_test.cpp]<br/>
-- [`b+tree map & mmap classes`], [basic_test.cpp]<br/>
+- [`b+tree class`](https://classroom.github.com/a/EfLVN9st), [basic_test.cpp]<br/>
+- [`b+tree map & mmap classes`](https://classroom.github.com/a/K1YYq0Mv), [basic_test.cpp]<br/>
 
 ## final project
 
-- [`final_project`], [`basic_test.cpp`]<br />
+- [`final_project`](https://classroom.github.com/a/ZcsJG7zr), [`basic_test.cpp`]<br />
