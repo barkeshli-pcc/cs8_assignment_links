@@ -34,7 +34,7 @@
 
 - [`bst functions`], [basic_test.cpp](basic_tests/bst_functions/basic_test.cpp)<br/>
 - [`bst class`](https://classroom.github.com/a/zXduxg_C), [basic_test.cpp](basic_tests/bst/basic_test.cpp)<br/>
-- [`avl class`](https://classroom.github.com/a/D_Evcm5-), [basic_test.cpp](basic_tests/avl/basic_test.cpp)<br/>
+- [`avl class`](https://classroom.github.com/a/D_Evcm5-), [basic_test.cpp]<br/>
 
 ## heap
 
