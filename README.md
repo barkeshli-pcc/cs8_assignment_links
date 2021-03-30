@@ -38,8 +38,8 @@
 
 ## heap
 
-- [`heap class`](https://classroom.github.com/a/dggkqqS_), [basic_test.cpp]<br/>
-- [`priority queue`](https://classroom.github.com/a/STPJj2Kp), [basic_test.cpp]<br/>
+- [`heap class`], [basic_test.cpp]<br/>
+- [`priority queue`](https://classroom.github.com/a/STPJj2Kp), [basic_test.cpp](basic_tests/11-pqueue/basic_test.cpp)<br/>
 
 ## hash
 
