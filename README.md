@@ -43,7 +43,7 @@
 
 ## hash
 
-- [`Hash`](https://classroom.github.com/a/8wkuCax6), [basic_test.cpp]<br/>
+- [`Hash`](https://classroom.github.com/a/8wkuCax6), [basic_test.cpp](basic_tests/hash/basic_test.cpp)<br/>
 
 ## sorts
 
