@@ -128,7 +128,7 @@ bool chained_hash_basic_test(bool debug = false){
     for (int i = 0; i < chained_hash.capacity() * 0.75; i++)
     {
         int r = random(100, 999);
-        chained_hash.insert(HashRecord(r, string("item__")+to_string(r)));
+        chained_hash.insert(HashRecord(r, string("item__") + to_string(r)));
     }
     chained_hash.insert(HashRecord(42, string("This is the meaning of life? A NON-PRIME number? @_@")));
     HashRecord hash_record;
@@ -192,10 +192,10 @@ TEST(TEST_CHAINED_BASIC, TestChainedHashBasic){
   EXPECT_EQ(success, true);
 }
 
-TEST(TEST_CHAINED_REMOVE, TestChainedHashRemove){
-  bool success = chained_hash_remove_test(true);
-  EXPECT_EQ(success, true);
-}
+// TEST(TEST_CHAINED_REMOVE, TestChainedHashRemove){
+//   bool success = chained_hash_remove_test(true);
+//   EXPECT_EQ(success, true);
+// }
 
 
 
@@ -231,11 +231,10 @@ const int TABLE_SIZE = 19; //811; //180799; //2121737;//180799;// 101119; //811;
 #endif // CONSTANTS_H
 build git:(master) ✗  😊 $> ./bin/basic_test
 
-
 ----------running basic_test.cpp---------
 
 
-[==========] Running 4 tests from 4 test cases.
+[==========] Running 3 tests from 3 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from TEST_DOUBLE_BASIC
 [ RUN      ] TEST_DOUBLE_BASIC.TestDoubleHashBasic
@@ -344,8 +343,8 @@ Note the indication of the 'PREVIOUSLY_USED` row
 ---------------------------------------------------
 
 
-[       OK ] TEST_DOUBLE_REMOVE.TestDoubleHashRemove (2 ms)
-[----------] 1 test from TEST_DOUBLE_REMOVE (2 ms total)
+[       OK ] TEST_DOUBLE_REMOVE.TestDoubleHashRemove (4 ms)
+[----------] 1 test from TEST_DOUBLE_REMOVE (4 ms total)
 
 [----------] 1 test from TEST_CHAINED_BASIC
 [ RUN      ] TEST_CHAINED_BASIC.TestChainedHashBasic
@@ -353,9 +352,9 @@ ChainedHash test. capacity:         19
            initial size:            0
 
 
-           final size:            0
+           final size:            15
            is_present(42)::       true
-           find(42):              true :: [-1:]
+           find(42):              true :: [42:This is the meaning of life? A NON-PRIME number? @_@]
 Here is the hash table after all the insertions: 
 [000] [893 : item__893]
 [001] 
@@ -386,61 +385,12 @@ the print anatomy:
 [003]:                                    table index.
 [345 : item__345][668 : item__668]...:    records inserted: inorder()
 ---------------------------------------------------------------
-[       OK ] TEST_CHAINED_BASIC.TestChainedHashBasic (7 ms)
-[----------] 1 test from TEST_CHAINED_BASIC (7 ms total)
-
-[----------] 1 test from TEST_CHAINED_REMOVE
-[ RUN      ] TEST_CHAINED_REMOVE.TestChainedHashRemove
-DoubleHash remove test. 
-chained_hash after all the inserts: 
-[000] [228 : item__228]
-[001] 
-[002] [344 : item__344][724 : item__724]
-[003] [345 : item__345][668 : item__668][801 : item__801]
-[004] [42 : This is the meaning of life? A NON-PRIME number? @_@]
-[005] 
-[006] [690 : item__690]
-[007] 
-[008] 
-[009] 
-[010] [257 : item__257]
-[011] 
-[012] 
-[013] [203 : item__203]
-[014] [394 : item__394]
-[015] [908 : item__908]
-[016] [130 : item__130][396 : item__396][453 : item__453][491 : item__491]
-[017] 
-[018] 
-
-
-removing 42: 
-42 was removed successfully: 
-[000] [228 : item__228]
-[001] 
-[002] [344 : item__344][724 : item__724]
-[003] [345 : item__345][668 : item__668][801 : item__801]
-[004] 
-[005] 
-[006] [690 : item__690]
-[007] 
-[008] 
-[009] 
-[010] [257 : item__257]
-[011] 
-[012] 
-[013] [203 : item__203]
-[014] [394 : item__394]
-[015] [908 : item__908]
-[016] [130 : item__130][396 : item__396][453 : item__453][491 : item__491]
-[017] 
-[018] 
-
-[       OK ] TEST_CHAINED_REMOVE.TestChainedHashRemove (3 ms)
-[----------] 1 test from TEST_CHAINED_REMOVE (3 ms total)
+[       OK ] TEST_CHAINED_BASIC.TestChainedHashBasic (1 ms)
+[----------] 1 test from TEST_CHAINED_BASIC (1 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 4 test cases ran. (12 ms total)
-[  PASSED  ] 4 tests.
-build git:(master) ✗  😊 $> 
+[==========] 3 tests from 3 test cases ran. (5 ms total)
+[  PASSED  ] 3 tests.
+build git:(master)  😊 $> 
+
 */
