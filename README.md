@@ -55,7 +55,7 @@
 
 ## btree
 
-- [`btree class`](https://classroom.github.com/a/0woyWQi5), [basic_test.cpp]<br/>
+- [`btree class`](https://classroom.github.com/a/0woyWQi5), [basic_test.cpp](basic_tests/btree/basic_test.cpp)<br/>
 - [`btree map & mmap classes`], [basic_test.cpp]<br/>
 
 ## b+tree
