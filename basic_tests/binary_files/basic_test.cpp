@@ -108,22 +108,34 @@ build git:(master) ✗  😊 $> tree ../includes
     └── utilities.h
 
 1 directory, 4 files
-build git:(master) ✗  😊 $> ./bin/testB
+build git:(master) ✗  😊 $> 
+build git:(master) ✗  😊 $> ./bin/basic_test
 
 
-----------running testB.cpp---------
+----------running basic_test.cpp---------
 
 
 [==========] Running 1 test from 1 test case.
 [----------] Global test environment set-up.
-[----------] 1 test from TEST_TEMPLATE
-[ RUN      ] TEST_TEMPLATE.TestTemplate
-[       OK ] TEST_TEMPLATE.TestTemplate (0 ms)
-[----------] 1 test from TEST_TEMPLATE (0 ms total)
+[----------] 1 test from TEST_SIMPLE
+[ RUN      ] TEST_SIMPLE.TestSimple
+wrote into record: 0
+wrote into record: 1
+wrote into record: 2
+wrote into record: 3
+wrote into record: 4
+wrote into record: 5
+wrote into record: 6
+record 0:                  Joe Zero                      000
+record 1:              One Arm Jane                      111
+record 2:           Two face Harvey                      222
+record 3:          Three Eyed Raven                      333
+record 4:        Four Square Circle                      444
+record 5:     Cinco De Mayo, Bryan!                      555
+record 6:      The Six Shooter Kid!                      666
+[       OK ] TEST_SIMPLE.TestSimple (5 ms)
+[----------] 1 test from TEST_SIMPLE (5 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test case ran. (0 ms total)
+[==========] 1 test from 1 test case ran. (5 ms total)
 [  PASSED  ] 1 test.
-build git:(master) ✗  😊 $> 
-
-*/
