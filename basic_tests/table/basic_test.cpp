@@ -35,7 +35,7 @@ Table make_table(){
 }
 
 
-bool table_basic(){
+bool table_basic(bool debug = false){
      Table t = make_table();
      cout<< "Here is table t: " << endl << t << endl;
 
@@ -76,13 +76,80 @@ bool table_basic(){
      return true;
 }
 
+bool table_relational(bool debug = false){
+  Queue<Token *> post;
+  Table t = make_table();
+  post.push(new TokenStr("lname"));
+  post.push(new TokenStr("Yao"));
+  post.push(new Relational("="));
+  Table selected = t.select({"lname", "age"}, post);
+  cout << "recnos from all the Yaos query: " << t.select_recnos() << endl;
+  cout << "all the Yaos: " << endl
+     << selected << endl;
+  return true;
+}
+
+bool table_logical(bool debug = false){
+  Queue<Token *> post;
+  Table t = make_table();
+  cout << "here is the table: " << endl
+       << t << endl;
+  post = Queue<Token *>();
+  post.push(new TokenStr("age"));
+  post.push(new TokenStr("20"));
+  post.push(new Relational("<="));
+  post.push(new TokenStr("age"));
+  post.push(new TokenStr("17"));
+  post.push(new Relational(">="));
+  post.push(new Logical("and"));
+  Table selected = t.select({"lname", "age"}, post);
+  cout << "recnos from all the 17 to 20 year olds: " << t.select_recnos() << endl;
+  cout << "all the 17 to 20 year olds : " << endl
+     << selected << endl;
+  return true;
+
+}
+
+bool table_full_condition(bool debug = false){
+  Queue<Token *> post;
+  Table t = make_table();
+  cout << "here is the table: " << endl
+       << t << endl;
+  post = Queue<Token *>();
+  post.push(new TokenStr("age"));
+  post.push(new TokenStr("20"));
+  post.push(new Relational("<"));
+  post.push(new TokenStr("age"));
+  post.push(new TokenStr("17"));
+  post.push(new Relational(">"));
+  post.push(new Logical("and"));
+  post.push(new TokenStr("lname"));
+  post.push(new TokenStr("Gomez"));
+  post.push(new Relational("="));
+  post.push(new Logical("or"));
+  Table selected = t.select({"lname", "age"}, post);
+  cout << "recnos from all all the 17 to 20 year olds (non inclusive) along with all the Gomezes: " << t.select_recnos() << endl;
+  cout << "all the Yaos: " << endl
+     << selected << endl;
+  return true;
+
+}
+
 
 TEST(TABLE_BASIC, TableBasic) {
   bool success = table_basic();
   EXPECT_EQ(success, true);
 }
-
-
+TEST(TABLE_INTERMEDIATE, TableRelational) {
+  bool success = table_relational(false);
+  EXPECT_EQ(success, true);
+}
+TEST(TABLE_INTERMEDIATE, TableLogical) {
+     bool success = table_logical(false);
+}
+TEST(TABLE_ADVANCED, TableFullCondition) {
+     bool success = table_full_condition(false);
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
@@ -90,47 +157,32 @@ int main(int argc, char **argv) {
   return RUN_ALL_TESTS();
 }
 
+
+
 /*
+build git:(master) ✗  😊 $> tree ../includes/table
+../includes/table
+├── table.cpp
+├── table.h
+└── typedefs.h
 
-
-build git:(master) ✗  😊 $> tree ../includes
-../includes
-├── binary_files
-│   ├── file_record.cpp
-│   ├── file_record.h
-│   ├── utilities.cpp
-│   └── utilities.h
-├── bplustree
-│   ├── bplustree.h
-│   ├── btree_array_funcs.h
-│   ├── map.h
-│   ├── multimap.h
-│   └── set_class.h
-├── stl_utils
-│   └── vector_utilities.h
-└── table
-    ├── deleted.h
-    ├── table.cpp
-    ├── table.h
-    └── typedefs.h
-
-4 directories, 14 files
-build git:(master) ✗  😊 $> 
-build git:(master) ✗  😊 $> ./bin/basic_test
+0 directories, 3 files
+build git:(master) ✗  😊 $> ./bin/basic_test       
 
 
 ----------running basic_test.cpp---------
 
 
-[==========] Running 1 test from 1 test case.
+[==========] Running 4 tests from 3 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from TABLE_BASIC
 [ RUN      ] TABLE_BASIC.TableBasic
+Here is table t: 
 
 Table name: student, records: 6
-                   _record                    fname                    lname                      age
+                   record                    fname                    lname                      age
 
-                        0                      joe                    Gomez                       20
+                        0                      Joe                    Gomez                       20
                         1                    Karen                   Orozco                       21
                         2                      Flo                      Yao                       29
                         3                     Jack                      Yao                       19
@@ -138,9 +190,10 @@ Table name: student, records: 6
                         5                      Flo                    Gomez                       20
 
 
+Here are all the Yaos:
 
 Table name: _select_table_1, records: 2
-                   _record                    fname                    lname                      age
+                   record                    fname                    lname                      age
 
                         0                      Flo                      Yao                       29
                         1                     Jack                      Yao                       19
@@ -149,9 +202,9 @@ Table name: _select_table_1, records: 2
 
 here is the student table: 
 Table name: student, records: 6
-                   _record                    fname                    lname                      age
+                   record                    fname                    lname                      age
 
-                        0                      joe                    Gomez                       20
+                        0                      Joe                    Gomez                       20
                         1                    Karen                   Orozco                       21
                         2                      Flo                      Yao                       29
                         3                     Jack                      Yao                       19
@@ -163,62 +216,140 @@ Table name: student, records: 6
 20 year-olds:
 
 Table name: _select_table_4, records: 3
-                   _record                      age                    fname                    lname
+                   record                      age                    fname                    lname
 
-                        0                       20                      joe                    Gomez
+                        0                       20                      Joe                    Gomez
                         1                       20                      Flo                  Jackson
                         2                       20                      Flo                    Gomez
+
+record numbers from original table: 0 4 5 
 
 
 older than 20 years old:
 
 Table name: _select_table_6, records: 2
-                   _record                      age                    fname                    lname
+                   record                      age                    fname                    lname
 
                         0                       21                    Karen                   Orozco
                         1                       29                      Flo                      Yao
+
+record numbers from original table: 1 2 
 
 
 younger than 20 years old:
 
 Table name: _select_table_8, records: 1
-                   _record                      age                    fname                    lname
+                   record                      age                    fname                    lname
 
                         0                       19                     Jack                      Yao
+
+record numbers from original table: 3 
 
 
 20 or younger:
 
 Table name: _select_table_10, records: 4
-                   _record                      age                    fname                    lname
+                   record                      age                    fname                    lname
 
                         0                       19                     Jack                      Yao
-                        1                       20                      joe                    Gomez
+                        1                       20                      Joe                    Gomez
                         2                       20                      Flo                  Jackson
                         3                       20                      Flo                    Gomez
+
+record numbers from original table: 3 0 4 5 
 
 
 20 or older:
 
 Table name: _select_table_12, records: 5
-                   _record                      age                    fname                    lname
+                   record                      age                    fname                    lname
 
-                        0                       20                      joe                    Gomez
+                        0                       20                      Joe                    Gomez
                         1                       20                      Flo                  Jackson
                         2                       20                      Flo                    Gomez
                         3                       21                    Karen                   Orozco
                         4                       29                      Flo                      Yao
 
+record numbers from original table: 0 4 5 1 2 
+
 ----- END TEST --------
-[       OK ] TABLE_BASIC.TableBasic (49 ms)
-[----------] 1 test from TABLE_BASIC (49 ms total)
+[       OK ] TABLE_BASIC.TableBasic (29 ms)
+[----------] 1 test from TABLE_BASIC (29 ms total)
+
+[----------] 2 tests from TABLE_INTERMEDIATE
+[ RUN      ] TABLE_INTERMEDIATE.TableRelational
+recnos from all the Yaos query: 2 3 
+all the Yaos: 
+
+Table name: _select_table_15, records: 2
+                   record                    lname                      age
+
+                        0                      Yao                       29
+                        1                      Yao                       19
+
+
+[       OK ] TABLE_INTERMEDIATE.TableRelational (7 ms)
+[ RUN      ] TABLE_INTERMEDIATE.TableLogical
+here is the table: 
+
+Table name: student, records: 6
+                   record                    fname                    lname                      age
+
+                        0                      Joe                    Gomez                       20
+                        1                    Karen                   Orozco                       21
+                        2                      Flo                      Yao                       29
+                        3                     Jack                      Yao                       19
+                        4                      Flo                  Jackson                       20
+                        5                      Flo                    Gomez                       20
+
+
+recnos from all the 17 to 20 year olds: 0 3 4 5 
+all the 17 to 20 year olds : 
+
+Table name: _select_table_18, records: 4
+                   record                    lname                      age
+
+                        0                    Gomez                       20
+                        1                      Yao                       19
+                        2                  Jackson                       20
+                        3                    Gomez                       20
+
+
+[       OK ] TABLE_INTERMEDIATE.TableLogical (13 ms)
+[----------] 2 tests from TABLE_INTERMEDIATE (20 ms total)
+
+[----------] 1 test from TABLE_ADVANCED
+[ RUN      ] TABLE_ADVANCED.TableFullCondition
+here is the table: 
+
+Table name: student, records: 6
+                   record                    fname                    lname                      age
+
+                        0                      Joe                    Gomez                       20
+                        1                    Karen                   Orozco                       21
+                        2                      Flo                      Yao                       29
+                        3                     Jack                      Yao                       19
+                        4                      Flo                  Jackson                       20
+                        5                      Flo                    Gomez                       20
+
+
+recnos from all all the 17 to 20 year olds (non inclusive) along with all the Gomezes: 0 3 5 
+all the Yaos: 
+
+Table name: _select_table_21, records: 3
+                   record                    lname                      age
+
+                        0                    Gomez                       20
+                        1                      Yao                       19
+                        2                    Gomez                       20
+
+
+[       OK ] TABLE_ADVANCED.TableFullCondition (7 ms)
+[----------] 1 test from TABLE_ADVANCED (7 ms total)
 
 [----------] Global test environment tear-down
-[==========] 1 test from 1 test case ran. (49 ms total)
-[  PASSED  ] 1 test.
-build git:(master) ✗  😊 $>                                  
+[==========] 4 tests from 3 test cases ran. (56 ms total)
+[  PASSED  ] 4 tests.
+build git:(master) ✗  😊 $> */
 
 
-
-
-*/
