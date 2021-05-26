@@ -31,6 +31,8 @@ Table make_table(){
     t.insert_into(row);
     row = {"Flo", "Gomez", "20"};
     t.insert_into(row);
+    row = {"Karen", "Jackson", "15"};
+    t.insert_into(row);
     return t;
 }
 
@@ -129,9 +131,22 @@ bool table_full_condition(bool debug = false){
   post.push(new Logical("or"));
   Table selected = t.select({"lname", "age"}, post);
   cout << "recnos from all all the 17 to 20 year olds (non inclusive) along with all the Gomezes: " << t.select_recnos() << endl;
-  cout << "all the Yaos: " << endl
+  cout << "" << endl
      << selected << endl;
   return true;
+
+}
+
+bool condition_from_strings(bool debug = false){
+     vector<string> condition = {"(", "age", "<", "17", "or", "age", ">", "20", ")", "and", "lname", "=", "Jackson"};
+     Table t = make_table();
+     cout << "here is the table: " << endl
+          << t << endl;
+     Table selected = t.select({"lname", "age"}, condition);
+     cout << "recnos from all all younger than 17, all older than 20, who are Jacksons: " << t.select_recnos() << endl;
+     cout << endl
+          << selected << endl;
+     return true;
 
 }
 
@@ -149,6 +164,10 @@ TEST(TABLE_INTERMEDIATE, TableLogical) {
 }
 TEST(TABLE_ADVANCED, TableFullCondition) {
      bool success = table_full_condition(false);
+}
+
+TEST(TABLE_ADVANCED, TableStringCondition) {
+     bool success = condition_from_strings(false);
 }
 
 int main(int argc, char **argv) {
@@ -173,13 +192,13 @@ build git:(master) ✗  😊 $> ./bin/basic_test
 ----------running basic_test.cpp---------
 
 
-[==========] Running 4 tests from 3 test cases.
+[==========] Running 5 tests from 3 test cases.
 [----------] Global test environment set-up.
 [----------] 1 test from TABLE_BASIC
 [ RUN      ] TABLE_BASIC.TableBasic
 Here is table t: 
 
-Table name: student, records: 6
+Table name: student, records: 7
                    record                    fname                    lname                      age
 
                         0                      Joe                    Gomez                       20
@@ -188,6 +207,7 @@ Table name: student, records: 6
                         3                     Jack                      Yao                       19
                         4                      Flo                  Jackson                       20
                         5                      Flo                    Gomez                       20
+                        6                    Karen                  Jackson                       15
 
 
 Here are all the Yaos:
@@ -201,7 +221,7 @@ Table name: _select_table_1, records: 2
 
 
 here is the student table: 
-Table name: student, records: 6
+Table name: student, records: 7
                    record                    fname                    lname                      age
 
                         0                      Joe                    Gomez                       20
@@ -210,6 +230,7 @@ Table name: student, records: 6
                         3                     Jack                      Yao                       19
                         4                      Flo                  Jackson                       20
                         5                      Flo                    Gomez                       20
+                        6                    Karen                  Jackson                       15
 
 
 
@@ -238,25 +259,27 @@ record numbers from original table: 1 2
 
 younger than 20 years old:
 
-Table name: _select_table_8, records: 1
+Table name: _select_table_8, records: 2
                    record                      age                    fname                    lname
 
-                        0                       19                     Jack                      Yao
+                        0                       15                    Karen                  Jackson
+                        1                       19                     Jack                      Yao
 
-record numbers from original table: 3 
+record numbers from original table: 6 3 
 
 
 20 or younger:
 
-Table name: _select_table_10, records: 4
+Table name: _select_table_10, records: 5
                    record                      age                    fname                    lname
 
-                        0                       19                     Jack                      Yao
-                        1                       20                      Joe                    Gomez
-                        2                       20                      Flo                  Jackson
-                        3                       20                      Flo                    Gomez
+                        0                       15                    Karen                  Jackson
+                        1                       19                     Jack                      Yao
+                        2                       20                      Joe                    Gomez
+                        3                       20                      Flo                  Jackson
+                        4                       20                      Flo                    Gomez
 
-record numbers from original table: 3 0 4 5 
+record numbers from original table: 6 3 0 4 5 
 
 
 20 or older:
@@ -273,8 +296,8 @@ Table name: _select_table_12, records: 5
 record numbers from original table: 0 4 5 1 2 
 
 ----- END TEST --------
-[       OK ] TABLE_BASIC.TableBasic (29 ms)
-[----------] 1 test from TABLE_BASIC (29 ms total)
+[       OK ] TABLE_BASIC.TableBasic (23 ms)
+[----------] 1 test from TABLE_BASIC (23 ms total)
 
 [----------] 2 tests from TABLE_INTERMEDIATE
 [ RUN      ] TABLE_INTERMEDIATE.TableRelational
@@ -292,7 +315,7 @@ Table name: _select_table_15, records: 2
 [ RUN      ] TABLE_INTERMEDIATE.TableLogical
 here is the table: 
 
-Table name: student, records: 6
+Table name: student, records: 7
                    record                    fname                    lname                      age
 
                         0                      Joe                    Gomez                       20
@@ -301,6 +324,7 @@ Table name: student, records: 6
                         3                     Jack                      Yao                       19
                         4                      Flo                  Jackson                       20
                         5                      Flo                    Gomez                       20
+                        6                    Karen                  Jackson                       15
 
 
 recnos from all the 17 to 20 year olds: 0 3 4 5 
@@ -315,14 +339,14 @@ Table name: _select_table_18, records: 4
                         3                    Gomez                       20
 
 
-[       OK ] TABLE_INTERMEDIATE.TableLogical (13 ms)
-[----------] 2 tests from TABLE_INTERMEDIATE (20 ms total)
+[       OK ] TABLE_INTERMEDIATE.TableLogical (5 ms)
+[----------] 2 tests from TABLE_INTERMEDIATE (12 ms total)
 
-[----------] 1 test from TABLE_ADVANCED
+[----------] 2 tests from TABLE_ADVANCED
 [ RUN      ] TABLE_ADVANCED.TableFullCondition
 here is the table: 
 
-Table name: student, records: 6
+Table name: student, records: 7
                    record                    fname                    lname                      age
 
                         0                      Joe                    Gomez                       20
@@ -331,10 +355,11 @@ Table name: student, records: 6
                         3                     Jack                      Yao                       19
                         4                      Flo                  Jackson                       20
                         5                      Flo                    Gomez                       20
+                        6                    Karen                  Jackson                       15
 
 
 recnos from all all the 17 to 20 year olds (non inclusive) along with all the Gomezes: 0 3 5 
-all the Yaos: 
+
 
 Table name: _select_table_21, records: 3
                    record                    lname                      age
@@ -345,11 +370,39 @@ Table name: _select_table_21, records: 3
 
 
 [       OK ] TABLE_ADVANCED.TableFullCondition (7 ms)
-[----------] 1 test from TABLE_ADVANCED (7 ms total)
+[ RUN      ] TABLE_ADVANCED.TableStringCondition
+here is the table: 
+
+Table name: student, records: 7
+                   record                    fname                    lname                      age
+
+                        0                      Joe                    Gomez                       20
+                        1                    Karen                   Orozco                       21
+                        2                      Flo                      Yao                       29
+                        3                     Jack                      Yao                       19
+                        4                      Flo                  Jackson                       20
+                        5                      Flo                    Gomez                       20
+                        6                    Karen                  Jackson                       15
+
+
+recnos from all all younger than 17, all older than 20, who are Jacksons: 6 
+
+
+Table name: _select_table_24, records: 1
+                   record                    lname                      age
+
+                        0                  Jackson                       15
+
+
+[       OK ] TABLE_ADVANCED.TableStringCondition (5 ms)
+[----------] 2 tests from TABLE_ADVANCED (12 ms total)
 
 [----------] Global test environment tear-down
-[==========] 4 tests from 3 test cases ran. (56 ms total)
-[  PASSED  ] 4 tests.
-build git:(master) ✗  😊 $> */
+[==========] 5 tests from 3 test cases ran. (47 ms total)
+[  PASSED  ] 5 tests.
+build git:(master) ✗  😊 $> 
+
+
+ */
 
 
