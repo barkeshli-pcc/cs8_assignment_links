@@ -8,7 +8,8 @@
 
 ## labs:
 
-- [`lab-00`](https://github.com/CS3A-classroom/lab0_writeup), [basic_test.cpp](basic_tests/lab-00/basic_test.cpp)<br/>
+- [`lab-00 writeup`](https://github.com/barkeshli-pcc/lab-00-writeup), [basic_test.cpp](basic_tests/lab-00/basic_test.cpp)<br/>
+  - [`lab-00 assignment link](https://classroom.github.com/a/DYb_nBnE)<br/>
 - [`lab-01 Deque`](https://classroom.github.com/a/Dha1UGCk), [basic_test.cpp](basic_tests/l1_deque/basic_test.cpp)<br/>
 - [`lab-02`](https://classroom.github.com/a/0K2bBC5i), [basic_test.cpp]<br/>
 - [`lab-03`], [basic_test.cpp]<br/>
