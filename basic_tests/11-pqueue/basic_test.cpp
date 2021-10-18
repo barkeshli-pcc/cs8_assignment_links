@@ -34,6 +34,14 @@ bool basic_heap_test(bool debug = false){
     cout << "heap is not empty: " << heap.is_empty() << endl;
     cout << "number of elements on the heap: " << heap.size() << endl;
     cout << "the tree is " << (heap.verify() ? "" : "in") << "valid." << endl;
+    int *heap_array = heap.heap_array();
+    cout << "heap array: " << endl;
+
+    for (int i = 0; i < heap.size(); i++)
+    {
+        cout <<"|"<< heap_array[i];
+    }
+    cout << "|";        
     cout << "\n\n\npop test\n\n";
     while (!heap.is_empty()){
         cout << "removed:  " << heap.remove() << endl;
@@ -74,6 +82,7 @@ bool basic_pq_test(bool debug = false){
         if(debug)
             cout<<dashes<<pq<<endl<<line<<endl;
     }
+
     return true;
 }
 
@@ -106,7 +115,6 @@ build git:(master) ✗  😊 $> tree ../includes
 
 1 directory, 2 files
 build git:(master) ✗  😊 $> ./bin/basic_test
-
 
 ----------running basic_test.cpp---------
 
@@ -172,7 +180,8 @@ Heap Test:
 heap is not empty: 0
 number of elements on the heap: 40
 the tree is valid.
-
+heap array: 
+|94|86|92|86|74|82|86|67|66|56|72|73|74|73|70|36|40|42|39|41|28|65|72|33|66|48|54|47|65|31|54|27|17|39|39|15|38|21|24|32|
 
 
 pop test
@@ -1357,8 +1366,8 @@ the new tree:
 
 --------------------------------------------------
 
-[       OK ] TEST_HEAP.TestHeap (60 ms)
-[----------] 1 test from TEST_HEAP (60 ms total)
+[       OK ] TEST_HEAP.TestHeap (26 ms)
+[----------] 1 test from TEST_HEAP (26 ms total)
 
 [----------] 1 test from TEST_PQ
 [ RUN      ] TEST_PQ.TestPQ
@@ -1388,10 +1397,9 @@ POPPED: Marie's sister
 [----------] 1 test from TEST_PQ (0 ms total)
 
 [----------] Global test environment tear-down
-[==========] 2 tests from 2 test cases ran. (60 ms total)
+[==========] 2 tests from 2 test cases ran. (26 ms total)
 [  PASSED  ] 2 tests.
-build git:(master) ✗  😊 $> 
-
+build git:(master)  😊 $> 
 
 
 */
