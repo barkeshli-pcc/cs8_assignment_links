@@ -50,7 +50,7 @@
 ## sorts
 
 - [`timing sorts`](https://classroom.github.com/a/HkCXjyT1), [basic_test.cpp]<br/>
--[`sort projects`](https://classroom.github.com/a/diyyBGwL), [basic_test.cpp]<br/>
+- [`sort projects`](https://classroom.github.com/a/diyyBGwL), [basic_test.cpp]<br/>
 -[`sort projects<br/>
 
 ## searches
