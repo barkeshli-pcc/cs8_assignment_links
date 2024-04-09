@@ -49,9 +49,8 @@
 
 ## sorts
 
-- [`timing sorts`](https://classroom.github.com/a/HkCXjyT1), [basic_test.cpp]<br/>
-- [`sort projects`](https://classroom.github.com/a/diyyBGwL), [basic_test.cpp]<br/>
--[`sort projects<br/>
+- [`timing sort algorithms`](https://classroom.github.com/a/-8J2JAAG), [basic_test.cpp]<br/>
+- [`Projects 2 & 3`](https://classroom.github.com/a/XL1FZmuO), [basic_test.cpp]<br/>
 
 ## searches
 
