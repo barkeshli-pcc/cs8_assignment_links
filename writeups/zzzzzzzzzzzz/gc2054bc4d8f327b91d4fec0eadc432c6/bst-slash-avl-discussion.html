@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: BST/AVL discussion</title>
+</head>
+<body>
+<h2><strong>BST:</strong></h2>
+<h3><strong>Insert:</strong></h3>
+<p><strong>void insert(const T&amp; entry);</strong></p>
+<p>Compare the item you need to insert with the item at the root. If it's larger, recursively, call the insert of the right subtree, call the insert function of the left subtree otherwise.</p>
+<h2><strong>Print:</strong></h2>
+<p><strong>void print(const tree_node&lt;T&gt;* root, int level = 0; ostream&amp; outs = cout);</strong></p>
+<p>It is very useful to have a print function that recursively prints the tree right subtree first, then, the root (spaced according to level) and then recursively print the left subtree. This will show the tree sideways and makes it easy to see what the tree actually looks like.</p>
+<p>When printing the node, cout&lt;&lt;setw(level * 4)&lt;&lt;""&lt;&lt;root-&gt;item&lt;&lt;endl;</p>
+<p>and when printing the right and left subtrees, call print with level + 1 so that the function knows how much to add before printing the root of each subtree:</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; / right subtree<br>root<br>&nbsp; &nbsp; &nbsp; &nbsp;\ left subtree</p>
+<h3><strong>Search:</strong></h3>
+<p><strong>bool search(const T&amp; target, tree_node&lt;T&gt;*&amp; found_ptr);</strong></p>
+<ul>
+<li>if root is null, then return false. The key is not in this tree.</li>
+<li>compare the key to the current node:
+<ul>
+<li>if the key is equal to the current item, then &nbsp;you found it: return true</li>
+<li>if the key is less than the current node, search the left subtree, otherwise, search the right subtree</li>
+</ul>
+</li>
+</ul>
+<h3><strong>Erase:</strong></h3>
+<p><strong>void erase(const T&amp; target);</strong></p>
+<ul>
+<li>1. root is null: &nbsp;the item is not in the tree</li>
+<li>2. target is larger than the current node: recursively, call erase&nbsp;on the right subtree</li>
+<li>3. target is smaller&nbsp;than the current node: recursively, call erase&nbsp;on the left&nbsp;subtree</li>
+<li>4. target is equal to the current node:
+<ul>
+<li>4a. the current node DOES NOT have a left subtree: point root to the right subtree, bypassing (and deleting) the target node.</li>
+<li>4b. the current&nbsp;DOES have a left subtree: replace the item with left subtree's rightmost node (deleting the rightmost node)</li>
+</ul>
+</li>
+</ul>
+<p>&nbsp;</p>
+<h2><strong>AVL Trees</strong></h2>
+<p>AVL trees are self-balancing trees where the balance factor of each node is less than 1, 0 or -1.</p>
+<p>Balance Factor is the height of the left subtree minus the height of the right subtree. When balance factor is &gt;0, the tree is "left heavy" and when the balance factor is &lt;0, the tree is "right heavy"</p>
+<p>In order to keep the tree balanced, two types of operations are added to the BST:&nbsp;</p>
+<p>Rotate Left: where x is "right heavy", and so, y becomes parent of x and x becomes the left child of y (and a sibling to z) and therefore, y (and the rest of the tree) becomes balanced:</p>
+<pre>    <span>/*<br></span>     <span>*</span>  <span>x</span>                   <span>y<br></span>     <span>*</span>   <span>\</span>                 <span>/</span> <span>\<br></span>     <span>*</span>    <span>y</span>     <span>==&gt;</span>       <span>x</span>   <span>z<br></span>     <span>*</span>     <span>\<br></span>     <span>*</span>      <span>z<br></span>     <span>*/</span></pre>
+<p>Rotate Right:&nbsp;<span>where x is "left&nbsp;heavy", and so, y becomes parent of x and x becomes the right&nbsp;child of y (and a sibling to z)&nbsp;and therefore, y (and the rest of the tree) becomes balanced:</span></p>
+<pre>    <span>/*<br></span>     <span>*</span>      <span>x</span>               <span>y<br></span>     <span>*</span>     <span>/</span>              <span>/</span>   <span>\<br></span>     <span>*</span>    <span>y</span>     <span>==&gt;</span>      <span>z</span>     <span>x<br></span>     <span>*</span>   <span>/<br></span>     <span>*</span>  <span>z<br></span>     <span>*/</span></pre>
+<p><strong>&nbsp;Balancing:</strong></p>
+<p>Armed with these two basic operations, we can balance all the four types of imbalance:</p>
+<p>The balancing operation must take place after inserting or erasing elements from a binary tree</p>
+<pre>    <span>if</span> (root-&gt;balance_factor() ==<span> -</span><span>2</span>){<br>        <span>/*</span>  <span>a:</span><span> rotate left   </span><span>b: rotate right (at Y) and then rotate left (at X)<br></span>         <span>*</span>  <span>x</span>                   <span>x<br></span>         <span>*</span>   <span>\</span>                   <span>\<br></span>         <span>*</span>    <span>y</span>                    <span>y<br></span>         <span>*</span>     <span>\</span>                  <span>/<br></span>         <span>*</span>      <span>z</span>               <span>z<br></span>         <span>*/<br></span>    <span>else</span> <span>if</span>(root-&gt;balance_factor() ==<span> +</span><span>2</span>){<br>        <span>/*</span>  <span>c: rotate right  </span><span>d: rotate left (at Y) and then rotate right (at X)<br></span>         <span>*</span>          <span>x</span>           <span>x<br></span>         <span>*</span>        <span>/</span>            <span>/<br></span>         <span>*</span>      <span>y</span>             <span>y<br></span>         <span>*</span>     <span>/</span>               <span>\<br></span>         <span>*</span>    <span>z</span>                 <span>z<br></span>         <span>*/</span></pre>
+<p>&nbsp;</p>
+</body>
+</html>

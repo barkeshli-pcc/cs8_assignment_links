@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <event identifier="g11d60c9b96d4ef17fb449b312af42b43">
+    <title>Spring Break</title>
+    <description/>
+    <start_at>2025-04-16T07:00:00</start_at>
+    <end_at>2025-04-16T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-04-16</all_day_date>
+    <rrule></rrule>
+  </event>
+  <event identifier="g891a10e734f0335f85a2334b9aab4ab8">
+    <title>SORT/SEARCH</title>
+    <description></description>
+    <start_at>2025-04-02T07:00:00</start_at>
+    <end_at>2025-04-02T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-04-02</all_day_date>
+  </event>
+  <event identifier="ge3d878291d0eda4a7b1b43d0863f32a1">
+    <title>Final Prep</title>
+    <description></description>
+    <start_at>2025-06-04T07:00:00</start_at>
+    <end_at>2025-06-04T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-06-04</all_day_date>
+  </event>
+  <event identifier="g07056ee1c6d7b0a89cd6d86c655af80d">
+    <title>FINALS WEEK</title>
+    <description></description>
+    <start_at>2025-06-11T07:00:00</start_at>
+    <end_at>2025-06-11T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-06-11</all_day_date>
+  </event>
+  <event identifier="g6c937c6ea31611ec9ef02fce0f59f767">
+    <title>Exam 1</title>
+    <description></description>
+    <start_at>2025-03-12T07:00:00</start_at>
+    <end_at>2025-03-12T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-03-12</all_day_date>
+  </event>
+  <event identifier="g4014e3120f8bf49535d27a058ee06be3">
+    <title>FINAL PREP</title>
+    <description></description>
+    <start_at>2025-05-28T07:00:00</start_at>
+    <end_at>2025-05-28T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-05-28</all_day_date>
+  </event>
+  <event identifier="g8d4bf240c6a51d58d5ee3887517fa22c">
+    <title>AVL</title>
+    <description></description>
+    <start_at>2025-03-12T07:00:00</start_at>
+    <end_at>2025-03-12T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-03-12</all_day_date>
+  </event>
+  <event identifier="ga70b1824f0a0fac54b1de86c8a604cfa">
+    <title>STK</title>
+    <description></description>
+    <start_at>2025-02-26T08:00:00</start_at>
+    <end_at>2025-02-26T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-02-26</all_day_date>
+  </event>
+  <event identifier="g78e0346502b495f7c042d12eae129d98">
+    <title>BST</title>
+    <description></description>
+    <start_at>2025-03-05T08:00:00</start_at>
+    <end_at>2025-03-05T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-03-05</all_day_date>
+    <rrule></rrule>
+  </event>
+  <event identifier="g9ff2dfbf70b8cdc75be1e37c2c9955df">
+    <title>BTREE</title>
+    <description></description>
+    <start_at>2025-04-16T07:00:00</start_at>
+    <end_at>2025-04-16T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-04-16</all_day_date>
+  </event>
+  <event identifier="gb0467f61551b18241f1b14a28638f6f6">
+    <title>MAPS</title>
+    <description></description>
+    <start_at>2025-05-14T07:00:00</start_at>
+    <end_at>2025-05-14T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-05-14</all_day_date>
+  </event>
+  <event identifier="g28d2dea44adc63e64c946ba90f569d7e">
+    <title>BTREE</title>
+    <description></description>
+    <start_at>2025-04-30T07:00:00</start_at>
+    <end_at>2025-04-30T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-04-30</all_day_date>
+  </event>
+  <event identifier="g2ea9ef5cbd12f04273aa9a8ab421bd1a">
+    <title>INTRO: STACK/QUEUE, BIG 3</title>
+    <description></description>
+    <start_at>2025-02-12T08:00:00</start_at>
+    <end_at>2025-02-12T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-02-12</all_day_date>
+  </event>
+  <event identifier="g38f746655df7ec1b75328f9392b704d9">
+    <title>FTK</title>
+    <description></description>
+    <start_at>2025-02-26T08:00:00</start_at>
+    <end_at>2025-02-26T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-02-26</all_day_date>
+  </event>
+  <event identifier="g15c22a1c268289559f73ea94dc28d79f">
+    <title>RECURSION, BST</title>
+    <description></description>
+    <start_at>2025-03-05T08:00:00</start_at>
+    <end_at>2025-03-05T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-03-05</all_day_date>
+  </event>
+  <event identifier="ge5687060765d290ce71f1888f66cca16">
+    <title>SQL START NOW</title>
+    <description></description>
+    <start_at>2025-05-07T07:00:00</start_at>
+    <end_at>2025-05-07T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-05-07</all_day_date>
+  </event>
+  <event identifier="gca3630d6ce12ab3e73258fd1eb2768c5">
+    <title>B+TREE</title>
+    <description></description>
+    <start_at>2025-05-07T07:00:00</start_at>
+    <end_at>2025-05-07T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-05-07</all_day_date>
+  </event>
+  <event identifier="g4903424af7c6283eb5898afd32aa6045">
+    <title>Stack and Queue</title>
+    <description></description>
+    <start_at>2025-02-12T08:00:00</start_at>
+    <end_at>2025-02-12T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-02-12</all_day_date>
+  </event>
+  <event identifier="gb97bb0509059690dcb83e15b9d6f3bf7">
+    <title>Car Wash</title>
+    <description></description>
+    <start_at>2025-02-19T08:00:00</start_at>
+    <end_at>2025-02-19T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-02-19</all_day_date>
+  </event>
+  <event identifier="ga5c2564537bca0d9acd2256784fd7b73">
+    <title>FTK</title>
+    <description></description>
+    <start_at>2025-02-26T08:00:00</start_at>
+    <end_at>2025-02-26T08:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-02-26</all_day_date>
+  </event>
+  <event identifier="g4b26e738b9cd8dfbf244122160b4e016">
+    <title>HASH</title>
+    <description></description>
+    <start_at>2025-03-26T07:00:00</start_at>
+    <end_at>2025-03-26T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-03-26</all_day_date>
+  </event>
+  <event identifier="gccf31b802c12c39925f334be9d0371ba">
+    <title>Exam 3</title>
+    <description></description>
+    <start_at>2025-06-04T07:00:00</start_at>
+    <end_at>2025-06-04T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-06-04</all_day_date>
+  </event>
+  <event identifier="gf24149209be7046d06594986d3c1084f">
+    <title>GRAPHS</title>
+    <description></description>
+    <start_at>2025-04-23T07:00:00</start_at>
+    <end_at>2025-04-23T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-04-23</all_day_date>
+  </event>
+  <event identifier="gc2fab894b7a2445cabcc75af5ed48a79">
+    <title>HEAPS / P_QUEUE</title>
+    <description></description>
+    <start_at>2025-03-19T07:00:00</start_at>
+    <end_at>2025-03-19T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-03-19</all_day_date>
+  </event>
+  <event identifier="gdd8b91d82840fad4196efdedcddb1281">
+    <title>EXAM 2</title>
+    <description></description>
+    <start_at>2025-05-01T07:00:00</start_at>
+    <end_at>2025-05-01T07:00:00</end_at>
+    <all_day>true</all_day>
+    <all_day_date>2025-05-01</all_day_date>
+  </event>
+</events>

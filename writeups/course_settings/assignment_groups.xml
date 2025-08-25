@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assignmentGroups xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <assignmentGroup identifier="gcf2e78cb965d20d2014c5110da914a3c">
+    <title>Assignments</title>
+    <position>1</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g69a4fe7095328a27e4292e8a3a7a6753">
+    <title>Assignments</title>
+    <position>2</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g43b5184585672965acdba417afa58df8">
+    <title>Btree</title>
+    <position>3</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g8c9942e6f0c1294b621762e47c9e9504">
+    <title>gentle_grader_assignments</title>
+    <position>4</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g9b05c98cfa5a33d0cea75808010aebcb">
+    <title>Graphs</title>
+    <position>5</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g2fcdb54c83cda0286b36f45b14d0704a">
+    <title>Final Project</title>
+    <position>6</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g0465433bfe7843e26f6ccc209897e4f4">
+    <title>Sorts</title>
+    <position>7</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="ge5cde3c15d29739ef64cd01a1b600ad8">
+    <title>gentle_grader</title>
+    <position>8</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="gd31a4906d3e9640567411b081a9b4782">
+    <title>Search</title>
+    <position>9</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g34d33187c768122a8a93163283ad1b31">
+    <title>LABS</title>
+    <position>10</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g68566fa9e7f5838ab58e63176ac4641f">
+    <title>Heap/PQueue</title>
+    <position>11</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g12e49957fa5b962dde5e15252e53140e">
+    <title>Notes</title>
+    <position>12</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="ge388155b48b3369ba26735ba7d152621">
+    <title>BST</title>
+    <position>13</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="geb832c7bc4920e701b47b5271a412f9e">
+    <title>Tests</title>
+    <position>14</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="gf2fc5f09c48a8d71fd3001dc14c63630">
+    <title>Recursion</title>
+    <position>15</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="gf3913492bb324e384a2fcaf536077a8f">
+    <title>State Machine Tokenizer</title>
+    <position>16</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="gd95ba54925f480800b5b5b77bd1a46bc">
+    <title>Stacks and Queues</title>
+    <position>17</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g7168ef55b6addba9a43ac0b2847dc7ae">
+    <title>Assignments</title>
+    <position>18</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="gb3879db18167314363587cd49e92ecd8">
+    <title>Sort old</title>
+    <position>19</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g2ac5ec005e9e62620a5cda6b088e462b">
+    <title>Search_OLD</title>
+    <position>20</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g0fdec0b4a97cd5b4a49c48ad80285e12">
+    <title>Trees old</title>
+    <position>21</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g79e0c765a968ae5bd783890cc3a75244">
+    <title>Linked Lists Old</title>
+    <position>22</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="gf2facf6a09432e860453c8a6578f60b4">
+    <title>Stack Queue Old</title>
+    <position>23</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g050d29e019bd11f82e570401555767f4">
+    <title>Imported Assignments</title>
+    <position>24</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+  <assignmentGroup identifier="g917cd014470e52fef76d088a6565e5c0">
+    <title>Self Tests, ETC</title>
+    <position>25</position>
+    <group_weight>0.0</group_weight>
+  </assignmentGroup>
+</assignmentGroups>

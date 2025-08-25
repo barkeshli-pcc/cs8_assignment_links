@@ -1,0 +1,441 @@
+
+
+------ SQL Tables I Manage: --------
+employee
+student
+---------------------------
+
+
+> batch3
+//****************************************************************************
+//		CREATE AND INSERT
+//****************************************************************************
+
+//---- employee table ----------
+[0] create tableemployee cols: last first dep   types:  
+sql::run_command: create table: employee last first dep , types: 
+SQL::create_table(employee, last first dep , )
+Table employee created. cols: last first dep 
+
+
+SQL: DONE. 
+[1] insert into employee values Blow, 		Joe, 			CS
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[2] insert into employee values Johnson, 	"Jimmy", 		Chemistry
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[3] insert into employee values Yang, 		Bo, 			CS
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[4] insert into employee values "Jackson",	Billy, 			Math
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[5] insert into employee values Johnson,	Billy, 			"Phys Ed"
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[6] insert into employee values "Van Gogh",	"Jim Bob", 		"Phys Ed"
+SQL::run: inserted.
+
+
+SQL: DONE. 
+
+[7] select * from employee 
+
+Table name: _select_table_17, records: 6
+ record           last          first            dep
+
+      0           Blow            Joe             CS
+      1        Johnson          Jimmy      Chemistry
+      2           Yang             Bo             CS
+      3        Jackson          Billy           Math
+      4        Johnson          Billy        Phys Ed
+      5       Van Gogh        Jim Bob        Phys Ed
+
+
+
+
+SQL: DONE. 
+
+//----- student table ----------
+[8] create tablestudent cols: fname lname major age   types:  
+sql::run_command: create table: student fname lname major age , types: 
+SQL::create_table(student, fname lname major age , )
+Table student created. cols: fname lname major age 
+
+
+SQL: DONE. 
+[9] insert into student values 	Flo, 			Yao, 		CS, 			20
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[10] insert into student values 	"Flo", 			"Jackson", 	Math,	 	21
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[11] insert into student values 	Calvin, 		Woo, 		Physics,	22
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[12] insert into student values 	"Anna Grace", 	"Del Rio", 	CS,	 		22
+SQL::run: inserted.
+
+
+SQL: DONE. 
+[13] select * from student
+
+Table name: _select_table_27, records: 4
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1            Flo        Jackson           Math             21
+      2         Calvin            Woo        Physics             22
+      3     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE. 
+
+
+
+//****************************************************************************
+//		SIMPLE SELECT 
+//****************************************************************************
+
+[14] select * from student
+
+Table name: _select_table_31, records: 4
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1            Flo        Jackson           Math             21
+      2         Calvin            Woo        Physics             22
+      3     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE. 
+
+//------- simple strings -------------------
+[15] select * from student where lname = Jackson
+
+Table name: _select_table_35, records: 1
+ record          fname          lname          major            age
+
+      0            Flo        Jackson           Math             21
+
+
+
+
+SQL: DONE. 
+
+//----- quoted strings ---------------------
+[16] select * from student where lname = "Del Rio"
+
+Table name: _select_table_39, records: 1
+ record          fname          lname          major            age
+
+      0     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE. 
+
+//-------- non-existing string ------------------
+[17] select * from student where lname = "Does Not Exist"
+
+Table name: _select_table_43, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE. 
+
+//****************************************************************************
+//		RELATIONAL OPERATORS:
+//****************************************************************************
+
+//.................
+//:Greater Than   :
+//.................
+[18] select * from student where lname > Yang
+
+Table name: _select_table_47, records: 1
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+
+
+
+
+SQL: DONE. 
+
+
+//. . . . . . . . . . . . . (Greater Than: Non-existing) . . . . . . . . . . . . . . . . . . . . . 
+[19] select * from student where age > 50
+
+Table name: _select_table_51, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE. 
+
+//. . . . . . . . . . . . . (Greater than: last item) . . . . . . . . . . . . . . . . . .
+[20] select * from student where age  > 53
+
+Table name: _select_table_55, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE. 
+
+//. . . . . . . . . . . . . (Greater Than: Passed last item) . . . . . . . . . . . . . . . . . . . . . 
+[21] select * from student where age > 54
+
+Table name: _select_table_59, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE. 
+
+//.................
+//:Greater Equal  :
+//.................
+[22] select * from student where lname >= Yang
+
+Table name: _select_table_63, records: 1
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+
+
+
+
+SQL: DONE. 
+//. . . . . .  (Greater Equal non-existing: ) . . . . . . . . . . . 
+[23] select * from employee where last >= Jack
+
+Table name: _select_table_67, records: 5
+ record           last          first            dep
+
+      0        Jackson          Billy           Math
+      1        Johnson          Jimmy      Chemistry
+      2        Johnson          Billy        Phys Ed
+      3       Van Gogh        Jim Bob        Phys Ed
+      4           Yang             Bo             CS
+
+
+
+
+SQL: DONE. 
+
+
+//.................
+//:Less Than      :
+//.................
+
+
+//. . . . . . . . . . . . . (Less Than: Non-existing) . . . . . . . . . . . . . . . . . . . . . 
+[24] select * from student where lname < Jackson
+
+Table name: _select_table_71, records: 1
+ record          fname          lname          major            age
+
+      0     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE. 
+
+//. . . . . . . . . . . . . (Less than: first item) . . . . . . . . . . . . . . . . . .
+[25] select * from student where age  < 20
+
+Table name: _select_table_75, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE. 
+
+
+//. . . . . . . . . . . . . (Less Than: before first item) . . . . . . . . . . . . . . . . . . . . . 
+
+[26] select * from student where age  < 19
+
+Table name: _select_table_79, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE. 
+
+
+//.................
+//:Less Equal     :
+//.................
+
+[27] select * from student where lname <= Smith
+
+Table name: _select_table_83, records: 2
+ record          fname          lname          major            age
+
+      0     Anna Grace        Del Rio             CS             22
+      1            Flo        Jackson           Math             21
+
+
+
+
+SQL: DONE. 
+
+//. . . . . .  (Less Equal non-existing: ) . . . . . . . . . . . 
+[28] select * from employee where last <= Peach
+
+Table name: _select_table_87, records: 4
+ record           last          first            dep
+
+      0           Blow            Joe             CS
+      1        Jackson          Billy           Math
+      2        Johnson          Jimmy      Chemistry
+      3        Johnson          Billy        Phys Ed
+
+
+
+
+SQL: DONE. 
+
+//****************************************************************************
+//		LOGICAL OPERATORS
+//****************************************************************************
+
+
+//.................
+//:AND            :
+//.................
+
+[29] select * from student where fname = "Flo" and lname = "Yao"
+
+Table name: _select_table_91, records: 1
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+
+
+
+
+SQL: DONE. 
+
+
+//.................
+//:OR            :
+//.................
+[30] select * from student where fname = Flo or lname = Jackson
+
+Table name: _select_table_95, records: 2
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1            Flo        Jackson           Math             21
+
+
+
+
+SQL: DONE. 
+
+
+//.................
+//:OR AND         :
+//.................
+[31] select * from student where fname = Flo or major = CS and age <= 23
+
+Table name: _select_table_99, records: 3
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1            Flo        Jackson           Math             21
+      2     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE. 
+
+
+//.................
+//:AND OR AND     :
+//.................
+
+[32] select * from student where age <30 and major=CS or major = Physics and lname = Jackson
+
+Table name: _select_table_103, records: 2
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE. 
+
+
+//.................
+//:OR AND OR      :
+//.................
+
+[33] select * from student where lname = Yang or major = CS and age < 23 or lname = Jackson 
+
+Table name: _select_table_107, records: 3
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1            Flo        Jackson           Math             21
+      2     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE. 
+
+
+
+
+
+
+
+
+
+
+------- END OF BATCH PROCESS -------
+>

@@ -1,0 +1,264 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 08_00_stack_n_queue</title>
+</head>
+<body>
+<h2 style="text-align: center;"><strong>Stack and Queue Design:</strong></h2>
+<p>You may want to take a look at the <a title="12.00 A Simple Iterator (Nested Classes)_CS3" href="$CANVAS_OBJECT_REFERENCE$/assignments/g91d20e8006260ab2f030b21c95a11f93" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1117416/assignments/8969728" data-api-returntype="Assignment">Iterators</a>' page, and the page for <a title="12.00 Iterated List_CS3" href="$CANVAS_OBJECT_REFERENCE$/assignments/gb7237241a4177aec144d405fb21da802" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1117416/assignments/8969729" data-api-returntype="Assignment">lists with iterators</a>.</p>
+<p>In this project, we will design two templated classes called Stack and Queue. These two classes are based on linked lists. All classes and functions in this course will be templated unless otherwise instructed by me.</p>
+<p><strong>1. Linked List Functions (list.h)</strong></p>
+<p>DO NOT implement a linked list class. We are simply writing low level functions that will perform linked list operations. We will use these functions to implement our Stack and Queue:</p>
+<p>First, define a node struct:</p>
+<pre><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="keyword">
+struct</span> node<span class="operator">{</span>
+    T _item<span class="operator">;</span>
+    node<span class="operator">&lt;</span>T<span class="operator">&gt;*</span> _next<span class="operator">;<br></span>    node<span class="operator">&lt;</span>T<span class="operator">&gt;*</span> _prev<span class="operator">;<br></span> &nbsp; &nbsp;node<span class="operator">(</span><span class="keyword">const</span> T<span class="operator">&amp;</span> item<span class="operator"> =</span> T<span class="operator">(),</span> node<span class="operator">&lt;</span>T<span class="operator">&gt;*</span> next<span class="operator"> =</span> NULL, node&lt;T&gt;* prev = NULL<span class="operator">):<br></span>                                                                       _item<span class="operator">(</span>item<span class="operator">),</span> <br>                                                                       _next<span class="operator">(</span>next<span class="operator">),<br>                                                                       _prev(prev){}</span><span class="keyword">
+    friend</span> ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator"> &lt;&lt; (</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> const</span> node<span class="operator">&lt;</span>T<span class="operator">&gt;&amp;</span> print_me<span class="operator">){</span>
+        outs<span class="operator">&lt;&lt;</span><span class="string">"["</span><span class="operator">&lt;&lt;</span>print_me<span class="operator">.</span>_item<span class="operator">&lt;&lt;</span><span class="string">"]-&gt;"</span><span class="operator">;</span><span class="flow">
+        return</span> outs<span class="operator">;
+    }
+};<br></span></pre>
+<p>Now, define the following functions with this exact signature and functionality:</p>
+<pre style="margin: 0; line-height: 125%;"><span style="color: #888888;">//Linked List General Functions:</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #333399;">void</span> _print_list(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> head);
+
+<span style="color: #888888;">//recursive fun! :)</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #333399;">void</span> _print_list_backwards(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> <span style="color: #333333;">*</span>head);
+
+<span style="color: #888888;">//return ptr to key or NULL</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _search_list(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> head,
+                            T key);
+
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _insert_head(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> <span style="color: #333333;">*&amp;</span>head,
+                            T insert_this);
+
+<span style="color: #888888;">//insert after ptr: insert head if marker null</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _insert_after(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*&amp;</span> head,
+                                node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> <span style="color: #333333;">*</span>after_this,
+                                T insert_this);
+
+<span style="color: #888888;">//insert before ptr: insert head if marker null</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _insert_before(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*&amp;</span> head,
+                                node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> before_this,
+                                T insert_this);
+
+<span style="color: #888888;">//ptr to previous node</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _previous_node(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> prev_to_this);
+
+<span style="color: #888888;">//delete, return item</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+T _delete_node(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*&amp;</span> head, node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> delete_this);
+
+<span style="color: #888888;">//duplicate the list...</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _copy_list(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> head);
+<br><span style="color: #008800; "><span style="color: #888888;">//duplicate the list, return pointer to last node in dest...</span> <br><span style="color: #888888;">//     use this function in your queue big three</span> <br>template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800; ">typename</span> T<span style="color: #333333;">&gt;</span>
+node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> <span style="color: #333333;">*</span>_copy_list(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> <span style="color: #333333;">*&amp;</span>dest, node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> <span style="color: #333333;">*</span>src);
+
+<br>
+<span style="color: #888888;">//delete all the nodes</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #333399;">void</span> _clear_list(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*&amp;</span> head);
+
+<span style="color: #888888;">//_item at this position</span>
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+T<span style="color: #333333;">&amp;</span> _at(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> head, <span style="color: #333399;">int</span> pos);
+
+
+</pre>
+<p><strong>2. Define a Queue class (use upper case Q for the name) as follows: (queue.h)</strong></p>
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #008800;">class</span> <span style="color: #bb0066;">Queue</span>
+{
+<span style="color: #997700;">public:</span>
+    <span style="color: #008800;">class</span> <span style="color: #bb0066;">Iterator</span>{
+    <span style="color: #997700;">public:</span>
+        <span style="color: #008800;">friend</span> <span style="color: #008800;">class</span> <span style="color: #bb0066;">Queue</span>;                               <span style="color: #888888;">//give access to list to access _ptr</span>
+        Iterator(){_ptr <span style="color: #333333;">=</span> <span style="color: #007020;">NULL</span>;}                          <span style="color: #888888;">//default ctor</span>
+        Iterator(node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> p){}                            <span style="color: #888888;">//Point Iterator to where</span>
+                                                          <span style="color: #888888;">//  p is pointing to</span>
+        T <span style="color: #008800;">operator</span> <span style="color: #333333;">*</span>(){}    <span style="color: #888888;">//dereference operator</span>
+        <span style="color: #333399;">bool</span> is_null(){}            <span style="color: #888888;">//true if _ptr is NULL</span>
+        <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">!=</span>(<span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> left,
+                                <span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> right)  <span style="color: #888888;">//true if left != right</span>
+        {}
+
+        <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">==</span>(<span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> left,
+                                <span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> right)  <span style="color: #888888;">//true if left == right</span>
+        {}
+
+
+        Iterator<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span><span style="color: #333333;">++</span>(){                         <span style="color: #888888;">//member operator:++it</span>
+                                                        <span style="color: #888888;">// or ++it = new_value</span>
+            
+        }
+
+        <span style="color: #008800;">friend</span> Iterator <span style="color: #008800;">operator</span><span style="color: #333333;">++</span>(Iterator<span style="color: #333333;">&amp;</span> it,
+                                   <span style="color: #333399;">int</span> unused){         <span style="color: #888888;">//friend operator: it++</span>
+        }
+
+    <span style="color: #997700;">private:</span>
+        node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _ptr;                          <span style="color: #888888;">//pointer being encapsulated</span>
+    };
+
+    Queue();
+
+    Queue(<span style="color: #008800;">const</span> Queue<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> copyMe);
+    <span style="color: #333333;">~</span>Queue();
+    Queue<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span><span style="color: #333333;">=</span>(<span style="color: #008800;">const</span> Queue<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> RHS);
+
+    <span style="color: #333399;">bool</span> <span style="color: #0066bb;">empty</span>();
+    T <span style="color: #0066bb;">front</span>();
+    T <span style="color: #0066bb;">back</span>();
+
+    <span style="color: #333399;">void</span> <span style="color: #0066bb;">push</span>(T item);
+    T <span style="color: #0066bb;">pop</span>();
+
+    Iterator begin() <span style="color: #008800;">const</span>;                                     <span style="color: #888888;">//Iterator to the head node</span>
+    Iterator end() <span style="color: #008800;">const</span>;                                       <span style="color: #888888;">//Iterator to NULL</span>
+    <span style="color: #333399;">void</span> <span style="color: #0066bb;">print_pointers</span>();
+    <span style="color: #333399;">int</span> size() <span style="color: #008800;">const</span> { <span style="color: #008800;">return</span> _size; }
+    <span style="color: #008800;">template</span><span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> TT<span style="color: #333333;">&gt;</span>
+    <span style="color: #008800;">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;&lt;</span> (ostream<span style="color: #333333;">&amp;</span> outs, <span style="color: #008800;">const</span> Queue<span style="color: #333333;">&lt;</span>TT<span style="color: #333333;">&gt;&amp;</span> printMe);
+<span style="color: #997700;">private:</span>
+    node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _front;
+    node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> _rear;
+    <span style="color: #333399;">int</span> _size;
+};
+</pre>
+<pre></pre>
+<p><strong>3. Define a Stack class (upper case S for the name) as follows: (stack.h)</strong></p>
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> ITEM_TYPE<span style="color: #333333;">&gt;</span>
+<span style="color: #008800;">class</span> <span style="color: #bb0066;">Stack</span>{
+<span style="color: #997700;">public:</span>
+    <span style="color: #008800;">class</span> <span style="color: #bb0066;">Iterator</span>{
+    <span style="color: #997700;">public:</span>
+        <span style="color: #008800;">friend</span> <span style="color: #008800;">class</span> <span style="color: #bb0066;">Stack</span>;                 <span style="color: #888888;">//give access to list to access _ptr</span>
+        Iterator(){_ptr <span style="color: #333333;">=</span> <span style="color: #007020;">NULL</span>;}            <span style="color: #888888;">//default ctor</span>
+        Iterator(node<span style="color: #333333;">&lt;</span>ITEM_TYPE<span style="color: #333333;">&gt;*</span> p){}      <span style="color: #888888;">//Point Iterator to where</span>
+                                            <span style="color: #888888;">//  p is pointing to</span>
+        ITEM_TYPE <span style="color: #008800;">operator</span> <span style="color: #333333;">*</span>(){}    <span style="color: #888888;">//dereference operator</span>
+        <span style="color: #333399;">bool</span> is_null(){<span style="color: #008800;">return</span> _ptr <span style="color: #333333;">==</span> <span style="color: #007020;">NULL</span>;}            <span style="color: #888888;">//true if _ptr is NULL</span>
+        <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">!=</span>(<span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> left,
+                                <span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> right)  <span style="color: #888888;">//true if left != right</span>
+        {<span style="color: #008800;">return</span> left._ptr <span style="color: #333333;">!=</span> right._ptr;}
+
+        <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">==</span>(<span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> left,
+                                <span style="color: #008800;">const</span> Iterator<span style="color: #333333;">&amp;</span> right)  <span style="color: #888888;">//true if left == right</span>
+        {}
+
+
+        Iterator<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span><span style="color: #333333;">++</span>(){                        <span style="color: #888888;">//member operator:++it</span>
+                                                       <span style="color: #888888;">// or ++it = new_value</span>
+        }
+
+        <span style="color: #008800;">friend</span> Iterator <span style="color: #008800;">operator</span><span style="color: #333333;">++</span>(Iterator<span style="color: #333333;">&amp;</span> it,
+                                   <span style="color: #333399;">int</span> unused){        <span style="color: #888888;">//friend operator: it++</span>
+            assert(it._ptr<span style="color: #333333;">!=</span><span style="color: #007020;">NULL</span>);
+        }
+
+    <span style="color: #997700;">private:</span>
+        node<span style="color: #333333;">&lt;</span>ITEM_TYPE<span style="color: #333333;">&gt;*</span> _ptr;    <span style="color: #888888;">//pointer being encapsulated</span>
+    };
+
+    Stack();
+    Stack(<span style="color: #008800;">const</span> Stack<span style="color: #333333;">&lt;</span>ITEM_TYPE<span style="color: #333333;">&gt;&amp;</span> copyMe);
+    <span style="color: #333333;">~</span>Stack();
+    Stack<span style="color: #333333;">&lt;</span>ITEM_TYPE<span style="color: #333333;">&gt;&amp;</span> <span style="color: #008800;">operator</span><span style="color: #333333;">=</span>(<span style="color: #008800;">const</span> Stack<span style="color: #333333;">&lt;</span>ITEM_TYPE<span style="color: #333333;">&gt;&amp;</span> RHS);
+    ITEM_TYPE <span style="color: #0066bb;">top</span>();
+    <span style="color: #333399;">bool</span> <span style="color: #0066bb;">empty</span>();
+    <span style="color: #333399;">void</span> <span style="color: #0066bb;">push</span>(ITEM_TYPE item);
+    ITEM_TYPE <span style="color: #0066bb;">pop</span>();
+    <span style="color: #008800;">template</span><span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+    <span style="color: #008800;">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span><span style="color: #333333;">&lt;&lt;</span>(ostream<span style="color: #333333;">&amp;</span> outs, <span style="color: #008800;">const</span> Stack<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> printMe);
+    Iterator begin() <span style="color: #008800;">const</span>;                   <span style="color: #888888;">//Iterator to the head node</span>
+    Iterator end() <span style="color: #008800;">const</span>;                     <span style="color: #888888;">//Iterator to NULL</span>
+    <span style="color: #333399;">int</span> size() <span style="color: #008800;">const</span> { <span style="color: #008800;">return</span> _size; }
+
+<span style="color: #997700;">private:</span>
+    node<span style="color: #333333;">&lt;</span>ITEM_TYPE<span style="color: #333333;">&gt;*</span> _top;
+    <span style="color: #333399;">int</span> _size;
+};
+</pre>
+<p><strong>4. Test your Stack and Queue classes</strong> by writing a pair of functions to output what is shown below:</p>
+<p>1. declare an instance of the Stack (Queue) class, in a for loop, push 0..9 into the object, print the object</p>
+<p>2. Declare another object using the copy constructor to be a copy of this first object.</p>
+<p>3. while the container is not empty, pop (show the popped item in braces { } )and reprint the object</p>
+<p>4. when the object is empty, assign the second object back into the first and reprint both objects.</p>
+<p>This should test all the functions of the class as well as the big three functions.</p>
+<p>Output For Stack:</p>
+<pre>s<span class="operator">: [</span><span class="int">9</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||</span>
+
+s2<span class="operator">: [</span><span class="int">9</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 9</span><span class="operator"> } [</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 8</span><span class="operator"> } [</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 7</span><span class="operator"> } [</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 6</span><span class="operator"> } [</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 5</span><span class="operator"> } [</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 4</span><span class="operator"> } [</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 3</span><span class="operator"> } [</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 2</span><span class="operator"> } [</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 1</span><span class="operator"> } [</span><span class="int">0</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 0</span><span class="operator"> } |||</span>
+
+assigning s back to s2<span class="operator">:</span> s<span class="operator">: [</span><span class="int">9</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||</span>
+
+s2<span class="operator">: [</span><span class="int">9</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">0</span><span class="operator">]-&gt;|||</span>
+</pre>
+<p>Output For&nbsp;Queue:</p>
+<pre>q<span class="operator">: [</span><span class="int">0</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||</span>
+
+q2<span class="operator">: [</span><span class="int">0</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 0</span><span class="operator"> } [</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 1</span><span class="operator"> } [</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 2</span><span class="operator"> } [</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 3</span><span class="operator"> } [</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 4</span><span class="operator"> } [</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 5</span><span class="operator"> } [</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 6</span><span class="operator"> } [</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 7</span><span class="operator"> } [</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 8</span><span class="operator"> } [</span><span class="int">9</span><span class="operator">]-&gt;|||
+
+{</span><span class="int"> 9</span><span class="operator"> } |||</span>
+
+assigning q back to q2<span class="operator">:</span> q<span class="operator">: [</span><span class="int">0</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||</span>
+
+q2<span class="operator">: [</span><span class="int">0</span><span class="operator">]-&gt;[</span><span class="int">1</span><span class="operator">]-&gt;[</span><span class="int">2</span><span class="operator">]-&gt;[</span><span class="int">3</span><span class="operator">]-&gt;[</span><span class="int">4</span><span class="operator">]-&gt;[</span><span class="int">5</span><span class="operator">]-&gt;[</span><span class="int">6</span><span class="operator">]-&gt;[</span><span class="int">7</span><span class="operator">]-&gt;[</span><span class="int">8</span><span class="operator">]-&gt;[</span><span class="int">9</span><span class="operator">]-&gt;|||</span>
+</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

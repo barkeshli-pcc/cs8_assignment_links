@@ -1,0 +1,2699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <objectbank ident="g225c741133daec69566888b2aba19355">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>bank_title</fieldlabel>
+        <fieldentry>Chapter11</fieldentry>
+      </qtimetadatafield>
+      <qtimetadatafield>
+        <fieldlabel>bank_context_uuid</fieldlabel>
+        <fieldentry>j7FSN6pycKuHgMPidFPnnbKWAdRCVKnEPd7JD3Ct</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <item ident="g1978af08a8ab6ed95c1a7c2e8b93ed43" title="psc10s 11.1-1">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>42656,39448</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Friend functions are members of the class.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="42656">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="39448">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">39448</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g99e58f0bc6fc65fab68b7be2d54c7ae4" title="psc10s 11.1-10">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>74979,58363</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;You may not change the precedence of operators by overloading them.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="74979">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="58363">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">74979</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g5557b3b451cf3d38073e0a101fd58aa5" title="psc10s 11.1-2">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>39171,65296</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;All operators can be overloaded.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="39171">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="65296">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">65296</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g4df6c418b3079954358d2d6d6c8a6e8f" title="psc10s 11.1-3">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>7810,45985</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you have mutators and accessors, you should not have friend functions also.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="7810">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="45985">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">45985</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g682b4d4b157a15144ec067c50da4b864" title="psc10s 11.1-4">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>15087,6453</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Friend functions may directly modify or access the private data members.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="15087">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="6453">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">15087</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gea23958c947a8875f7f00a061b703ea7" title="psc10s 11.1-5">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>45642,48573</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The following is a properly declared overloaded insertion operator for myClass.&lt;br&gt;ostream&amp;amp; operator &amp;lt;&amp;lt;(ostream &amp;amp;out, const myClass &amp;amp;obj);&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="45642">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="48573">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">45642</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g1089b3e6ea24ede5c6f4a5fec5fbd514" title="psc10s 11.1-6">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>45744,65587</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Functions that are constant member functions may call the class mutator functions.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="45744">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="65587">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">65587</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6abdd8e883b6285286b960849cfdf70c" title="psc10s 11.1-7">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>38203,89713</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Functions that are constant member functions may call constant class accessor functions.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="38203">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="89713">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">38203</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gc13f44ca95879bcaa609620fceeee52a" title="psc10s 11.1-8">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>82048,30850</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;You cannot create new operators (such as the quote).&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="82048">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="30850">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">82048</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g163bf5276917abddfbf8a1da0d12a512" title="psc10s 11.1-9">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>66569,53612</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Operators must be friends of the class.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="66569">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="53612">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">53612</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g34e3d0c0473b443a80609ff85de2aa86" title="psc10s 11.3-1">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>68675,84318,69018,88425,41713</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;How many members (data and functions) does the following class have?&lt;br&gt;class Rational&lt;br&gt;{&lt;br&gt;public:&lt;br&gt; Rational();&lt;br&gt; Rational(int numer, int denom);&lt;br&gt; Rational(int whole);&lt;br&gt;&lt;br&gt; int getNumerator();&lt;br&gt; int getDenominator();&lt;br&gt;&lt;br&gt; friend void display(ostream&amp;amp; out, const Rational&amp;amp; value);&lt;br&gt;private:&lt;br&gt; int numerator;&lt;br&gt; int denominator;&lt;br&gt;};&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="68675">
+              <material>
+                <mattext texttype="text/plain">6</mattext>
+              </material>
+            </response_label>
+            <response_label ident="84318">
+              <material>
+                <mattext texttype="text/plain">2</mattext>
+              </material>
+            </response_label>
+            <response_label ident="69018">
+              <material>
+                <mattext texttype="text/plain">7</mattext>
+              </material>
+            </response_label>
+            <response_label ident="88425">
+              <material>
+                <mattext texttype="text/plain">8</mattext>
+              </material>
+            </response_label>
+            <response_label ident="41713">
+              <material>
+                <mattext texttype="text/plain">5</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">69018</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="ga8516a30d7aa20c41e9a5eb7080bc0c2" title="psc10s 11.3-10">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>19442,82254,55249,44619</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following class, what is syntactically wrong with the implementation of the display function?&lt;br&gt;class Rational&lt;br&gt;{&lt;br&gt;public:&lt;br&gt; Rational();&lt;br&gt; Rational(int numer, int denom);&lt;br&gt; Rational(int whole);&lt;br&gt;&lt;br&gt; int getNumerator();&lt;br&gt; int getDenominator();&lt;br&gt;&lt;br&gt; friend void display(ostream&amp;amp; out, const Rational&amp;amp; value);&lt;br&gt;private:&lt;br&gt; int numerator;&lt;br&gt; int denominator;&lt;br&gt;};&lt;br&gt;&lt;br&gt;void display(ostream&amp;amp; out, const Rational&amp;amp; value)&lt;br&gt;{&lt;br&gt; out &amp;lt;&amp;lt; value.getNumerator() &amp;lt;&amp;lt; '/"&amp;lt;&amp;lt;value.getDenominator();&lt;br&gt;}&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="19442">
+              <material>
+                <mattext texttype="text/plain">nothing</mattext>
+              </material>
+            </response_label>
+            <response_label ident="82254">
+              <material>
+                <mattext texttype="text/plain">The get functions are not const functions.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="55249">
+              <material>
+                <mattext texttype="text/plain">value must be not be pass by reference.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="44619">
+              <material>
+                <mattext texttype="text/plain">out should be pass by value.</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">82254</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gd22b6fde45bebe260bd6fdab3fb52982" title="psc10s 11.3-11">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>70515,98057,19625,63900</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;To overload functions with symbolic names (like + - / &amp;lt;&amp;lt;), you must use the keyword ________ before the symbolic name.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="70515">
+              <material>
+                <mattext texttype="text/plain">const</mattext>
+              </material>
+            </response_label>
+            <response_label ident="98057">
+              <material>
+                <mattext texttype="text/plain">operator</mattext>
+              </material>
+            </response_label>
+            <response_label ident="19625">
+              <material>
+                <mattext texttype="text/plain">void</mattext>
+              </material>
+            </response_label>
+            <response_label ident="63900">
+              <material>
+                <mattext texttype="text/plain">reference</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">98057</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g7dbf95b9635c4ee64bb152c342245785" title="psc10s 11.3-12">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>2696,25619,80218,9261</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;In the following code fragment, which is the calling object for the less-than operator?&lt;br&gt;string s1, s2;&lt;br&gt;if( s1 &amp;lt; s2 )&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="2696">
+              <material>
+                <mattext texttype="text/html">&amp;lt;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="25619">
+              <material>
+                <mattext texttype="text/plain">s1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="80218">
+              <material>
+                <mattext texttype="text/plain">s2</mattext>
+              </material>
+            </response_label>
+            <response_label ident="9261">
+              <material>
+                <mattext texttype="text/plain">none</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">25619</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gc9e16489b124cd15d4d13977159855a2" title="psc10s 11.3-13">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>63271,21576,34410,11655,48035,69454</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following class declaration, &lt;br&gt;class Rational&lt;br&gt;{&lt;br&gt;public:&lt;br&gt; Rational();&lt;br&gt; Rational(int numer, int denom);&lt;br&gt;&lt;br&gt; int getNumerator() const;&lt;br&gt; int getDenominator() const;&lt;br&gt;&lt;br&gt; friend void display(ostream&amp;amp; out, const Rational&amp;amp; value);&lt;br&gt;&lt;br&gt; friend bool operator(const Rational&amp;amp; left, const Rational&amp;amp; right);&lt;br&gt;private:&lt;br&gt; int numerator;&lt;br&gt; int denominator;&lt;br&gt;};&lt;br&gt;&lt;br&gt;what must we add to the class in order for the following code to compile?&lt;br&gt;Rational myRational(2,3);&lt;br&gt;if ( 3 &amp;lt; myRational)&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="63271">
+              <material>
+                <mattext texttype="text/html">We need another &amp;lt; operator that expects an integer as the second parameter.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="21576">
+              <material>
+                <mattext texttype="text/plain">We need a constructor that expects an integer.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="34410">
+              <material>
+                <mattext texttype="text/plain">We need a constructor that expects a ration number.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="11655">
+              <material>
+                <mattext texttype="text/html">We need another &amp;lt; operator that expects an integer as the first parameter.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="48035">
+              <material>
+                <mattext texttype="text/plain">A or D</mattext>
+              </material>
+            </response_label>
+            <response_label ident="69454">
+              <material>
+                <mattext texttype="text/plain">B or D</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">69454</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gcfc944c43d8e97ae68087c71fa02c2cb" title="psc10s 11.3-14">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>43772,62545,86264,47289,38909</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;When overloading an operator, which of the following is TRUE?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="43772">
+              <material>
+                <mattext texttype="text/plain">The operator does not have to be a friend or a member of the class.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="62545">
+              <material>
+                <mattext texttype="text/plain">One of the arguments must be an object of the class.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="86264">
+              <material>
+                <mattext texttype="text/plain">The operator can be a friend or a member of the class.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="47289">
+              <material>
+                <mattext texttype="text/plain">All of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="38909">
+              <material>
+                <mattext texttype="text/plain">None of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">47289</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gdf126293266a254984044aaa91ccdfa8" title="psc10s 11.3-15">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>27841,81280,21091,33512</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;What is wrong with the following overloaded extraction operator declaration?&lt;br&gt;istream&amp;amp; operator &amp;gt;&amp;gt;(istream&amp;amp; in, const myClass &amp;amp;object);&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="27841">
+              <material>
+                <mattext texttype="text/plain">You cannot put the &amp; on the return type.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="81280">
+              <material>
+                <mattext texttype="text/plain">Object should not be a const parameter.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="21091">
+              <material>
+                <mattext texttype="text/plain">Object should not be a pass by reference parameter.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="33512">
+              <material>
+                <mattext texttype="text/plain">nothing</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">81280</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g683d9572d03753d3b3131e5a35c48a08" title="psc10s 11.3-16">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>58848,82049,80812,29328</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following would be an appropriate function declaration to add two rational numbers?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="58848">
+              <material>
+                <mattext texttype="text/plain">void operator+( const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="82049">
+              <material>
+                <mattext texttype="text/plain">friend Rational operator+( const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="80812">
+              <material>
+                <mattext texttype="text/plain">Rational operator+( const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="29328">
+              <material>
+                <mattext texttype="text/plain">void friend operator+( const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">80812</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g634f03b36997cbd99aac826c93eab63d" title="psc10s 11.3-17">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>74567,97653,46768,9381</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;How many parameters are there in a binary operator implemented as a friend?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="74567">
+              <material>
+                <mattext texttype="text/plain">0</mattext>
+              </material>
+            </response_label>
+            <response_label ident="97653">
+              <material>
+                <mattext texttype="text/plain">1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="46768">
+              <material>
+                <mattext texttype="text/plain">2</mattext>
+              </material>
+            </response_label>
+            <response_label ident="9381">
+              <material>
+                <mattext texttype="text/plain">as many as you need</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">46768</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g29f476ba36ad562c14582e020ea1601d" title="psc10s 11.3-18">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>68343,96470,63994,57537</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;How many parameters are there in a unary operator implemented as a friend?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="68343">
+              <material>
+                <mattext texttype="text/plain">0</mattext>
+              </material>
+            </response_label>
+            <response_label ident="96470">
+              <material>
+                <mattext texttype="text/plain">1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="63994">
+              <material>
+                <mattext texttype="text/plain">2</mattext>
+              </material>
+            </response_label>
+            <response_label ident="57537">
+              <material>
+                <mattext texttype="text/plain">as many as you need</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">96470</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gf945d1e18a62db1d63197691569bdc96" title="psc10s 11.3-19">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>26739,26077,49000,37318</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following function declaration, &lt;br&gt;friend void display(const myClass&amp;amp; object);&lt;br&gt;which is the correct header for the definition of the function?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="26739">
+              <material>
+                <mattext texttype="text/plain">void display(const myClass&amp; object)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="26077">
+              <material>
+                <mattext texttype="text/plain">void myClass::display(const myClass&amp; object)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="49000">
+              <material>
+                <mattext texttype="text/plain">friend void display(const myClass&amp; object);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="37318">
+              <material>
+                <mattext texttype="text/plain">friend void display(const myClass&amp; object)</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">26739</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gf0de67fd38d4bd89439d055a5e233b2a" title="psc10s 11.3-2">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>4293,86751,87180,2386,82348</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Who can access private data in a class?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="4293">
+              <material>
+                <mattext texttype="text/plain">members of the class</mattext>
+              </material>
+            </response_label>
+            <response_label ident="86751">
+              <material>
+                <mattext texttype="text/plain">everyone</mattext>
+              </material>
+            </response_label>
+            <response_label ident="87180">
+              <material>
+                <mattext texttype="text/plain">friends of the class</mattext>
+              </material>
+            </response_label>
+            <response_label ident="2386">
+              <material>
+                <mattext texttype="text/plain">B and C</mattext>
+              </material>
+            </response_label>
+            <response_label ident="82348">
+              <material>
+                <mattext texttype="text/plain">no one</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">2386</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6d97fe5199ed21092a724d569ed926c3" title="psc10s 11.3-20">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>67364,23310,42454,45290</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following function declarations would be correct to overload the multiply operator for the Rational numbers class?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="67364">
+              <material>
+                <mattext texttype="text/plain">friend Rational operator *(const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="23310">
+              <material>
+                <mattext texttype="text/plain">friend Rational operator times(const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="42454">
+              <material>
+                <mattext texttype="text/plain">Rational operator *(const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="45290">
+              <material>
+                <mattext texttype="text/plain">Rational operator times(const Rational &amp;left, const Rational &amp;right);</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">67364</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g9310e91db1a222e1d47267b9cedce8f0" title="psc10s 11.3-21">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>98895,74721,89314,26572</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Why are the extraction and insertion operators always implemented as friends of the class rather than as members of the class?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="98895">
+              <material>
+                <mattext texttype="text/plain">Because the stream is passed by reference</mattext>
+              </material>
+            </response_label>
+            <response_label ident="74721">
+              <material>
+                <mattext texttype="text/plain">Because they return a reference</mattext>
+              </material>
+            </response_label>
+            <response_label ident="89314">
+              <material>
+                <mattext texttype="text/plain">Because the first parameter must be the stream object</mattext>
+              </material>
+            </response_label>
+            <response_label ident="26572">
+              <material>
+                <mattext texttype="text/html">They don't, they could be members.</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">89314</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gfb886f7e48efaed582bd546b8548d68b" title="psc10s 11.3-22">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>34997,53402,75098,58872,50298,89272</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you want to be able to compile the following code,&lt;br&gt;Rational r1;&lt;br&gt;int x;&lt;br&gt;&lt;br&gt;cout &amp;lt;&amp;lt; r1 + x &amp;lt;&amp;lt; endl;&lt;br&gt;&lt;br&gt;which overloaded operator(s) do you need?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="34997">
+              <material>
+                <mattext texttype="text/html">friend ostream&amp;amp; operator &amp;lt;&amp;lt; (ostream&amp;amp; out, const Rational&amp;amp; object);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="53402">
+              <material>
+                <mattext texttype="text/plain">friend void operator+ (const Rational&amp; left, int right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="75098">
+              <material>
+                <mattext texttype="text/html">friend ostream operator &amp;lt;&amp;lt; (ostream&amp;amp; out, const Rational&amp;amp; object);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="58872">
+              <material>
+                <mattext texttype="text/plain">friend Rational operator+( const Rational&amp; left, int right);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="50298">
+              <material>
+                <mattext texttype="text/plain">A and C</mattext>
+              </material>
+            </response_label>
+            <response_label ident="89272">
+              <material>
+                <mattext texttype="text/plain">A and D</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">89272</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gf1412d4c2d11cf8a7e4f61b78d4983d6" title="psc10s 11.3-23">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>33257,33632,95227,50261</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;What member functions do you need to allow the compiler to perform automatic type conversions from a type different than the class to the class?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="33257">
+              <material>
+                <mattext texttype="text/plain">This already happens automatically.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="33632">
+              <material>
+                <mattext texttype="text/plain">This cannot be done.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="95227">
+              <material>
+                <mattext texttype="text/plain">Converters</mattext>
+              </material>
+            </response_label>
+            <response_label ident="50261">
+              <material>
+                <mattext texttype="text/plain">Overloaded constructors</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">50261</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g3ae2bcbc1f526f55fb9eff1b50b229a6" title="psc10s 11.3-24">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>84321,61449,67509,37152</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;In an overloaded insertion or extraction operator, which object should be the first parameter, the stream or the object of the class?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="84321">
+              <material>
+                <mattext texttype="text/plain">the object</mattext>
+              </material>
+            </response_label>
+            <response_label ident="61449">
+              <material>
+                <mattext texttype="text/plain">the stream</mattext>
+              </material>
+            </response_label>
+            <response_label ident="67509">
+              <material>
+                <mattext texttype="text/html">It doesn't matter.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="37152">
+              <material>
+                <mattext texttype="text/plain">none of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">61449</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g608c010b9025536adc6d783c3c4ed810" title="psc10s 11.3-25">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>48318,72011,63866,85962</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following operators cannot be overloaded?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="48318">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[10];</mattext>
+              </material>
+            </response_label>
+            <response_label ident="72011">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[9].getAge();</mattext>
+              </material>
+            </response_label>
+            <response_label ident="63866">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[9];</mattext>
+              </material>
+            </response_label>
+            <response_label ident="85962">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[9].age;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">85962</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g3d99634bab6930c908a658aef040693c" title="psc10s 11.3-26">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>38603,92637,35711,83112</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following class and array declaration, how would you print out the age of the 10th person in the array?&lt;br&gt;class personClass&lt;br&gt;{&lt;br&gt;public:&lt;br&gt; void setAge(int newAge);&lt;br&gt; void setGender( char newGender);&lt;br&gt; void setSalary(float newSalary);&lt;br&gt;&lt;br&gt; int getAge();&lt;br&gt; char getGender();&lt;br&gt; float getSalary();&lt;br&gt;private:&lt;br&gt; int age;&lt;br&gt; char gender;&lt;br&gt; float salary;&lt;br&gt;};&lt;br&gt;&lt;br&gt;personClass people[100];&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="38603">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[10];</mattext>
+              </material>
+            </response_label>
+            <response_label ident="92637">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[9].getAge();</mattext>
+              </material>
+            </response_label>
+            <response_label ident="35711">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[9];</mattext>
+              </material>
+            </response_label>
+            <response_label ident="83112">
+              <material>
+                <mattext texttype="text/html">cout &amp;lt;&amp;lt; people[9].age;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">92637</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="ga4e32a43bdc130ee29694e20ece76a2d" title="psc10s 11.3-27">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>99223,50800,78638,81273</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following statements are TRUE?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="99223">
+              <material>
+                <mattext texttype="text/plain">Array elements may be user-defined types (structs or classes).</mattext>
+              </material>
+            </response_label>
+            <response_label ident="50800">
+              <material>
+                <mattext texttype="text/plain">If a function is expecting a variable of the base type of the array, then you can pass an element of the array to the function.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="78638">
+              <material>
+                <mattext texttype="text/plain">All of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="81273">
+              <material>
+                <mattext texttype="text/plain">None of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">78638</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g0a64eea2b67e0f37ab88fdc84a86af49" title="psc10s 11.3-28">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>66965,73017,65917,32786</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following statements are TRUE?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="66965">
+              <material>
+                <mattext texttype="text/plain">A dynamic array can have a base type which is a class or a struct.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="73017">
+              <material>
+                <mattext texttype="text/plain">A class or a struct may have a member which is a dynamic array.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="65917">
+              <material>
+                <mattext texttype="text/plain">A and B</mattext>
+              </material>
+            </response_label>
+            <response_label ident="32786">
+              <material>
+                <mattext texttype="text/plain">Neither</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">65917</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g622893bb18de23e29339471013f593f7" title="psc10s 11.3-29">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>37171,7665,12676,77806</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;When a dynamic array with a class for a base type is declared, which constructor is called?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="37171">
+              <material>
+                <mattext texttype="text/plain">the copy constructor</mattext>
+              </material>
+            </response_label>
+            <response_label ident="7665">
+              <material>
+                <mattext texttype="text/plain">an explicit constructor</mattext>
+              </material>
+            </response_label>
+            <response_label ident="12676">
+              <material>
+                <mattext texttype="text/plain">the default constructor</mattext>
+              </material>
+            </response_label>
+            <response_label ident="77806">
+              <material>
+                <mattext texttype="text/plain">the destructor</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">12676</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6b3f92888bb15cbcb66036f3b50a0e09" title="psc10s 11.3-3">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>9166,53047,25152,99828</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following class, which is the correct function header for the display function?&lt;br&gt;class Rational&lt;br&gt;{&lt;br&gt;public:&lt;br&gt; Rational();&lt;br&gt; Rational(int numer, int denom);&lt;br&gt; Rational(int whole);&lt;br&gt;&lt;br&gt; int getNumerator();&lt;br&gt; int getDenominator();&lt;br&gt;&lt;br&gt; friend void display(ostream&amp;amp; out, const Rational&amp;amp; value);&lt;br&gt;private:&lt;br&gt; int numerator;&lt;br&gt; int denominator;&lt;br&gt;};&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="9166">
+              <material>
+                <mattext texttype="text/plain">friend void Rational::display(ostream&amp; out, const Rational&amp; value)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="53047">
+              <material>
+                <mattext texttype="text/plain">void display(ostream&amp; out, const Rational&amp; value)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="25152">
+              <material>
+                <mattext texttype="text/plain">friend void display(ostream&amp; out, const Rational&amp; value)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="99828">
+              <material>
+                <mattext texttype="text/plain">void Rational::display(ostream&amp; out, const Rational&amp; value)</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">53047</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g3bc04ec8d5f04faa79919c6b7b03ccac" title="psc10s 11.3-30">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>31627,28622,72170,91251,44770,26321</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;When you have a class which has a dynamic array as one of it's members, you should also include ________ in the class.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="31627">
+              <material>
+                <mattext texttype="text/plain">a destructor</mattext>
+              </material>
+            </response_label>
+            <response_label ident="28622">
+              <material>
+                <mattext texttype="text/plain">a copy constructor</mattext>
+              </material>
+            </response_label>
+            <response_label ident="72170">
+              <material>
+                <mattext texttype="text/plain">the assignment operator</mattext>
+              </material>
+            </response_label>
+            <response_label ident="91251">
+              <material>
+                <mattext texttype="text/plain">a default constructor</mattext>
+              </material>
+            </response_label>
+            <response_label ident="44770">
+              <material>
+                <mattext texttype="text/plain">all of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="26321">
+              <material>
+                <mattext texttype="text/plain">none of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">44770</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gab0c05b07831b31340d92314dc26d8d7" title="psc10s 11.3-31">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>64673,3642,32076,37511</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The destructor for a class is called&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="64673">
+              <material>
+                <mattext texttype="text/plain">explicitly from the main program</mattext>
+              </material>
+            </response_label>
+            <response_label ident="3642">
+              <material>
+                <mattext texttype="text/plain">when the object of the class goes out of scope</mattext>
+              </material>
+            </response_label>
+            <response_label ident="32076">
+              <material>
+                <mattext texttype="text/plain">when the class is instantiated</mattext>
+              </material>
+            </response_label>
+            <response_label ident="37511">
+              <material>
+                <mattext texttype="text/plain">only at the end of main</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">3642</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g418d2003d69de63d61d0d7370f6349ce" title="psc10s 11.3-32">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>98204,34162,49667,89412</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The copy constructor for a class is called&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="98204">
+              <material>
+                <mattext texttype="text/plain">when an object of the class is initialized by another object of the class</mattext>
+              </material>
+            </response_label>
+            <response_label ident="34162">
+              <material>
+                <mattext texttype="text/plain">when a function returns an object of the class</mattext>
+              </material>
+            </response_label>
+            <response_label ident="49667">
+              <material>
+                <mattext texttype="text/plain">when an object of the class is passed by value to a function</mattext>
+              </material>
+            </response_label>
+            <response_label ident="89412">
+              <material>
+                <mattext texttype="text/plain">all of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">89412</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g21874b8d60e54f1bf871331295d393ac" title="psc10s 11.3-33">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>67097,66465,74348,11343,96044</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following are NOT correct?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="67097">
+              <material>
+                <mattext texttype="text/plain">The destructor of a class is not called when an object of the class goes out of scope.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="66465">
+              <material>
+                <mattext texttype="text/plain">The destructor of a class is not named the same as the name of the class, but preceded with a tilde.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="74348">
+              <material>
+                <mattext texttype="text/plain">The destructor of a class is a void function.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="11343">
+              <material>
+                <mattext texttype="text/plain">The destructor of a class is not a member of the class.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="96044">
+              <material>
+                <mattext texttype="text/plain">all of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">74348</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g8e251bfc4eba505e253e93853b4b775b" title="psc10s 11.3-34">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>61359,33964,14872,24025,32736</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;What happens when you define a class that used dynamic memory allocation and define a destructor but no copy constructor?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="61359">
+              <material>
+                <mattext texttype="text/html">If an object of the class is plugged in for a call-by-value parameter, when the function ends, the parameter's dynamic memory is returned to the freestore at the end of the function execution.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="33964">
+              <material>
+                <mattext texttype="text/plain">It is possible to modify the values in the argument in the function.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="14872">
+              <material>
+                <mattext texttype="text/plain">When an object that was used as an argument for a call-by-value parameter goes out of scope, it will cause a run-time error.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="24025">
+              <material>
+                <mattext texttype="text/plain">All of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="32736">
+              <material>
+                <mattext texttype="text/plain">None of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">24025</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g5dae1218ad0188de2918d4ff91462d00" title="psc10s 11.3-35">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>85109,76960,6150,70970</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If obj1 and obj2 are both objects of a class that uses dynamic memory allocation, but the class does not have an assignment operator, what happens if you execute the following code? &lt;br&gt; obj1=obj2;&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="85109">
+              <material>
+                <mattext texttype="text/plain">A run-time error occurs, because the C++ system does not know how to do the assignment.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="76960">
+              <material>
+                <mattext texttype="text/plain">A syntax error occurs, you cannot assign one object to another object without the = operator.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="6150">
+              <material>
+                <mattext texttype="text/plain">There is a complete and independent copy of all the dynamic memory from obj2 to obj1.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="70970">
+              <material>
+                <mattext texttype="text/plain">The pointer(s) to the dynamically declared memory in obj2 are copied to the corresponding pointers in obj1.</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">70970</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g382469161a26f521bb2ed072b2fb48f5" title="psc10s 11.3-36">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>21290,85800,50664,23288</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following are valid declarations for an assignment operator for a class named myClass?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="21290">
+              <material>
+                <mattext texttype="text/plain">void operator = (myClass&amp; left, const myClass&amp; source);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="85800">
+              <material>
+                <mattext texttype="text/plain">void friend operator = (const myClass&amp; source);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="50664">
+              <material>
+                <mattext texttype="text/plain">void friend operator = (myClass&amp; left, const myClass&amp; source);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="23288">
+              <material>
+                <mattext texttype="text/plain">void operator = (const myClass&amp; source);</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">23288</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g775f5a3bf58fabaf495d7c65acb96537" title="psc10s 11.3-4">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>62993,50175,90995,14151</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Operators can be overloaded as&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="62993">
+              <material>
+                <mattext texttype="text/plain">friends of a class</mattext>
+              </material>
+            </response_label>
+            <response_label ident="50175">
+              <material>
+                <mattext texttype="text/plain">non-friends, non-members of a class</mattext>
+              </material>
+            </response_label>
+            <response_label ident="90995">
+              <material>
+                <mattext texttype="text/plain">members of a class</mattext>
+              </material>
+            </response_label>
+            <response_label ident="14151">
+              <material>
+                <mattext texttype="text/plain">All of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">14151</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gde14066838bdd3cc7797c0f7345625ad" title="psc10s 11.3-5">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>59107,91802,75257,1950</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If we have a full selection of accessor and mutator functions, why would we have friend functions?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="59107">
+              <material>
+                <mattext texttype="text/plain">The friend function must call the accessor or mutator functions anyway.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="91802">
+              <material>
+                <mattext texttype="text/plain">You should not have them.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="75257">
+              <material>
+                <mattext texttype="text/plain">More efficient access to the private data members</mattext>
+              </material>
+            </response_label>
+            <response_label ident="1950">
+              <material>
+                <mattext texttype="text/plain">None of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">75257</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g023356b25f8d454dd8a33d12019e8ac4" title="psc10s 11.3-6">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>31018,59305,40405,84435</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Since accessor functions in a class do not modify or mutate the data members of the object, the function should have the ________ modifier.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="31018">
+              <material>
+                <mattext texttype="text/plain">friend</mattext>
+              </material>
+            </response_label>
+            <response_label ident="59305">
+              <material>
+                <mattext texttype="text/plain">const</mattext>
+              </material>
+            </response_label>
+            <response_label ident="40405">
+              <material>
+                <mattext texttype="text/plain">private</mattext>
+              </material>
+            </response_label>
+            <response_label ident="84435">
+              <material>
+                <mattext texttype="text/plain">reference</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">59305</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gcd676ee2717fce80a8f17b044c627d31" title="psc10s 11.3-7">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>8816,90693,65851,55375,39488</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Why should you generally pass an object of the class to a friend function as a reference parameter?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="8816">
+              <material>
+                <mattext texttype="text/plain">If the friend function changes the values of the data member(s)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="90693">
+              <material>
+                <mattext texttype="text/plain">If the friend function will not change the values of the data member(s)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="65851">
+              <material>
+                <mattext texttype="text/plain">It is more efficient to pass the object by reference.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="55375">
+              <material>
+                <mattext texttype="text/plain">A and B</mattext>
+              </material>
+            </response_label>
+            <response_label ident="39488">
+              <material>
+                <mattext texttype="text/plain">A and C</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">39488</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g350db6b574c4aa9f44c87fc5b064c1d6" title="psc10s 11.3-8">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>41274,45456,65883,42845</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If c is a character variable that contains a digit, what does the following function return?&lt;br&gt;int digit_to_int(char c)&lt;br&gt;{&lt;br&gt; return ( int(c) — int('0'));&lt;br&gt;}&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="41274">
+              <material>
+                <mattext texttype="text/plain">The character value of c</mattext>
+              </material>
+            </response_label>
+            <response_label ident="45456">
+              <material>
+                <mattext texttype="text/plain">The ASCII value of c</mattext>
+              </material>
+            </response_label>
+            <response_label ident="65883">
+              <material>
+                <mattext texttype="text/plain">The integer equivalent of the digit stored in c</mattext>
+              </material>
+            </response_label>
+            <response_label ident="42845">
+              <material>
+                <mattext texttype="text/plain">none of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">65883</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g2f1ffa77545cbf01aca8f0c4debbd7b2" title="psc10s 11.3-9">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>70945,15945,41417,39537,82316,43438</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;What is wrong with the following member function definition given the class below?&lt;br&gt;class Rational&lt;br&gt;{&lt;br&gt;public:&lt;br&gt; Rational();&lt;br&gt; Rational(int numer, int denom);&lt;br&gt; Rational(int whole);&lt;br&gt;&lt;br&gt; int getNumerator() const;&lt;br&gt; int getDenominator() const;&lt;br&gt;&lt;br&gt; friend void display(ostream&amp;amp; out, const Rational&amp;amp; value);&lt;br&gt;private:&lt;br&gt; int numerator;&lt;br&gt; int denominator;&lt;br&gt;};&lt;br&gt;&lt;br&gt;int Rational::getNumerator() const&lt;br&gt;{&lt;br&gt; numerator = 0;&lt;br&gt; return numerator;&lt;br&gt;}&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="70945">
+              <material>
+                <mattext texttype="text/plain">You cannot set the numerator to zero.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="15945">
+              <material>
+                <mattext texttype="text/plain">The function may not modify numerator, but it can modify denominator.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="41417">
+              <material>
+                <mattext texttype="text/plain">The function may not modify any of the private data members.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="39537">
+              <material>
+                <mattext texttype="text/plain">nothing</mattext>
+              </material>
+            </response_label>
+            <response_label ident="82316">
+              <material>
+                <mattext texttype="text/plain">A and B</mattext>
+              </material>
+            </response_label>
+            <response_label ident="43438">
+              <material>
+                <mattext texttype="text/plain">A and C</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">43438</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+  </objectbank>
+</questestinterop>

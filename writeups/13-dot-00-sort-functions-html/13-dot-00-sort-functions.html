@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 13.00 Sort Functions</title>
+</head>
+<body>
+<h2 style="text-align: center;"><strong>Sort Functions:</strong></h2>
+<p>In this project, you will implement the following sort algorithms:</p>
+<ul>
+<li>insertion sort</li>
+<li>bubble sort</li>
+<li>quick sort</li>
+<li>merge sort</li>
+<li>heap sort</li>
+</ul>
+<p>All your sort functions will have the following signature:</p>
+<pre><span class="type">template &lt;class T&gt;<br>void</span> sort_function<span class="operator">(</span>T a<span class="operator">[],</span><span class="type"> unsigned int</span> size<span class="operator">);</span></pre>
+<p><strong>Testing:</strong></p>
+<p>You will need the following functions:</p>
+<pre><span class="comment">//shuffle elements of a[]
+</span><span class="type">void</span> shuffle<span class="operator">(</span><span class="type">int</span> a<span class="operator">[],</span><span class="type"> unsigned int</span>  size<span class="operator">);</span><span class="keyword">
+
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> copy_array<span class="operator">(</span>T dest<span class="operator">[],</span><span class="keyword"> const</span> T src<span class="operator">[],</span><span class="type"> unsigned int</span> size<span class="operator">);</span><span class="comment">
+
+//return true if a[] is in ascending order
+</span><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+bool</span> verify<span class="operator">(</span><span class="keyword">const</span> T a<span class="operator">[],</span><span class="type"> unsigned int</span>  size<span class="operator">);</span><span class="comment">
+
+//return a string "SORTED" or "NOT SORTED" depending if a[] is sorted
+</span><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span>
+string verifystr<span class="operator">(</span><span class="keyword">const</span> T a<span class="operator">[],</span><span class="type"> unsigned int</span>  size<span class="operator">);</span><span class="comment">
+
+//print the array if status_only is true along with info on sortedness of a[]
+</span><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> print_array<span class="operator">(</span><span class="keyword">const</span> T a<span class="operator">[],</span><span class="type"> int</span> size<span class="operator">,</span><span class="type"> bool</span> status_only<span class="operator"> =</span><span class="bool"> false</span><span class="operator">);</span><span class="comment">
+
+//print a[] from start to end
+</span><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> print_array_segment<span class="operator">(</span>T a<span class="operator">[],</span><span class="type"> unsigned int</span> start<span class="operator">,</span><span class="type"> unsigned int</span> end<span class="operator">);</span>
+</pre>
+<p><span style="font-size: 1rem;">you will write individual test functions for each sort method. Declare an array, shuffle it, print the shuffled array, then sort it and print the sorted array displaying the sorted status (SORTED / NOT SORTED)</span></p>
+<p>&nbsp;</p>
+</body>
+</html>

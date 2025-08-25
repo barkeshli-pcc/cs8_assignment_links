@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lti_context_controls xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <lti_context_control identifier="g8cae87735d571c0ae7e6c949b7b33328">
+    <available>true</available>
+    <deployment_url>https://zone1.verity.yuja.com/lti/1.3</deployment_url>
+    <deployment_migration_id>gf2e3bd39d7f631d950502d6a99491731</deployment_migration_id>
+  </lti_context_control>
+</lti_context_controls>

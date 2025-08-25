@@ -1,0 +1,305 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 9.05 Binary Search Tree</title>
+</head>
+<body>
+<h2><strong>Binary Search Tree (BST)</strong></h2>
+<p>implement the following tree_node structure:</p>
+<pre><span class="keyword">template &lt;class T&gt;<br>struct</span> node<span class="operator">{</span>
+    node<span class="operator">(</span><span class="type">T</span> n<span class="operator">);</span><span class="type">
+    T</span> item<span class="operator">;</span>
+    node&lt;T&gt;<span class="operator">*</span> left<span class="operator">;</span>
+    node&lt;T&gt;<span class="operator">*</span> right<span class="operator">;
+};</span>
+</pre>
+<p>this is a node that has a left and right pointers.</p>
+<p>Now, based on the rules of the binary search tree, design a print, &nbsp;an insert and a boolean search function.</p>
+<p>The print function prints the right&nbsp;&nbsp;subtree first, then the root, then the left&nbsp;subtree:</p>
+<pre><span class="operator">        [</span><span class="int">76</span><span class="operator">]
+    [</span><span class="int">71</span><span class="operator">]
+        [</span><span class="int">51</span><span class="operator">]
+[</span><span class="int">27</span><span class="operator">]
+        [</span><span class="int">19</span><span class="operator">]
+    [</span><span class="int">9</span><span class="operator">]</span></pre>
+<p>&nbsp;</p>
+<p>Write an <strong>interactive</strong> function that will allow the user to choose to insert a number, insert a random number, or search for a number to see if the tree contains that number. Print the tree after each exchange.</p>
+<p>&nbsp;</p>
+<p>Here is a sample exchange:</p>
+<p>&nbsp;</p>
+<pre><span class="operator">[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 44</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 44</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+[</span><span class="int">44</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 30</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 30</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+[</span><span class="int">44</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 35</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 35</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 97</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 97</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 33</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 33</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 92</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 92</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 73</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 73</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 32</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 32</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 77</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 77</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 71</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 71</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 11</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 11</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 93</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 93</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+            [</span><span class="int">93</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 50</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 50</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+            [</span><span class="int">93</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+                    [</span><span class="int">50</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 32</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 32</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+            [</span><span class="int">93</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+                    [</span><span class="int">50</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                    [</span><span class="int">32</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 43</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 43</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+            [</span><span class="int">93</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+                    [</span><span class="int">50</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+            [</span><span class="int">43</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                    [</span><span class="int">32</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 68</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 68</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+            [</span><span class="int">93</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+                        [</span><span class="int">68</span><span class="operator">]
+                    [</span><span class="int">50</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+            [</span><span class="int">43</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                    [</span><span class="int">32</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> r<span class="operator">
+--</span> Inserting<span class="int"> 42</span>
+tree_node CTOR<span class="operator">:</span> item<span class="operator">:</span><span class="int"> 42</span><span class="operator">:</span><span class="int">0</span><span class="operator">
+    [</span><span class="int">97</span><span class="operator">]
+            [</span><span class="int">93</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+                        [</span><span class="int">68</span><span class="operator">]
+                    [</span><span class="int">50</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+            [</span><span class="int">43</span><span class="operator">]
+                [</span><span class="int">42</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                    [</span><span class="int">32</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> s<span class="operator">
+?</span><span class="int"> 73</span>
+item is found<span class="operator">. |</span><span class="int">73</span><span class="operator">|    [</span><span class="int">97</span><span class="operator">]
+            [</span><span class="int">93</span><span class="operator">]
+        [</span><span class="int">92</span><span class="operator">]
+                [</span><span class="int">77</span><span class="operator">]
+            [</span><span class="int">73</span><span class="operator">]
+                [</span><span class="int">71</span><span class="operator">]
+                        [</span><span class="int">68</span><span class="operator">]
+                    [</span><span class="int">50</span><span class="operator">]
+[</span><span class="int">44</span><span class="operator">]
+            [</span><span class="int">43</span><span class="operator">]
+                [</span><span class="int">42</span><span class="operator">]
+        [</span><span class="int">35</span><span class="operator">]
+            [</span><span class="int">33</span><span class="operator">]
+                    [</span><span class="int">32</span><span class="operator">]
+                [</span><span class="int">32</span><span class="operator">]
+    [</span><span class="int">30</span><span class="operator">]
+        [</span><span class="int">11</span><span class="operator">]
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> c<span class="operator">
+
+=========================
+[</span>R<span class="operator">]</span>andom<span class="operator">  [</span>I<span class="operator">]</span>nsert<span class="operator">  [</span>C<span class="operator">]</span>clear<span class="operator">  [</span>S<span class="operator">]</span>earch   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">:</span> </pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<pre><br><br><br>
+</pre>
+</body>
+</html>

@@ -1,0 +1,2899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<questestinterop xmlns="http://www.imsglobal.org/xsd/ims_qtiasiv1p2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/ims_qtiasiv1p2 http://www.imsglobal.org/xsd/ims_qtiasiv1p2p1.xsd">
+  <objectbank ident="ge307b9cbac84dec4bb3c6da2bbe6c10a">
+    <qtimetadata>
+      <qtimetadatafield>
+        <fieldlabel>bank_title</fieldlabel>
+        <fieldentry>Chapter13</fieldentry>
+      </qtimetadatafield>
+      <qtimetadatafield>
+        <fieldlabel>bank_context_uuid</fieldlabel>
+        <fieldentry>j7FSN6pycKuHgMPidFPnnbKWAdRCVKnEPd7JD3Ct</fieldentry>
+      </qtimetadatafield>
+    </qtimetadata>
+    <item ident="g4a700ec988e1a212ec0c6ecfd59afb8f" title="psc10s 13.1-1">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>27328,13875</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The linked list is always the most efficient storage mechanism for storing many pieces of data.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="27328">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="13875">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">13875</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g9d954801bd7eec126e89840905b16c68" title="psc10s 13.1-10">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>86662,59147</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;A linked list is not fixed in size.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="86662">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="59147">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">86662</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6225956e379d43fcd011a4d228d1fb12" title="psc10s 13.1-11">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>22550,26924</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;A stack is a first-in-first-out data structure.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="22550">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="26924">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">26924</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g5bd86d350a0011bb7178bf9ad23ef1a9" title="psc10s 13.1-12">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>28051,53502</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;A queue is first-in-first-out data structure. &lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="28051">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="53502">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">28051</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g0753bc1ad878c58a8dbcc04c14d53e6d" title="psc10s 13.1-13">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>63159,79217</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Most applications that use a stack will store a struct or class object on the stack.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="63159">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="79217">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">63159</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gbcb3086e6993e10757266f9e8a5217cb" title="psc10s 13.1-14">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>95026,22119</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Placing data on a stack is called popping the stack.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="95026">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="22119">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">22119</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g3a18348b159b0d01069e46b42e93ad4e" title="psc10s 13.1-15">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>79649,45225</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Removing data from a stack is called popping the stack.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="79649">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="45225">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">79649</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="ge2bca7d7f1ae82316ab171f205958e4b" title="psc10s 13.1-16">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>78815,91260</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;There is no need for error checking when popping a stack.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="78815">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="91260">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">91260</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g84cf43cee70a1e02aaa1d080644932ea" title="psc10s 13.1-17">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>40769,71365</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;There is no need for error checking when pushing a stack.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="40769">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="71365">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">71365</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="ga979e03ba258216f3ec1c64cc747a964" title="psc10s 13.1-18">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>64893,93773</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Data is inserted into a queue at the back.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="64893">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="93773">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">64893</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g136ecd069c411cda160d6adda52e3076" title="psc10s 13.1-19">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>45505,45150</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Data is removed at the back of the queue.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="45505">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="45150">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">45150</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g88946c2810093d1d895c7d7ccdbbeb05" title="psc10s 13.1-2">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>18103,90580</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;A stack is a specialized type of list.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="18103">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="90580">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">18103</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g303f548854e3adad6e6f02bfed33f00b" title="psc10s 13.1-3">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>74607,86452</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The stack exhibits last-in/first-out behavior.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="74607">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="86452">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">74607</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gd3594a67c04b145718b97efff4cf5e32" title="psc10s 13.1-4">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>80206,91862</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The stack can be compared to a line of people at a bank, where the first person in line is the first person served.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="80206">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="91862">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">91862</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g27e6ab16a142232a50cc2b14440a8881" title="psc10s 13.1-5">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>10565,89045</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you write a linked list class, then you should implement the destructor, copy constructor, and the assignment operator.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="10565">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="89045">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">10565</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="geef5175f27f80cc25cc425f8203f7b1e" title="psc10s 13.1-6">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>94547,31112</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;You can directly access the nth node of a linked list.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="94547">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="31112">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">31112</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g29e6612a5b18dd0f6d6d629637b0c32b" title="psc10s 13.1-7">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>61177,38420</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The last node in a linked list as defined in the text should always point back to the head of the list.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="61177">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="38420">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">38420</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6bb568731782caf39e0e796969a0998e" title="psc10s 13.1-8">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>80164,1263</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The constant NULL can be assigned only to pointers that point to numbers.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="80164">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="1263">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">1263</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g686105222c821d6239b5ed81ac9021a5" title="psc10s 13.1-9">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>true_false_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>96774,82504</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;*head.item is the same as (*head).item.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="96774">
+              <material>
+                <mattext texttype="text/plain">True</mattext>
+              </material>
+            </response_label>
+            <response_label ident="82504">
+              <material>
+                <mattext texttype="text/plain">False</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">82504</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g500a6628ac79c41dfe1fa3dc615dbd10" title="psc10s 13.3-1">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>37592,75538,14861,24682</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The pointer in a node points to&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="37592">
+              <material>
+                <mattext texttype="text/plain">the whole node</mattext>
+              </material>
+            </response_label>
+            <response_label ident="75538">
+              <material>
+                <mattext texttype="text/plain">the count part of a node</mattext>
+              </material>
+            </response_label>
+            <response_label ident="14861">
+              <material>
+                <mattext texttype="text/plain">the data part of a node</mattext>
+              </material>
+            </response_label>
+            <response_label ident="24682">
+              <material>
+                <mattext texttype="text/plain">the pointer part of the node</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">37592</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g156018a4f29daec3356fcfb3dded7437" title="psc10s 13.3-10">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>3000,40559,97848,74617</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If NodeTypePtr is defined to be a pointer type to a node in a linked list, then the declaration &lt;br&gt;NodeTypePtr head;&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="3000">
+              <material>
+                <mattext texttype="text/plain">automatically makes head-&gt;link point to NULL</mattext>
+              </material>
+            </response_label>
+            <response_label ident="40559">
+              <material>
+                <mattext texttype="text/plain">allocates a linked list</mattext>
+              </material>
+            </response_label>
+            <response_label ident="97848">
+              <material>
+                <mattext texttype="text/plain">allocates only the memory for a pointer variable</mattext>
+              </material>
+            </response_label>
+            <response_label ident="74617">
+              <material>
+                <mattext texttype="text/plain">allocates memory for the node that head will point to</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">97848</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="ga0834710a84870bdf3267073201d1f80" title="psc10s 13.3-11">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>57488,6784,77676,84549</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following declarations, which statement would put the value of 3 in the item part of the first node in the linked list?&lt;br&gt;struct Node&lt;br&gt;{&lt;br&gt; int item;&lt;br&gt; Node* link;&lt;br&gt;};&lt;br&gt;&lt;br&gt;typedef Node* NodePtr;&lt;br&gt;NodePtr head;&lt;br&gt;head = new Node;&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="57488">
+              <material>
+                <mattext texttype="text/plain">head=3;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="6784">
+              <material>
+                <mattext texttype="text/plain">*head.item=3;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="77676">
+              <material>
+                <mattext texttype="text/plain">head.item=3;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="84549">
+              <material>
+                <mattext texttype="text/plain">head-&gt;item=3;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">84549</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g31cab0f4f8045c26576fb96e057feb0e" title="psc10s 13.3-12">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>65832,98335,97830,13669</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following declarations, which statement would allocate memory for the first item in the list?&lt;br&gt;struct Node&lt;br&gt;{&lt;br&gt; int item;&lt;br&gt; Node* link;&lt;br&gt;};&lt;br&gt;&lt;br&gt;typedef Node* NodePtr;&lt;br&gt;NodePtr head;&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="65832">
+              <material>
+                <mattext texttype="text/plain">head-&gt;link=NULL;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="98335">
+              <material>
+                <mattext texttype="text/plain">head = new int;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="97830">
+              <material>
+                <mattext texttype="text/plain">head = new NodePtr;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="13669">
+              <material>
+                <mattext texttype="text/plain">head = new Node;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">13669</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6edcc85b4f92378e6c3e59d63e006045" title="psc10s 13.3-13">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>76791,84707,32187,19581</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;What is wrong with the following definition of headInsert?&lt;br&gt;struct Node&lt;br&gt;{&lt;br&gt; int item;&lt;br&gt; Node* link;&lt;br&gt;};&lt;br&gt;&lt;br&gt;typedef Node* NodePtr;&lt;br&gt;&lt;br&gt;void headInsert(NodePtr&amp;amp; head, int data)&lt;br&gt;{&lt;br&gt; NodePtr tmp = new Node;&lt;br&gt; tmp-&amp;gt;item = data;&lt;br&gt; head-&amp;gt;next = tmp;&lt;br&gt; tmp-&amp;gt;next = head-&amp;gt;next;&lt;br&gt;}&lt;br&gt;NodePtr head;&lt;br&gt;headInsert(head, 4);&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="76791">
+              <material>
+                <mattext texttype="text/plain">head-&gt;next is pointing to NULL.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="84707">
+              <material>
+                <mattext texttype="text/plain">tmp should be declared to be a Node not a NodePtr.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="32187">
+              <material>
+                <mattext texttype="text/plain">If there were any nodes following head they are now lost.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="19581">
+              <material>
+                <mattext texttype="text/plain">Nothing is wrong.</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">32187</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g63b054bd0faf29fa4dd9a62fb3cdb92d" title="psc10s 13.3-14">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>55140,27054,1066,39614</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;In the following search function for a linked list (using the Node and NodePtr as defined in the text), why is there code to check if here is NULL?&lt;br&gt;NodePtr search(NodePtr head, int target)&lt;br&gt;{&lt;br&gt; nodePtr here = head;&lt;br&gt; if(here == NULL)&lt;br&gt; {&lt;br&gt; return NULL;&lt;br&gt; }&lt;br&gt; else&lt;br&gt; {&lt;br&gt; while( here-&amp;gt;data != target &amp;amp;&amp;amp; here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here = here-&amp;gt;link;&lt;br&gt; }&lt;br&gt; if(here-&amp;gt;data == target)&lt;br&gt; {&lt;br&gt; return here;&lt;br&gt; }&lt;br&gt; else&lt;br&gt; {&lt;br&gt; return NULL;&lt;br&gt; }&lt;br&gt; }&lt;br&gt;}&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="55140">
+              <material>
+                <mattext texttype="text/plain">The list may be empty.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="27054">
+              <material>
+                <mattext texttype="text/plain">The list may be full.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="1066">
+              <material>
+                <mattext texttype="text/plain">There is no reason for that code to be there.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="39614">
+              <material>
+                <mattext texttype="text/plain">A and B</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">55140</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g98d24167008ccf0e54acd84bfe5d4335" title="psc10s 13.3-15">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>32069,96498,11702,29961</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following loops correctly uses iter as an iterator to move through the nodes of the linked list?&lt;br&gt; NodePtr iter; //a pointer to a node&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="32069">
+              <material>
+                <mattext texttype="text/plain">for(iter=NULL; iter != NULL; iter=iter-&gt;link)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="96498">
+              <material>
+                <mattext texttype="text/html">while(iter != NULL)&lt;br&gt; iter=iter-&amp;gt;link;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="11702">
+              <material>
+                <mattext texttype="text/plain">for( iter=head; iter != NULL; iter=iter-&gt;link)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="29961">
+              <material>
+                <mattext texttype="text/html">while(iter != NULL)&lt;br&gt; iter++;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">11702</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="ga72d489a095fec832b9973c8d6685d44" title="psc10s 13.3-16">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>73272,26889,40582,16937</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following function declaration&lt;br&gt;&lt;br&gt; void insert( NodePtr afterMe, int num);&lt;br&gt; //PRE: afterMe points to some node in the non-empty list&lt;br&gt; //POST: A new node containing num is inserted after afterMe.&lt;br&gt;&lt;br&gt; void insert(NodePtr afterMe, int num)&lt;br&gt; {&lt;br&gt; // which of the following function definitions correctly implement this &lt;br&gt; //function? &lt;br&gt; }&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="73272">
+              <material>
+                <mattext texttype="text/html">NodePtr tmp=new Node;&lt;br&gt; tmp-&amp;gt; data = num;&lt;br&gt; tmp-&amp;gt;link = afterMe -&amp;gt; link;&lt;br&gt; afterMe -&amp;gt; link = tmp;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="26889">
+              <material>
+                <mattext texttype="text/html">NodePtr tmp=new Node;&lt;br&gt; tmp-&amp;gt; data = num;&lt;br&gt; afterMe -&amp;gt; link = tmp;&lt;br&gt; tmp-&amp;gt;link = NULL;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="40582">
+              <material>
+                <mattext texttype="text/html">NodePtr tmp=new Node;&lt;br&gt; tmp-&amp;gt; data = num;&lt;br&gt; afterMe -&amp;gt; link = tmp;&lt;br&gt; tmp-&amp;gt;link = afterMe -&amp;gt; link;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="16937">
+              <material>
+                <mattext texttype="text/html">afterMe-&amp;gt;link = new Node;&lt;br&gt; afterMe-&amp;gt;link-&amp;gt;data = num;&lt;br&gt; afterMe -&amp;gt; link -&amp;gt;link=afterMe-&amp;gt;link;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">73272</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g2544e9e791311e8800a40cecda047774" title="psc10s 13.3-17">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>84004,81779,61936,54363,65175,46490,35800</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If there is a NodePtr named toDelete whose value points to a valid node in the list, which of the following statements would remove the node that follows toDelete from the list and return that memory to the freestore?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="84004">
+              <material>
+                <mattext texttype="text/html">toDelete -&amp;gt; link = toDelete -&amp;gt; link -&amp;gt;link;&lt;br&gt; delete toDelete-&amp;gt; link;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="81779">
+              <material>
+                <mattext texttype="text/html">tmp = toDelete -&amp;gt; link;&lt;br&gt; toDelete -&amp;gt; link = toDelete-&amp;gt;link-&amp;gt;link;&lt;br&gt; delete tmp;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="61936">
+              <material>
+                <mattext texttype="text/html">tmp = toDelete -&amp;gt; link;&lt;br&gt; toDelete -&amp;gt; link = tmp -&amp;gt; link;&lt;br&gt; delete tmp;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="54363">
+              <material>
+                <mattext texttype="text/plain">All of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="65175">
+              <material>
+                <mattext texttype="text/plain">none of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="46490">
+              <material>
+                <mattext texttype="text/plain">A and B</mattext>
+              </material>
+            </response_label>
+            <response_label ident="35800">
+              <material>
+                <mattext texttype="text/plain">B and C</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">35800</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="ga067c29b2b3816ab95e959fa09bf60cd" title="psc10s 13.3-18">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>31882,4034,3744,84206</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;What happens if you have two lists (list1, list2), no assignment operator in your class, and attempt to execute the following statement?&lt;br&gt; list1 = list2;&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="31882">
+              <material>
+                <mattext texttype="text/plain">You get a complete and identical copy of list2 into list1.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="4034">
+              <material>
+                <mattext texttype="text/plain">list1 and list2 now name the same list.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="3744">
+              <material>
+                <mattext texttype="text/plain">You have a syntax error.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="84206">
+              <material>
+                <mattext texttype="text/plain">no problem</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">4034</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gedc3044a3b8264933cf98eae4223926e" title="psc10s 13.3-19">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>4403,39234,27771,27064,55175,99415,59961</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Which of the following would completely remove all the nodes in a linked list and return them to the freestore?&lt;br&gt;&lt;br&gt;void free(NodePtr head)&lt;br&gt;{&lt;br&gt; //what goes here?&lt;br&gt;}&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="4403">
+              <material>
+                <mattext texttype="text/html">NodePtr here, prev;&lt;br&gt; while(head-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here=head;&lt;br&gt; prev= head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; prev=here;&lt;br&gt; here=here-&amp;gt;link;&lt;br&gt; }&lt;br&gt; delete here;&lt;br&gt; prev-&amp;gt;link=NULL;&lt;br&gt; }&lt;br&gt; delete head;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="39234">
+              <material>
+                <mattext texttype="text/html">if(head == NULL)&lt;br&gt; return;&lt;br&gt; else&lt;br&gt; {&lt;br&gt; free(head-&amp;gt;link);&lt;br&gt; delete head;&lt;br&gt; }</mattext>
+              </material>
+            </response_label>
+            <response_label ident="27771">
+              <material>
+                <mattext texttype="text/html">NodePtr here, prev;&lt;br&gt; while(head != NULL)&lt;br&gt; {&lt;br&gt; here=head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; prev=here;&lt;br&gt; here=here-&amp;gt;link;&lt;br&gt; }&lt;br&gt; delete here;&lt;br&gt; prev-&amp;gt;link=NULL;&lt;br&gt; }&lt;br&gt; delete head;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="27064">
+              <material>
+                <mattext texttype="text/html">NodePtr here, prev;&lt;br&gt; while(head-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here=head;&lt;br&gt; prev= head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; prev=here;&lt;br&gt; here=here-&amp;gt;link;&lt;br&gt; }&lt;br&gt; delete here;&lt;br&gt; prev-&amp;gt;link=NULL;&lt;br&gt; }&lt;br&gt; delete head;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="55175">
+              <material>
+                <mattext texttype="text/plain">all of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="99415">
+              <material>
+                <mattext texttype="text/plain">A and B</mattext>
+              </material>
+            </response_label>
+            <response_label ident="59961">
+              <material>
+                <mattext texttype="text/plain">B and C</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">99415</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gdf5b1397f7d70a135661c1ed64d775c7" title="psc10s 13.3-2">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>10670,7585,35096,73114</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;In a node type named MyNode, which of the following correctly declares a pointer to a node of that type?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="10670">
+              <material>
+                <mattext texttype="text/plain">MyNode ptr;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="7585">
+              <material>
+                <mattext texttype="text/plain">MyNode* ptr;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="35096">
+              <material>
+                <mattext texttype="text/plain">MyNode.data* ptr;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="73114">
+              <material>
+                <mattext texttype="text/plain">ptr myNode*;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">7585</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g8e77be1b276816aa01225245bcb0b9ed" title="psc10s 13.3-20">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>33934,29249,97719,8346</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;A stack exhibits ________ behavior.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="33934">
+              <material>
+                <mattext texttype="text/plain">last-in/last-out</mattext>
+              </material>
+            </response_label>
+            <response_label ident="29249">
+              <material>
+                <mattext texttype="text/plain">last-in/ first-out</mattext>
+              </material>
+            </response_label>
+            <response_label ident="97719">
+              <material>
+                <mattext texttype="text/plain">first-in/first-out</mattext>
+              </material>
+            </response_label>
+            <response_label ident="8346">
+              <material>
+                <mattext texttype="text/plain">none of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">29249</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g25cba77a2d3cd26ac8c3309334d868ef" title="psc10s 13.3-21">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>90775,84903,31079,16005</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;To add an item to a stack, we call the ________ function.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="90775">
+              <material>
+                <mattext texttype="text/plain">push</mattext>
+              </material>
+            </response_label>
+            <response_label ident="84903">
+              <material>
+                <mattext texttype="text/plain">pop</mattext>
+              </material>
+            </response_label>
+            <response_label ident="31079">
+              <material>
+                <mattext texttype="text/plain">top</mattext>
+              </material>
+            </response_label>
+            <response_label ident="16005">
+              <material>
+                <mattext texttype="text/plain">empty</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">90775</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g310e25e755027580959fc0472c850aa9" title="psc10s 13.3-22">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>28320,83945,47509,8644</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;To remove an item from the stack, we call the ________ function.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="28320">
+              <material>
+                <mattext texttype="text/plain">pop</mattext>
+              </material>
+            </response_label>
+            <response_label ident="83945">
+              <material>
+                <mattext texttype="text/plain">push</mattext>
+              </material>
+            </response_label>
+            <response_label ident="47509">
+              <material>
+                <mattext texttype="text/plain">top</mattext>
+              </material>
+            </response_label>
+            <response_label ident="8644">
+              <material>
+                <mattext texttype="text/plain">empty</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">28320</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g4d9586c629ba1ad077dab21a14776267" title="psc10s 13.3-23">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>94955,67142,43515,12137</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you push the following numbers onto an integer stack, what item is on the top of the stack? (1,4,8,16)&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="94955">
+              <material>
+                <mattext texttype="text/plain">8</mattext>
+              </material>
+            </response_label>
+            <response_label ident="67142">
+              <material>
+                <mattext texttype="text/plain">4</mattext>
+              </material>
+            </response_label>
+            <response_label ident="43515">
+              <material>
+                <mattext texttype="text/plain">1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="12137">
+              <material>
+                <mattext texttype="text/plain">16</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">12137</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gfde48ca7eba41332c8964c88223fb5b2" title="psc10s 13.3-24">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>48320,2487,49932,7190</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following stack declaration, which of the following function definitions would correctly push an item onto the stack?&lt;br&gt; struct StackFrame&lt;br&gt; {&lt;br&gt; char data;&lt;br&gt; StackFrame *link;&lt;br&gt; };&lt;br&gt; typedef StackFrame* StackFramePtr;&lt;br&gt;&lt;br&gt; class Stack&lt;br&gt; {&lt;br&gt; public:&lt;br&gt; Stack( );&lt;br&gt; Stack(const Stack&amp;amp; a_stack);&lt;br&gt; ~Stack( );&lt;br&gt; void push(char the_symbol);&lt;br&gt; char pop( );&lt;br&gt; bool empty( ) const;&lt;br&gt; private:&lt;br&gt; StackFramePtr top;&lt;br&gt; };&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="48320">
+              <material>
+                <mattext texttype="text/html">void Stack::push(char the_symbol)&lt;br&gt;{&lt;br&gt; StackFramePtr temp_ptr;&lt;br&gt; temp_ptr-&amp;gt;data = the_symbol;&lt;br&gt; temp_ptr-&amp;gt;link = top;&lt;br&gt; top = temp_ptr;&lt;br&gt;}</mattext>
+              </material>
+            </response_label>
+            <response_label ident="2487">
+              <material>
+                <mattext texttype="text/html">void Stack::push(char the_symbol)&lt;br&gt;{&lt;br&gt; StackFramePtr temp_ptr;&lt;br&gt; temp_ptr = new StackFrame;&lt;br&gt; temp_ptr-&amp;gt;data = the_symbol;&lt;br&gt; temp_ptr-&amp;gt;link = top;&lt;br&gt; }</mattext>
+              </material>
+            </response_label>
+            <response_label ident="49932">
+              <material>
+                <mattext texttype="text/html">void Stack::push(char the_symbol)&lt;br&gt;{&lt;br&gt; StackFramePtr temp_ptr;&lt;br&gt; temp_ptr = new StackFrame;&lt;br&gt; temp_ptr-&amp;gt;data = the_symbol;&lt;br&gt; temp_ptr-&amp;gt;link = top;&lt;br&gt; top = temp_ptr;&lt;br&gt;}</mattext>
+              </material>
+            </response_label>
+            <response_label ident="7190">
+              <material>
+                <mattext texttype="text/html">void Stack::push(char the_symbol)&lt;br&gt;{&lt;br&gt; StackFrame temp_ptr;&lt;br&gt; temp_ptr = new StackFrame;&lt;br&gt; temp_ptr-&amp;gt;data = the_symbol;&lt;br&gt; temp_ptr-&amp;gt;link = top;&lt;br&gt; top = temp_ptr;&lt;br&gt;}</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">49932</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gc87d6c4bfbcfdef7e89f13de730639e4" title="psc10s 13.3-25">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>93952,92741,8080,75308</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following stack declaration, which of the following function definitions would correctly implement the destructor?&lt;br&gt; struct StackFrame&lt;br&gt; {&lt;br&gt; char data;&lt;br&gt; StackFrame *link;&lt;br&gt; };&lt;br&gt; typedef StackFrame* StackFramePtr;&lt;br&gt;&lt;br&gt; class Stack&lt;br&gt; {&lt;br&gt; public:&lt;br&gt; Stack( );&lt;br&gt; Stack(const Stack&amp;amp; a_stack);&lt;br&gt; ~Stack( );&lt;br&gt; void push(char the_symbol);&lt;br&gt; char pop( );&lt;br&gt; bool empty( ) const;&lt;br&gt; private:&lt;br&gt; StackFramePtr top;&lt;br&gt; };&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="93952">
+              <material>
+                <mattext texttype="text/html">char next;&lt;br&gt; while(!empty( ))&lt;br&gt; next = push();</mattext>
+              </material>
+            </response_label>
+            <response_label ident="92741">
+              <material>
+                <mattext texttype="text/html">char next;&lt;br&gt; while (! empty( ))&lt;br&gt; next = pop( );//pop calls delete.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="8080">
+              <material>
+                <mattext texttype="text/plain">top=NULL;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="75308">
+              <material>
+                <mattext texttype="text/plain">none of the above</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">92741</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g8d275fa355b955c0205127f515cba1fe" title="psc10s 13.3-26">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>445,30390,38020,20415</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given a linked list (using the code from the book), which of the following sets of statements would implement a function to return the last item in the list?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="445">
+              <material>
+                <mattext texttype="text/html">NodePtr here;&lt;br&gt; here=head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }&lt;br&gt; return here-&amp;gt;data;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="30390">
+              <material>
+                <mattext texttype="text/html">NodePtr here;&lt;br&gt; here=head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }</mattext>
+              </material>
+            </response_label>
+            <response_label ident="38020">
+              <material>
+                <mattext texttype="text/html">NodePtr here;&lt;br&gt; here=head-&amp;gt;link;&lt;br&gt; while(here != NULL)&lt;br&gt; {&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }&lt;br&gt; return here-&amp;gt;data;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="20415">
+              <material>
+                <mattext texttype="text/html">NodePtr here;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }&lt;br&gt; return here-&amp;gt;data;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">445</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gfdf9265885afe0f3aa49e9c0490071fd" title="psc10s 13.3-27">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>20241,10174,8639,36353</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given a linked list (using the code from the book) and assuming there are at least two nodes in the list, which of the following sets of statements would implement a function to return and remove the last item in the list?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="20241">
+              <material>
+                <mattext texttype="text/html">int tmp;&lt;br&gt; NodePtr here, there;&lt;br&gt; here=head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; there = here;&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }&lt;br&gt; there-&amp;gt;link = NULL;&lt;br&gt; tmp=here-&amp;gt;data;&lt;br&gt; delete here;&lt;br&gt; return tmp;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="10174">
+              <material>
+                <mattext texttype="text/html">NodePtr here;&lt;br&gt; here=head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }&lt;br&gt; return here-&amp;gt;data;&lt;br&gt; delete here;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="8639">
+              <material>
+                <mattext texttype="text/html">int tmp;&lt;br&gt; NodePtr here, there;&lt;br&gt; here=head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; there = here;&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }&lt;br&gt; there-&amp;gt;link = NULL;&lt;br&gt; tmp=here-&amp;gt;data;&lt;br&gt; return tmp;&lt;br&gt; delete here;</mattext>
+              </material>
+            </response_label>
+            <response_label ident="36353">
+              <material>
+                <mattext texttype="text/html">NodePtr here;&lt;br&gt; here=head;&lt;br&gt; while(here-&amp;gt;link != NULL)&lt;br&gt; {&lt;br&gt; here = here -&amp;gt;link;&lt;br&gt; }&lt;br&gt; delete here;&lt;br&gt; return here-&amp;gt;data;</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">20241</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gc821f62e74e76873351159eb20b9e2ab" title="psc10s 13.3-28">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>81640,61424,84934,59686</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you need to access the last element of a linked list with N nodes in it, how many comparisons do you need to make to find the last element?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="81640">
+              <material>
+                <mattext texttype="text/plain">1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="61424">
+              <material>
+                <mattext texttype="text/plain">N</mattext>
+              </material>
+            </response_label>
+            <response_label ident="84934">
+              <material>
+                <mattext texttype="text/plain">N-1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="59686">
+              <material>
+                <mattext texttype="text/plain">0</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">61424</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6aee931124cfee476ad1a1da1b7d4435" title="psc10s 13.3-29">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>71112,57794,46275,10808</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you need to insert an element in the front of a list with N nodes (and move the other elements back one place), how many nodes do you have to move?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="71112">
+              <material>
+                <mattext texttype="text/plain">0</mattext>
+              </material>
+            </response_label>
+            <response_label ident="57794">
+              <material>
+                <mattext texttype="text/plain">N</mattext>
+              </material>
+            </response_label>
+            <response_label ident="46275">
+              <material>
+                <mattext texttype="text/plain">1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="10808">
+              <material>
+                <mattext texttype="text/plain">N-1</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">71112</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g7ff45b17d8f8067752c0f3b7e097bf4b" title="psc10s 13.3-3">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>24534,43964,20570,14953</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you want to declare a node type struct and typedef a pointer type for that node, in which order must you make these declarations?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="24534">
+              <material>
+                <mattext texttype="text/plain">first the node, then the typedef</mattext>
+              </material>
+            </response_label>
+            <response_label ident="43964">
+              <material>
+                <mattext texttype="text/html">It doesn't matter which order you do them in.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="20570">
+              <material>
+                <mattext texttype="text/plain">You cannot do both of them in the same program.</mattext>
+              </material>
+            </response_label>
+            <response_label ident="14953">
+              <material>
+                <mattext texttype="text/plain">first the node pointer, then the node, since the node has a pointer in it</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">24534</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g7fcee9869311c821a26229328475f104" title="psc10s 13.3-30">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>71822,22249,43860,55468</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;When would you use a linked list over an array or a dynamic array?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="71822">
+              <material>
+                <mattext texttype="text/plain">when you know the maximum size at compile time</mattext>
+              </material>
+            </response_label>
+            <response_label ident="22249">
+              <material>
+                <mattext texttype="text/plain">when you need to access any item quickly</mattext>
+              </material>
+            </response_label>
+            <response_label ident="43860">
+              <material>
+                <mattext texttype="text/plain">when you do not know the maximum size</mattext>
+              </material>
+            </response_label>
+            <response_label ident="55468">
+              <material>
+                <mattext texttype="text/plain">when you know the maximum size at run-time</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">43860</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g1f652cff46748a8f3fb510312a8e3879" title="psc10s 13.3-31">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>84394,12137,20237,71152</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The discipline for a stack is&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="84394">
+              <material>
+                <mattext texttype="text/plain">depends on the application of the stack</mattext>
+              </material>
+            </response_label>
+            <response_label ident="12137">
+              <material>
+                <mattext texttype="text/plain">for a misbehaving stack, 30 lashes</mattext>
+              </material>
+            </response_label>
+            <response_label ident="20237">
+              <material>
+                <mattext texttype="text/plain">data last inserted is the data first out</mattext>
+              </material>
+            </response_label>
+            <response_label ident="71152">
+              <material>
+                <mattext texttype="text/plain">data first inserted is the data first out</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">20237</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gbac457d0e457f76d2242d571401f467f" title="psc10s 13.3-32">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>25790,92253,76734,2754</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Data is removed from a stack in the ________ it was entered.&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="25790">
+              <material>
+                <mattext texttype="text/plain">same order</mattext>
+              </material>
+            </response_label>
+            <response_label ident="92253">
+              <material>
+                <mattext texttype="text/plain">sorted order</mattext>
+              </material>
+            </response_label>
+            <response_label ident="76734">
+              <material>
+                <mattext texttype="text/plain">alternating order</mattext>
+              </material>
+            </response_label>
+            <response_label ident="2754">
+              <material>
+                <mattext texttype="text/plain">reverse order</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">2754</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g45ba00be8ee67f117f6836a418b6a8b6" title="psc10s 13.3-4">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>91593,30922,9803,46772,33115,55859,37655</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;If you have a node pointer named head, which is pointing to a valid node, how do you access the member variable in the node named item?&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="91593">
+              <material>
+                <mattext texttype="text/plain">head.item</mattext>
+              </material>
+            </response_label>
+            <response_label ident="30922">
+              <material>
+                <mattext texttype="text/plain">*head.item</mattext>
+              </material>
+            </response_label>
+            <response_label ident="9803">
+              <material>
+                <mattext texttype="text/plain">(*head).item</mattext>
+              </material>
+            </response_label>
+            <response_label ident="46772">
+              <material>
+                <mattext texttype="text/plain">head-&gt;item</mattext>
+              </material>
+            </response_label>
+            <response_label ident="33115">
+              <material>
+                <mattext texttype="text/plain">all of the above</mattext>
+              </material>
+            </response_label>
+            <response_label ident="55859">
+              <material>
+                <mattext texttype="text/plain">A or B</mattext>
+              </material>
+            </response_label>
+            <response_label ident="37655">
+              <material>
+                <mattext texttype="text/plain">C or D</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">37655</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g23731f861bf2fd4d1261b128f07cce14" title="psc10s 13.3-5">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>66744,66719,78018,24476</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The arrow operator (-&amp;gt;) specifies&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="66744">
+              <material>
+                <mattext texttype="text/plain">a member of a struct or class that is pointed to by a pointer variable</mattext>
+              </material>
+            </response_label>
+            <response_label ident="66719">
+              <material>
+                <mattext texttype="text/plain">less than or equal</mattext>
+              </material>
+            </response_label>
+            <response_label ident="78018">
+              <material>
+                <mattext texttype="text/plain">the pointer member only of a struct or a class that is pointed to by a pointer variable</mattext>
+              </material>
+            </response_label>
+            <response_label ident="24476">
+              <material>
+                <mattext texttype="text/plain">is known as NULL</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">66744</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g6e94503670963a8e9163ee83a3701211" title="psc10s 13.3-6">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>13061,38266,87611,49776,51102,59089</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;Given the following declarations, how would you know if head is pointing to an empty list?&lt;br&gt;struct NodeType&lt;br&gt;{&lt;br&gt; int number;&lt;br&gt; NodeType* next;&lt;br&gt;};&lt;br&gt;&lt;br&gt;NodeType* head;&lt;br&gt;//some other code here&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="13061">
+              <material>
+                <mattext texttype="text/plain">if( head-&gt;next==null);</mattext>
+              </material>
+            </response_label>
+            <response_label ident="38266">
+              <material>
+                <mattext texttype="text/plain">if(head == null)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="87611">
+              <material>
+                <mattext texttype="text/plain">if( head == NULL)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="49776">
+              <material>
+                <mattext texttype="text/plain">if(head-&gt;next == NULL)</mattext>
+              </material>
+            </response_label>
+            <response_label ident="51102">
+              <material>
+                <mattext texttype="text/plain">A and D</mattext>
+              </material>
+            </response_label>
+            <response_label ident="59089">
+              <material>
+                <mattext texttype="text/plain">B and C</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">87611</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="gddcf4a70e053d9aca7bb53b0e0c000e4" title="psc10s 13.3-7">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>55829,63039,24303,27549,67681,94584</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;We generally set a pointer variable to NULL &lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="55829">
+              <material>
+                <mattext texttype="text/plain">to signify that the pointer does not point to any memory</mattext>
+              </material>
+            </response_label>
+            <response_label ident="63039">
+              <material>
+                <mattext texttype="text/plain">to signify the end of a list</mattext>
+              </material>
+            </response_label>
+            <response_label ident="24303">
+              <material>
+                <mattext texttype="text/plain">because we want all our pointers to always point to NULL</mattext>
+              </material>
+            </response_label>
+            <response_label ident="27549">
+              <material>
+                <mattext texttype="text/plain">never</mattext>
+              </material>
+            </response_label>
+            <response_label ident="67681">
+              <material>
+                <mattext texttype="text/plain">A and B</mattext>
+              </material>
+            </response_label>
+            <response_label ident="94584">
+              <material>
+                <mattext texttype="text/plain">A and C</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">67681</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g30f549245143df0492b6e29b8f0d6a80" title="psc10s 13.3-8">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>42501,89712,93730,22972</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;The actual value of NULL is&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="42501">
+              <material>
+                <mattext texttype="text/plain">0</mattext>
+              </material>
+            </response_label>
+            <response_label ident="89712">
+              <material>
+                <mattext texttype="text/plain">-1</mattext>
+              </material>
+            </response_label>
+            <response_label ident="93730">
+              <material>
+                <mattext texttype="text/plain">-99</mattext>
+              </material>
+            </response_label>
+            <response_label ident="22972">
+              <material>
+                <mattext texttype="text/plain">99999</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">42501</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+    <item ident="g973961cabcdf45a19782f774e2ee69a9" title="psc10s 13.3-9">
+      <itemmetadata>
+        <qtimetadata>
+          <qtimetadatafield>
+            <fieldlabel>question_type</fieldlabel>
+            <fieldentry>multiple_choice_question</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>points_possible</fieldlabel>
+            <fieldentry>1.0</fieldentry>
+          </qtimetadatafield>
+          <qtimetadatafield>
+            <fieldlabel>original_answer_ids</fieldlabel>
+            <fieldentry>17221,51770,91026,2365</fieldentry>
+          </qtimetadatafield>
+        </qtimetadata>
+      </itemmetadata>
+      <presentation>
+        <material>
+          <mattext texttype="text/html">&lt;div&gt;As defined in the text, the pointer variable head&lt;br&gt;
+&lt;/div&gt;</mattext>
+        </material>
+        <response_lid ident="response1" rcardinality="Single">
+          <render_choice>
+            <response_label ident="17221">
+              <material>
+                <mattext texttype="text/plain">points to the first node in the list</mattext>
+              </material>
+            </response_label>
+            <response_label ident="51770">
+              <material>
+                <mattext texttype="text/plain">is undefined</mattext>
+              </material>
+            </response_label>
+            <response_label ident="91026">
+              <material>
+                <mattext texttype="text/plain">is always NULL</mattext>
+              </material>
+            </response_label>
+            <response_label ident="2365">
+              <material>
+                <mattext texttype="text/plain">is the first node in the list</mattext>
+              </material>
+            </response_label>
+          </render_choice>
+        </response_lid>
+      </presentation>
+      <resprocessing>
+        <outcomes>
+          <decvar maxvalue="100" minvalue="0" varname="SCORE" vartype="Decimal"/>
+        </outcomes>
+        <respcondition continue="No">
+          <conditionvar>
+            <varequal respident="response1">17221</varequal>
+          </conditionvar>
+          <setvar action="Set" varname="SCORE">100</setvar>
+        </respcondition>
+      </resprocessing>
+    </item>
+  </objectbank>
+</questestinterop>

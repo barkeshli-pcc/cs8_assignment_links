@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1  http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imsdt_v1p1.xsd">
+  <title>String tokenizer test function bug</title>
+  <text texttype="text/html">&lt;p&gt;Here's the code in the assignment description:&lt;/p&gt;
+&lt;pre&gt;&lt;span class="type"&gt;&lt;span style="color: #339966;"&gt;01&lt;/span&gt;    char&lt;/span&gt; s&lt;span class="operator"&gt;[] =&lt;/span&gt;&lt;span class="string"&gt; "it was the night of october 17th. pi was still 3.14."&lt;/span&gt;&lt;span class="operator"&gt;;&lt;/span&gt;
+&lt;span style="color: #339966;"&gt;02&lt;/span&gt;    STokenizer stk&lt;span class="operator"&gt;(&lt;/span&gt;s&lt;span class="operator"&gt;);&lt;/span&gt;
+&lt;span style="color: #339966;"&gt;03&lt;/span&gt;    Token t&lt;span class="operator"&gt;;&lt;/span&gt;&lt;span class="comment"&gt;&lt;span style="color: #339966;"&gt;
+04&lt;/span&gt;    //The all too familiar golden while loop:
+&lt;/span&gt;&lt;span style="color: #339966;"&gt;05&lt;/span&gt;    stk&lt;span class="operator"&gt;&amp;gt;&amp;gt;&lt;/span&gt;t&lt;span class="operator"&gt;;&lt;/span&gt;&lt;span class="flow"&gt;&lt;span style="color: #339966;"&gt;
+06&lt;/span&gt;    while&lt;/span&gt;&lt;span class="operator"&gt;(&lt;/span&gt;stk&lt;span class="operator"&gt;.&lt;/span&gt;more&lt;span class="operator"&gt;()){&lt;/span&gt;&lt;span class="comment"&gt;&lt;span style="color: #339966;"&gt;
+07&lt;/span&gt;        //process token here...
+&lt;/span&gt;&lt;span style="color: #339966;"&gt;08&lt;/span&gt;        cout&lt;span class="operator"&gt;&amp;lt;&amp;lt;&lt;/span&gt;setw&lt;span class="operator"&gt;(&lt;/span&gt;&lt;span class="int"&gt;10&lt;/span&gt;&lt;span class="operator"&gt;)&amp;lt;&amp;lt;&lt;/span&gt;t&lt;span class="operator"&gt;.&lt;/span&gt;type_string&lt;span class="operator"&gt;()&amp;lt;&amp;lt;&lt;/span&gt;setw&lt;span class="operator"&gt;(&lt;/span&gt;&lt;span class="int"&gt;10&lt;/span&gt;&lt;span class="operator"&gt;)&amp;lt;&amp;lt;&lt;/span&gt;t&lt;span class="operator"&gt;&amp;lt;&amp;lt;&lt;/span&gt;endl&lt;span class="operator"&gt;;&lt;/span&gt;
+&lt;span style="color: #339966;"&gt;09&lt;/span&gt;
+&lt;span style="color: #339966;"&gt;10&lt;/span&gt;
+&lt;span style="color: #339966;"&gt;11&lt;/span&gt;        t&lt;span class="operator"&gt; =&lt;/span&gt; Token&lt;span class="operator"&gt;();&lt;/span&gt;
+&lt;span style="color: #339966;"&gt;12&lt;/span&gt;        stk&lt;span class="operator"&gt;&amp;gt;&amp;gt;&lt;/span&gt;t&lt;span class="operator"&gt;;
+&lt;span style="color: #339966;"&gt;13&lt;/span&gt;    }&lt;/span&gt;&lt;/pre&gt;
+&lt;p&gt;This code as-is appears to guarantee that the `cout` line will be run one&amp;nbsp;fewer times than tokens are read using `stk&amp;gt;&amp;gt;t`.&lt;/p&gt;</text>
+</topic>

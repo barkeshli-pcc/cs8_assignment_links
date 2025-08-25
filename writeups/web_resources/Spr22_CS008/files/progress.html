@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.hide {
+  display:none;
+}
+label { 
+  -webkit-appearance: push-button;
+  -moz-appearance: button; 
+  display: inline-block;
+  margin: 60px 0 10px 0;
+  cursor: pointer;
+}
+
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+table {
+   empty-cells: hide;
+}
+img {
+  margin:1px;
+}
+ .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+  .tooltip .tooltiptext {
+  visibility: hidden;
+  width: 320px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  border-radius: 6px;
+  padding: 5px 0;
+  font-family: monospace;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+  .tooltip .tooltiptext.tooltip_2_the_left {
+  top: -5px;
+  right: 105%;
+}
+  .tooltip .tooltiptext.tooltip_2_the_right {
+  top: -5px;
+  left: 105%;
+}
+  .tooltip .tooltiptext.tooltip_2_the_center{
+  top: 100%;
+  left: 50%;
+  margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip*/ }
+ .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+
+
+#customers, #title_bar {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers th a, {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+}
+
+#customers th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+#customers th a{
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+}
+#customers td:hover {background-color: #ddd;}
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers .course_row {
+  background-color: #aa0404;
+}
+#customers .project_row {
+  background-color: #044eaa ;
+}
+#title_bar {
+  padding-top: 19px;
+  padding-bottom: 9px;
+  padding-left:20px;
+  background-color:#04AA6D;
+  text-align: left;
+  position: relative;
+  color: yellow;
+}
+#title_bar button  {
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 10px;
+  background-color: #04AA6D;
+  text-align: center;
+  color: yellow;
+
+}
+
+
+#customer #nav {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+}
+
+
+</style>
+
+<script>
+function toggle(cls) {
+    //https://stackoverflow.com/a/17518065
+    var lst = document.getElementsByClassName(cls);
+    for(var i = 0; i < lst.length; ++i) {
+        //lst[i].style.display = on ? '' : 'none';
+        lst[i].classList.toggle("hide");
+    }
+}
+function toggle_visibility(){
+  toggle("not_current");
+  toggle("label_show");
+  toggle("label_hide");
+}
+</script>
+</head>
+<body>
+<div id="title_bar">
+  <button class="visibility label_hide hide" onClick="toggle_visibility();">HIDE</button>
+  <button class="visibility label_show" onClick="toggle_visibility();">SHOW</button>
+</div>
+ <div style="width: 100%; overflow: hidden;">
+     <div style="width:60%;height:600px;overflow-x:hidden;overflow-y:scroll;float:left;">
+
+          <table id="customers">
+        %table_row%
+        

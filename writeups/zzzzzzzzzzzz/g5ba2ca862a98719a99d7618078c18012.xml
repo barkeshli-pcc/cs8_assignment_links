@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topic xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1  http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imsdt_v1p1.xsd">
+  <title>Deliverables, specifications, testing, style</title>
+  <text texttype="text/html">&lt;p class="p1"&gt;&lt;strong&gt;A Friendly Reminder:&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="p1"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;strong&gt;Deliverables:&lt;/strong&gt;&amp;nbsp; Please see &lt;a title="00.1 Deliverables" href="$WIKI_REFERENCE$/pages/gbb1f4ec2fcdbc2adbe090c70af0fa3e1"&gt;here&lt;/a&gt; for the list of deliverables for this class.&lt;/p&gt;
+&lt;p class="p1"&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;strong&gt;Testing:&lt;/strong&gt;&amp;nbsp;Test your project fully. All aspects and functionality of the project must be tested. A single run of the function with one input set is not acceptable. Test all edge cases.&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;strong&gt;comments:&lt;/strong&gt;&amp;nbsp;projects must be fully commented including the comment block at the top of the main.cpp. All functions must include Pre and Post conditions. The code body should be commented. use meaningful variable names.&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;strong&gt;NOTE:&lt;/strong&gt;&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;span style="background-color: #ffff99;"&gt;Inadequate, or missing test or documentation will result in deduction of anywhere between 10% to 100% of the grade. Watch your indentation. A poorly indented project could be impossible to read. Poor indentation may result in loss of precious points. Make sure you are submitting the right files. "sorry I forgot my header files == sorry you get a zero for the assignment.&amp;nbsp;&lt;/span&gt;&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;strong&gt;Prototypes:&lt;/strong&gt;&amp;nbsp;All functions not in a class must have a prototype with a short comment describing their purpose.&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;strong&gt;Project Specifications:&lt;/strong&gt;&amp;nbsp;Read the description of the projects on Canvas assignments page as well as the textbook's for additional, and crucial information.&lt;/p&gt;
+&lt;p class="p1"&gt;&lt;strong&gt;Late assignments&lt;/strong&gt;&amp;nbsp;:&amp;nbsp;Late assignments will NOT be accepted.&lt;/p&gt;</text>
+</topic>

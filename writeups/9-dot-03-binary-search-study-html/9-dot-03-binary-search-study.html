@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 9.03 Binary Search Study</title>
+</head>
+<body>
+<h2><strong>Binary Search Study</strong></h2>
+<p>Implement the binary search where you take an array of 50 even sorted integers and search for a key (such as 2, 98, 56 to test a successful search ad 1, 100, 51 for a failed search)</p>
+<p>declare a debug boolean const and set it to true.</p>
+<p>when debug is true, print what the function is doing at every recursive level.&nbsp;</p>
+<p>I am hoping that we gain some understanding of the recursive process by doing this.</p>
+<p>Write your understanding in the "Work Report" comments.</p>
+<p>Sample output:</p>
+<pre>a<span class="operator">[ ]:</span><span class="float"> 0..98</span>
+searching<span class="flow"> for</span><span class="operator">:</span><span class="int"> 98</span>
+
+
+P O S I T I O N S<span class="operator">:</span><span class="int"> 
+0         1         2         3         4         5</span>
+012345678901234567890123456789012345678901234567890123456789<span class="operator">
+------------------------</span>M<span class="operator">------------------------- {</span><span class="float">0..24</span><span class="operator">[</span><span class="int">48</span><span class="operator">]..</span><span class="int">49</span><span class="operator">}
+
+                         ------------</span>M<span class="operator">------------ {</span><span class="float">25..37</span><span class="operator">[</span><span class="int">74</span><span class="operator">]..</span><span class="int">49</span><span class="operator">}
+
+                                      -----</span>M<span class="operator">------ {</span><span class="float">38..43</span><span class="operator">[</span><span class="int">86</span><span class="operator">]..</span><span class="int">49</span><span class="operator">}
+
+                                            --</span>M<span class="operator">--- {</span><span class="float">44..46</span><span class="operator">[</span><span class="int">92</span><span class="operator">]..</span><span class="int">49</span><span class="operator">}
+
+                                               -</span>M<span class="operator">- {</span><span class="float">47..48</span><span class="operator">[</span><span class="int">96</span><span class="operator">]..</span><span class="int">49</span><span class="operator">}</span>
+
+                                                 M<span class="operator"> {</span><span class="float">49..49</span><span class="operator">[</span><span class="int">98</span><span class="operator">]..</span><span class="int">49</span><span class="operator">}</span><span class="int">
+
+98</span> was found at location<span class="int"> 49</span></pre>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<topicMeta identifier="g9cb002a1aed52d5fbe4a797ae8a04ee1" xmlns="http://canvas.instructure.com/xsd/cccv1p0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://canvas.instructure.com/xsd/cccv1p0 https://canvas.instructure.com/xsd/cccv1p0.xsd">
+  <topic_id>g952750d6ca1f45396a0171a61dd24dd8</topic_id>
+  <title>The correct way to initialize const member variable </title>
+  <position/>
+  <type>topic</type>
+  <discussion_type>side_comment</discussion_type>
+  <has_group_category>false</has_group_category>
+  <workflow_state>active</workflow_state>
+  <module_locked>false</module_locked>
+  <allow_rating>true</allow_rating>
+  <only_graders_can_rate>false</only_graders_can_rate>
+  <sort_by_rating>false</sort_by_rating>
+  <sort_order>desc</sort_order>
+  <sort_order_locked>false</sort_order_locked>
+  <expanded>false</expanded>
+  <expanded_locked>false</expanded_locked>
+  <todo_date/>
+</topicMeta>

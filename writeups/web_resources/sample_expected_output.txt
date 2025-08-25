@@ -1,0 +1,154 @@
+
+
+------ SQL Tables I Manage: --------
+employee
+student
+---------------------------
+
+
+> batch2
+[0] select * from student
+
+Table name: _select_table_9, records: 4
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1            Flo        Jackson           Math             21
+      2         Calvin            Woo        Physics             22
+      3     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE.
+
+//------- simple strings -------------------
+[1] select * from student where lname = Jackson
+
+Table name: _select_table_13, records: 1
+ record          fname          lname          major            age
+
+      0            Flo        Jackson           Math             21
+
+
+
+
+SQL: DONE.
+[2] select * from student where major = CS
+
+Table name: _select_table_17, records: 2
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+      1     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE.
+[3] select * from student where company = Uber
+
+Table name: _select_table_21, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE.
+
+//----- quoted strings ---------------------
+[4] select * from student where lname = "Del Rio"
+
+Table name: _select_table_25, records: 1
+ record          fname          lname          major            age
+
+      0     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE.
+[5] select * from student where fname = "Jim Bob"
+
+Table name: _select_table_29, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE.
+[6] select * from student where fname = "Anna Grace"
+
+Table name: _select_table_33, records: 1
+ record          fname          lname          major            age
+
+      0     Anna Grace        Del Rio             CS             22
+
+
+
+
+SQL: DONE.
+[7] select * from student where fname = "Teresa Mae"
+
+Table name: _select_table_37, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE.
+
+//-------- non-existing string ------------------
+[8] select * from student where lname = "Does Not Exist"
+
+Table name: _select_table_41, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE.
+
+//****************************************************************************
+//		RELATIONAL OPERATORS:
+//****************************************************************************
+
+//.................
+//:Greater Than   :
+//.................
+[9] select * from student where lname > Yang
+
+Table name: _select_table_45, records: 1
+ record          fname          lname          major            age
+
+      0            Flo            Yao             CS             20
+
+
+
+
+SQL: DONE.
+[10] select * from student where major > Math
+
+Table name: _select_table_49, records: 1
+ record          fname          lname          major            age
+
+      0         Calvin            Woo        Physics             22
+
+
+
+
+SQL: DONE.
+[11] select * from student where fname > "Sammuel L."
+
+Table name: _select_table_53, records: 0
+ record          fname          lname          major            age
+
+
+
+
+
+SQL: DONE.
