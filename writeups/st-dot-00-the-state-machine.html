@@ -1,0 +1,100 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: ST.00 The State Machine</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2 style="text-align: center;"><strong>State Machines</strong></h2>
+<p>&nbsp;</p>
+<h3><strong>Introduction:</strong></h3>
+<p>consider a system that accepts or rejects strings of input. Assume the system has the following rules:</p>
+<p>Acceptable "sentences" consist of one or more A elements, Or, they can consist of one or more A elements, followed by a B element, followed by one or more A elements again. Here are examples of valid sentences:</p>
+<pre>A
+AAAA
+AAA<span class="operator">..</span>AAAA
+AAABAA
+ABAAA
+</pre>
+<p>The following are examples of invalid (rejected) sentences:</p>
+<pre><span class="operator">[</span>EMPTY INPUT<span class="operator">]</span>
+BAAAA
+AAB (AA can be considered a valid sentence, but not AAB)</pre>
+<p>One can express these rules using a GRAPH (also called a <strong>state machine</strong>):</p>
+<p><img src="https://www.dropbox.com/s/2rqfnoxexni80kz/Screenshot%202017-09-11%2021.01.41.png?dl=1" width="371" height="337" loading="lazy"></p>
+<p>&nbsp;</p>
+<p>In this graph, the arcs represent the input (see arc labels) and the circles represent "states." Circles with double line are called "success states."</p>
+<p>As we process input one item at a time and follow the arcs from one state to the next, at some point (may be at the end of the input,) we arrive at a state for whom there is no arc to the next state. At this point, the input we received (and the data we assembled using that input) at the last success state is a valid input.</p>
+<p>consider the following input:</p>
+<pre>AABA<span class="operator">.<br><br></span></pre>
+<p>We begin at state 1, we take input A, we follow the arc to state 2 [a success state]. we take another input A (the second A in the input) and we follow the loop arc back to state 2 [a success state] we take the B as input, we follow the arc from state 2 to state 3 &nbsp;and the third A will take us to state 4 [success state]. But the period is not in this grammar and that causes us to "fail" But all the input we gathered at the last success state (state 4: AABA) is acceptable input. All the input up to the period is considered processed.</p>
+<p>&nbsp;</p>
+<h3><strong>A state machine for a valid double number:</strong></h3>
+<p>&nbsp;</p>
+<p><img src="https://www.dropbox.com/s/3rnyl0fp35vv1dx/Screenshot%202017-09-12%2009.19.46.png?dl=1" loading="lazy"></p>
+<p>&nbsp;</p>
+<p>Bases on this state machine, [3.14], [23], [42.0], [.5] are all valid sentences. but [54.] is not</p>
+<h3><strong>Using an "Adjacency Matrix" to represent a graph:</strong></h3>
+<p>We will create a table (a two dimensional array) where the rows represent the states (0, 1, 2...) and the columns represent the possible inputs. The cells of the table where row R and column C intersect indicate the state to which R is connected to via input C.&nbsp;For example, if you are in state 1&nbsp;and you see a decimal point, you will end up in state 2. If you are in state 2&nbsp;and you see a decimal point, you will go to state -1 which does not exist, so your process will stop.</p>
+<p>We will use column zero to store 1 to mark success states and fail&nbsp;states will be marked with zero.</p>
+<p><img src="https://www.dropbox.com/s/3km7en3mewvpd16/Screenshot%202017-09-27%2019.43.50.png?dl=1" loading="lazy"></p>
+<p>&nbsp;</p>
+<h3><strong>Formalizing the adjacency matrix:</strong></h3>
+<p>Declare a two dimensional int array with 30 rows and 256 columns. Each column of the array represents the ASCII value of all possible input characters. So, for input character '0', we will look at column 48 (ASCII value for '0')</p>
+<p>Obviously, it will not be easy to mannually fill and maintain this array accurately. So, we need some functions to do that for us:</p>
+<pre><span class="comment">//Fill all cells of the array with -1
+</span><span class="type">void</span> init_table<span class="operator">(</span><span class="type">int</span> _table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">]);</span><span class="comment">
+
+//Mark this state (row) with a 1 (success)
+</span><span class="type">void</span> mark_success<span class="operator">(</span><span class="type">int</span> _table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">],</span><span class="type"> int</span> state<span class="operator">);</span><span class="comment">
+
+//Mark this state (row) with a 0 (fail)
+</span><span class="type">void</span> mark_fail<span class="operator">(</span><span class="type">int</span> _table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">],</span><span class="type"> int</span> state<span class="operator">);</span><span class="comment">
+
+//true if state is a success state
+</span><span class="type">bool</span> is_success<span class="operator">(</span><span class="type">int</span> _table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">],</span><span class="type"> int</span> state<span class="operator">);</span><span class="comment">
+
+//Mark a range of cells in the array. 
+</span><span class="type">void</span> mark_cells<span class="operator">(</span><span class="type">int</span> row<span class="operator">,</span><span class="type"> int</span> _table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">],</span><span class="type"> int</span> from<span class="operator">,</span><span class="type"> int</span> to<span class="operator">,</span><span class="type"> int</span> state<span class="operator">);</span><span class="comment">
+
+//Mark columns represented by the string columns[] for this row
+</span><span class="type">void</span> mark_cells<span class="operator">(</span><span class="type">int</span> row<span class="operator">,</span><span class="type"> int</span> _table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">],</span><span class="keyword"> const</span><span class="type"> char</span> columns<span class="operator">[],</span><span class="type"> int</span> state<span class="operator">);</span><span class="comment">
+
+//Mark this row and column
+</span><span class="type">void</span> mark_cell<span class="operator">(</span><span class="type">int</span> row<span class="operator">,</span><span class="type"> int</span> table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">],</span><span class="type"> int</span> column<span class="operator">,</span><span class="type"> int</span> state<span class="operator">);</span><span class="comment">
+
+//This can realistically be used on a small table
+</span><span class="type">void</span> print_table<span class="operator">(</span><span class="type">int</span> _table<span class="operator">[][</span>MAX_COLUMNS<span class="operator">]);</span><span class="comment">
+
+//show string s and mark this position on the string:
+//hello world   pos: 7
+//       ^
+</span><span class="type">void</span> show_string<span class="operator">(</span><span class="type">char</span> s<span class="operator">[],</span><span class="type"> int</span> _pos<span class="operator">);</span>
+</pre>
+<h3><strong>Preparing&nbsp;the table for the token DOUBLE:</strong></h3>
+<p>&nbsp;</p>
+<pre><span class="comment">    //doubles:
+</span>    mark_fail<span class="operator">(</span>table<span class="operator">,</span><span class="int"> 0</span><span class="operator">);</span><span class="comment">            //Mark states 0 and 2 as fail states
+</span>    mark_success<span class="operator">(</span>table<span class="operator">,</span><span class="int"> 1</span><span class="operator">);</span><span class="comment">         //Mark states 1 and 3 as success states
+</span>    mark_fail<span class="operator">(</span>table<span class="operator">,</span><span class="int"> 2</span><span class="operator">);</span>
+    mark_success<span class="operator">(</span>table<span class="operator">,</span><span class="int"> 3</span><span class="operator">);</span>
+
+    mark_cells<span class="operator">(</span><span class="int">0</span><span class="operator">,</span> table<span class="operator">,</span> DIGITS<span class="operator">,</span><span class="int"> 1</span><span class="operator">);</span><span class="comment">    //state [0] --- DIGITS ---&gt; [1]
+</span>    mark_cells<span class="operator">(</span><span class="int">0</span><span class="operator">,</span> table<span class="operator">,</span><span class="char"> '.'</span><span class="operator">,</span><span class="char"> '.'</span><span class="operator">,</span><span class="int"> 2</span><span class="operator">);</span><span class="comment">  //state [0] --- '.' ------&gt; [2] 
+</span>    mark_cells<span class="operator">(</span><span class="int">1</span><span class="operator">,</span> table<span class="operator">,</span> DIGITS<span class="operator">,</span><span class="int"> 1</span><span class="operator">);</span><span class="comment">    //state [1] --- DIGITS ---&gt; [1]
+</span>    mark_cells<span class="operator">(</span><span class="int">1</span><span class="operator">,</span> table<span class="operator">,</span><span class="char"> '.'</span><span class="operator">,</span><span class="char"> '.'</span><span class="operator">,</span><span class="int"> 2</span><span class="operator">);</span><span class="comment">  //state [1] --- '.' ------&gt; [2] 
+</span>    mark_cells<span class="operator">(</span><span class="int">2</span><span class="operator">,</span> table<span class="operator">,</span> DIGITS<span class="operator">,</span><span class="int"> 3</span><span class="operator">);</span><span class="comment">    //state [2] --- DIGITS ---&gt; [3]
+</span>    mark_cells<span class="operator">(</span><span class="int">3</span><span class="operator">,</span> table<span class="operator">,</span> DIGITS<span class="operator">,</span><span class="int"> 3</span><span class="operator">);</span><span class="comment">    //state [3] --- DIGITS ---&gt; [3]</span></pre>
+<p>&nbsp;</p>
+<h3></h3>
+<h3><strong>A Function To Extract A Valid "Token" From A String Input:</strong></h3>
+<p>The function will take as input the table, the input string, the current position in the string, and the start state. It tries to find the longest possible string that will end in a success state. If the function is successful, it will return true after resetting the position to the character following the last acceptable character in the string and storing the extracted string in object token.&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="https://www.dropbox.com/s/eza7j7keim3efkh/Screenshot%202017-09-11%2022.24.11.png?dl=1" loading="lazy"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

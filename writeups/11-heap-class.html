@@ -1,0 +1,56 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 11_heap_class: </title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2><strong>Heap class</strong></h2>
+<p>Heap is a complete binary tree where the root of every subtree is larger than its two children. It is convenient to store a complete binary tree in an array.</p>
+<p>Write a templated Heap class that (optionally,) uses a dynamic array to store the elements. This class will also have a member variable called how_many of type int.&nbsp;</p>
+<p>If you decide to use a dynamic array, make sure you have the big three functions.</p>
+<p>&nbsp;</p>
+
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800; ">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800; ">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #008800; ">class</span> <span style="color: #bb0066; ">Heap</span>
+{
+<span style="color: #997700; ">public:</span>
+    Heap()<span style="color: #333333;">:</span>_how_many(<span style="color: #0000dd; ">0</span>){}
+    <span style="color: #333399; ">void</span> insert(<span style="color: #008800; ">const</span> T<span style="color: #333333;">&amp;</span> insert_me);    <span style="color: #888888;">//insert into the heap</span>
+    T <span style="color: #0066bb; ">remove</span>();                         <span style="color: #888888;">//remove and return top value </span>
+    T <span style="color: #0066bb; ">top</span>();                            <span style="color: #888888;">//return the value at the top of heap</span>
+    <span style="color: #333399; ">bool</span> is_empty() <span style="color: #008800; ">const;</span>
+    <span style="color: #333399; ">int</span> size() <span style="color: #008800; ">const;</span>
+    <span style="color: #333399; ">int</span> capacity() <span style="color: #008800; ">const;</span>
+    <span style="color: #008800; ">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800; ">operator</span> <span style="color: #333333;">&lt;&lt;</span> (ostream<span style="color: #333333;">&amp;</span> outs, <span style="color: #008800; ">const</span> Heap<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> print_me){
+        print_me.print_tree(outs);
+        <span style="color: #008800; ">return</span> outs;
+    }
+    <span style="color: #333399; ">bool</span> verify() <span style="color: #008800; ">const</span>;                <span style="color: #888888;">//true if tree is verified to be a heap</span>
+    T <span style="color: #333333;">*</span><span style="color: #0066bb; ">heap_array</span>();                    <span style="color: #888888;">//returns a copy of underlying array: </span>
+                                        <span style="color: #888888;">//  don't forget to delete when done</span>
+
+<span style="color: #997700; ">private:</span>
+    <span style="color: #008800; ">static</span> <span style="color: #008800; ">const</span> <span style="color: #333399; ">int</span> CAPACITY <span style="color: #333333;">=</span> <span style="color: #0000dd; ">1000</span>;
+    T _heap[CAPACITY]; <span style="color: #888888;">//static array</span>
+    <span style="color: #333399; ">int</span> _how_many; <span style="color: #888888;">//num used</span>
+
+    <span style="color: #333399; ">void</span> print_tree(ostream<span style="color: #333333;">&amp;</span> outs <span style="color: #333333;">=</span> cout) <span style="color: #008800; ">const</span>;
+    <span style="color: #333399; ">void</span> print_tree(<span style="color: #333399; ">int</span> root, <span style="color: #333399; ">int</span> level <span style="color: #333333;">=</span> <span style="color: #0000dd; ">0</span>, ostream<span style="color: #333333;">&amp;</span> outs <span style="color: #333333;">=</span> cout) <span style="color: #008800; ">const</span>;
+
+    <span style="color: #333399; ">bool</span> verify(<span style="color: #333399; ">int</span> root) <span style="color: #008800; ">const</span>;
+
+    <span style="color: #333399; ">bool</span> is_root(<span style="color: #333399; ">int</span> i) <span style="color: #008800; ">const</span> {<span style="color: #008800; ">return</span> i<span style="color: #333333;">==</span><span style="color: #0000dd; ">0</span>;}
+    <span style="color: #333399; ">bool</span> is_leaf(<span style="color: #333399; ">int</span> i) <span style="color: #008800; ">const</span>;
+    <span style="color: #333399; ">int</span> parent_index(<span style="color: #333399; ">int</span> i) <span style="color: #008800; ">const</span>;
+    <span style="color: #333399; ">int</span> left_child_index(<span style="color: #333399; ">int</span> i)<span style="color: #008800; ">const</span> {<span style="color: #008800; ">return</span> <span style="color: #0000dd; ">2</span><span style="color: #333333;">*</span>i <span style="color: #333333;">+</span> <span style="color: #0000dd; ">1</span>;}
+    <span style="color: #333399; ">int</span> right_child_index(<span style="color: #333399; ">int</span> i) <span style="color: #008800; ">const</span> {<span style="color: #008800; ">return</span> <span style="color: #0000dd; ">2</span><span style="color: #333333;">*</span>i <span style="color: #333333;">+</span> <span style="color: #0000dd; ">2</span>;}
+    <span style="color: #333399; ">int</span> big_child_index(<span style="color: #333399; ">int</span> i) <span style="color: #008800; ">const</span>;
+    <span style="color: #333399; ">void</span> <span style="color: #0066bb; ">swap_with_parent</span>(<span style="color: #333399; ">int</span> i);
+};
+</pre>
+</div>
+</body>
+</html>

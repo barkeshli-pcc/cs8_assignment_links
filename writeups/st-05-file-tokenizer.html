@@ -1,0 +1,69 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: st_05_file_tokenizer</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2 style="text-align: center;"><strong>FTokenizer Class</strong></h2>
+<p><strong><img src="https://www.dropbox.com/s/dtg45khnc7ku7go/Screenshot%202017-09-29%2022.46.45.png?dl=1" loading="lazy"></strong></p>
+<h3><strong>Purpose:</strong></h3>
+<p>The&nbsp;File Tokenizer (FTokenizer) returns a single token (via the extraction operator) from a&nbsp;file.</p>
+<p>The extraction operator of the FTokenizer object is repeatedly called to grab the &nbsp;next token in the file.</p>
+<p>When no more token can be found in the string, more() and done() will return false and true respectively.&nbsp;</p>
+<p>&nbsp;</p>
+<h3><strong>FTokenizer Class:</strong></h3>
+<ul>
+<li>Receives a file name via its constructor</li>
+<li>Opens the file and reads a block of characters (ifstream::read) and sets up the STokenizer member object.</li>
+<li>As the extraction operator is called repeatedly, it receives a token from STokenizer and returns it.</li>
+<li>When _stk runs out of characters to process, it will refill _stk via its set_string function.</li>
+<li>If there are no more characters in the file to process, more() will return false.</li>
+</ul>
+<h3><strong>File Tokenizer Design:</strong></h3>
+<p>&nbsp;</p>
+<pre><span class="keyword">class</span> FTokenizer<span class="operator">
+{</span><span class="keyword">
+public</span><span class="operator">:</span><span class="keyword">
+    const</span><span class="type"> int</span> MAX_BLOCK<span class="operator"> =</span> MAX_BUFFER<span class="operator">;</span>
+    FTokenizer<span class="operator">(</span><span class="type">char</span><span class="operator">*</span> fname<span class="operator">);</span>
+    Token next_token<span class="operator">();</span><span class="type">
+    bool</span> more<span class="operator">();</span><span class="comment">        //returns the current value of _more
+</span><span class="type">    int</span> pos<span class="operator">();</span><span class="comment">          //returns the value of _pos
+</span><span class="type">    int</span> block_pos<span class="operator">();</span><span class="comment">     //returns the value of _blockPos
+</span><span class="keyword">    friend</span> FTokenizer<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator"> &gt;&gt; (</span>FTokenizer<span class="operator">&amp;</span> f<span class="operator">,</span> Token<span class="operator">&amp;</span> t<span class="operator">);</span><span class="keyword">
+private</span><span class="operator">:</span><span class="type">
+    bool</span> get_new_block<span class="operator">();</span><span class="comment"> //gets the new block from the file
+</span>    std<span class="operator">::</span>ifstream _f<span class="operator">;</span><span class="comment">   //file being tokenized
+</span>    STokenizer _stk<span class="operator">;</span><span class="comment">     //The STokenizer object to tokenize current block
+</span><span class="type">    int</span> _pos<span class="operator">;</span><span class="comment">           //Current position in the file
+</span><span class="type">    int</span> _blockPos<span class="operator">;</span><span class="comment">      //Current position in the current block
+</span><span class="type">    bool</span> _more<span class="operator">;</span><span class="comment">         //false if last token of the last block
+                        //  has been processed and now we are at
+                        //  the end of the last block.
+</span><span class="operator">};</span></pre>
+<p>&nbsp;</p>
+<h3><strong>The Calling Function:</strong></h3>
+<pre><span class="type">void</span> test_f_tokenize_simple<span class="operator">(){</span>
+    Token t<span class="operator">;</span>
+    FTokenizer ftk<span class="operator">(</span><span class="string">"solitude.txt"</span><span class="operator">);</span>
+    ftk<span class="operator">&gt;&gt;</span>t<span class="operator">;</span><span class="type">
+    int</span> token_count<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span><span class="flow">
+    while</span><span class="operator"> (</span>ftk<span class="operator">.</span>more<span class="operator">()){</span><span class="flow">
+        if</span><span class="operator"> (</span>t<span class="operator">.</span>type_string<span class="operator">()==</span><span class="string">"ALPHA"</span><span class="operator"> ){</span>
+            token_count<span class="operator">++;</span>
+            cout<span class="operator">&lt;&lt;</span>setw<span class="operator">(</span><span class="int">10</span><span class="operator">)&lt;&lt;</span>token_count<br><span class="operator">                &lt;&lt;</span>setw<span class="operator">(</span><span class="int">3</span><span class="operator">)&lt;&lt;</span>left<span class="operator">&lt;&lt;</span><span class="string">":"</span><span class="operator">&lt;&lt;</span>setw<span class="operator">(</span><span class="int">25</span><span class="operator">)&lt;&lt;</span>left<span class="operator">&lt;&lt;</span>t<span class="operator">.</span>token_str<span class="operator">()<br>                &lt;&lt;</span>t<span class="operator">.</span>type_string<span class="operator">()&lt;&lt;</span>endl<span class="operator">;
+        }</span>
+        ftk<span class="operator">&gt;&gt;</span>t<span class="operator">;
+    }</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"Tokens Found: "</span><span class="operator">&lt;&lt;</span>token_count<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"=========="</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;
+
+}</span></pre>
+<p>&nbsp;</p>
+<h3><strong>Test File:</strong></h3>
+<p><span style="color: #0000ff;"><a class="instructure_file_link instructure_scribd_file" style="color: #0000ff;" title="solitude.txt" href="$IMS-CC-FILEBASE$/solitude.txt?canvas_download=1&amp;canvas_qs_wrap=1" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1115180/files/69043166" data-api-returntype="File">solitude.txt</a></span></p>
+<p>&nbsp;</p>
+</body>
+</html>

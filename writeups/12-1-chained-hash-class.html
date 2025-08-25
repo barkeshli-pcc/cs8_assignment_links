@@ -1,0 +1,92 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 12.01 Chained Hash Class</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2 style="text-align: center;"><strong>CHAINED HASH</strong></h2>
+<h3><strong>OVERVIEW:</strong></h3>
+<p>Open address hashing has a few issues that the chained hash tables attempt to resolve.</p>
+<p>For one, to prevent clustering, we will store all the keys with the same hash value at the same index of the table in a linked list, or better yet, in an AVL tree - this is known as the Ryan solution. But you will need to implement the generic linked list version before&nbsp; you try the AVL version.&nbsp;</p>
+<p>We will build a chained_hash class whose private member variables are iterated lists (lists with a built-in iterators)</p>
+<p>I have a detailed discussion of the&nbsp;list_iterated&nbsp;class <a title="Iterated List" href="$CANVAS_OBJECT_REFERENCE$/assignments/gb7237241a4177aec144d405fb21da802" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1115180/assignments/8760979" data-api-returntype="Assignment">here</a> and a sample "nested class" <a title="A Simple Iterator (Nested Classes)" href="$CANVAS_OBJECT_REFERENCE$/assignments/g91d20e8006260ab2f030b21c95a11f93" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1115180/assignments/8760978" data-api-returntype="Assignment">here</a>.</p>
+<h3><strong>The chained_hash class:</strong></h3>
+<p>Here is the declaration of the chained_hash class:</p>
+<p><br><br></p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">class</span> <span style="color: #bb0066;">ChainedHash</span>
+{
+<span style="color: #997700;">public:</span>
+
+
+    ChainedHash( );                              <span style="color: #888888;">//CTOR</span>
+
+    <span style="color: #333399;">bool</span> <span style="color: #0066bb;">insert</span>(<span style="color: #008800;">const</span> T<span style="color: #333333;">&amp;</span> entry);            <span style="color: #888888;">//insert entry; false if overwriting.</span>
+    <span style="color: #333399;">bool</span> <span style="color: #0066bb;">remove</span>(<span style="color: #333399;">int</span> key);                   <span style="color: #888888;">//remove this key</span>
+
+    <span style="color: #333399;">bool</span> find(<span style="color: #333399;">int</span> key, T<span style="color: #333333;">&amp;</span> result) <span style="color: #008800;">const</span>;    <span style="color: #888888;">//result &lt;- record with key</span>
+    <span style="color: #333399;">bool</span> is_present(<span style="color: #333399;">int</span> key) <span style="color: #008800;">const</span>;         <span style="color: #888888;">//is this key present in table?</span>
+    <span style="color: #333399;">int</span> size( ) <span style="color: #008800;">const</span> { <span style="color: #008800;">return</span> total_records; }  <span style="color: #888888;">//number of keys in the table</span>
+    <span style="color: #333399;">long</span> capacity(){<span style="color: #008800;">return</span> TABLE_SIZE;}
+
+
+    <span style="color: #888888;">//print entire table with keys, etc.</span>
+    <span style="color: #008800;">template</span><span style="color: #333333;">&lt;</span><span style="color: #008800;">class</span> <span style="color: #bb0066;">TT</span><span style="color: #333333;">&gt;</span>
+    <span style="color: #008800;">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;&lt;</span> (ostream<span style="color: #333333;">&amp;</span> outs,
+                                 <span style="color: #008800;">const</span> ChainedHash<span style="color: #333333;">&lt;</span>TT<span style="color: #333333;">&gt;&amp;</span> h);
+
+<span style="color: #997700;">private:</span>
+    AVL<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> _data[TABLE_SIZE];               <span style="color: #888888;">//table chains</span>
+    <span style="color: #333399;">int</span> total_records;                      <span style="color: #888888;">//number of keys in the table</span>
+
+    <span style="color: #333399;">int</span> hash(<span style="color: #333399;">int</span> key) <span style="color: #008800;">const</span>;                <span style="color: #888888;">//hash function</span>
+};
+</pre>
+</div>
+<p><br>Please note: The ChainedHash object will never make reference to the _item field of the struct. You may only assume the structure used will have a _key field</p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">struct</span> HashRecord{
+    <span style="color: #333399;">int</span> _key;
+    string _item;
+    HashRecord(<span style="color: #333399;">int</span> key<span style="color: #333333;">=-</span><span style="color: #0000dd;">1</span>, string item<span style="color: #333333;">=</span><span style="background-color: #fff0f0;">""</span>)<span style="color: #333333;">:</span>_key(key), _item(item){}
+    <span style="color: #008800;">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;&lt;</span>(ostream<span style="color: #333333;">&amp;</span> outs, <span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> h){
+        cout <span style="color: #333333;">&lt;&lt;</span> <span style="background-color: #fff0f0;">"["</span> <span style="color: #333333;">&lt;&lt;</span> h._key <span style="color: #333333;">&lt;&lt;</span> <span style="background-color: #fff0f0;">":"</span> <span style="color: #333333;">&lt;&lt;</span> h._item <span style="color: #333333;">&lt;&lt;</span> <span style="background-color: #fff0f0;">"]"</span>;
+        <span style="color: #008800;">return</span> outs;
+    }
+    <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;</span> (<span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> left, <span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> right){
+        <span style="color: #008800;">return</span> left._key <span style="color: #333333;">&lt;</span> right._key;
+    }
+    <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&gt;</span> (<span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> left, <span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> right){
+        <span style="color: #008800;">return</span> left._key <span style="color: #333333;">&gt;</span> right._key;
+    }
+    <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">==</span> (<span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> left, <span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> right){
+        <span style="color: #008800;">return</span> left._key <span style="color: #333333;">==</span> right._key;
+    }
+};
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>The user will also define a to_string() function for the Hash structure:</p>
+<p>&nbsp;</p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #888888;">//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span>
+<span style="color: #888888;">//We will need a function like this for any class/struct that will specialize </span>
+<span style="color: #888888;">//      the AVL class. (for use in the AVL's </span>
+<span style="color: #888888;">//      pre_order(), in_order(), post_order() functions)</span>
+string <span style="color: #0066bb;">to_string</span>(<span style="color: #008800;">const</span> HashRecord<span style="color: #333333;">&amp;</span> h){
+    <span style="color: #008800;">return</span> string(to_string(h._key) <span style="color: #333333;">+</span> <span style="background-color: #fff0f0;">" : "</span> <span style="color: #333333;">+</span> h._item);
+}
+<span style="color: #888888;">//- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - </span>
+</pre>
+</div>
+<p><br><br><br><br><br>So, you will declare a chained_hash object as follows:</p>
+<pre>ChainedHash<span class="operator">&lt;</span>record<span class="operator">&gt;</span> chained<span class="operator">;</span></pre>
+<p>Test your class by inserting records, deleting records, searching for records and test the existence of records.</p>
+<p>You may want to write a function to insert random records into your object and then delete them as well as an interactive function that will allow you to insert specific records to test for collisions.&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

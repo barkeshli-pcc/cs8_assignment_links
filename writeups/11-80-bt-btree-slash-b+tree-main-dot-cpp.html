@@ -1,0 +1,195 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: BT BTree / B+Tree main.cpp</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2 style="text-align: center;"><strong>BTree / B+Tree main.cpp</strong></h2>
+<p><strong>bool B(Plus)Tree::is_valid()</strong></p>
+<p>In order to be able to run these functions, your class will need to have a boolean member function is_valid() that will check to make sure your tree is valid.</p>
+<p><strong>Test Functions:</strong></p>
+<p>Below is a portion of my main.cpp which contains the main test files you will be using to test your programs. (</p>
+<p><strong>You will submit two tests:</strong></p>
+<ul>
+<li>Run the test_b(plus)tree_auto with tree_size of 1000 and 100 iteration with report turned off. this should generate the following output:</li>
+</ul>
+<pre style="padding-left: 30px;"><span class="operator">**************************************************************************
+**************************************************************************</span>
+             E N D     T E S T<span class="operator">:</span><span class="int"> 100</span> tests of<span class="int"> 1000</span> items<span class="operator">:</span> VERIFIED<span class="operator">
+**************************************************************************
+**************************************************************************</span></pre>
+<p style="padding-left: 30px;">&nbsp;</p>
+<ul>
+<li>Run the same function with report turned on (set to true.) That will generate pages and pages of reports.&nbsp; Copy and paste the last five pages into&nbsp; your test text file and submit the file. Please DO NOT paste the entire output of this test. I will not be able to open it.</li>
+</ul>
+<p><strong>Prototypes</strong>:</p>
+<p>Here are the prototypes for the test functions (change test_bplustree to test_btree when testing btree. Change also the BPlusTree bpt to BTree bt in the test function below):</p>
+<pre><span class="type">void</span> test_bplustree_auto<span class="operator">(</span><span class="type">int</span> tree_size<span class="operator">=</span><span class="int">5000</span><span class="operator">,</span><span class="type"> int</span> how_many<span class="operator">=</span><span class="int">500</span><span class="operator">,</span><span class="type"> bool</span> report<span class="operator">=</span><span class="bool">false</span><span class="operator">);</span><span class="type">
+bool</span> test_bplustree_auto<span class="operator">(</span><span class="type">int</span> how_many<span class="operator">,</span><span class="type"> bool</span> report<span class="operator">=</span><span class="bool">true</span><span class="operator">);</span></pre>
+<p><strong>int main()</strong></p>
+<pre><span class="type">int</span><span class="keyword"> main</span><span class="operator">(</span><span class="type">int</span> argc<span class="operator">,</span><span class="type"> char</span><span class="operator"> *</span>argv<span class="operator">[])
+{</span>
+    cout<span class="operator"> &lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span><span class="string"> "==============================="</span><span class="operator"> &lt;&lt;</span> endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="comment">
+
+    //------------------------------------------
+</span>    srand<span class="operator">(</span>time<span class="operator">(</span><span class="int">0</span><span class="operator">));</span><span class="comment">
+    //------------------------------------------
+
+
+
+//    test_bplustree_insert_random();
+//    test_bplustree_remove();
+//    test_bplustree_interactive();
+//    test_bplustree_big_three();
+</span>    test_bplustree_auto<span class="operator">(</span><span class="int">1000</span><span class="operator">,</span><span class="int">100</span><span class="operator">,</span><span class="bool">false</span><span class="operator">);</span><span class="comment">
+
+//    test_map();
+//    test_map_interactive();
+
+//    test_multimap();
+//    test_multimap_interactive();
+//    test_multimap_auto();
+
+//    test_iterator();
+</span>    cout<span class="operator"> &lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span><span class="string"> "==============================="</span><span class="operator"> &lt;&lt;</span> endl<span class="operator">;</span><span class="flow">
+    return</span><span class="int"> 0</span><span class="operator">;
+}</span><span class="type">
+void</span> test_iterator<span class="operator">(){</span><span class="keyword">
+    const</span><span class="type"> bool</span> debug<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;</span>
+    BPlusTree<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;</span> bpt<span class="operator">;</span><span class="flow">
+    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator">=</span><span class="int"> 0</span><span class="operator">;</span> i<span class="operator">&lt;</span><span class="int">125</span><span class="operator">;</span> i<span class="operator">++)</span>
+        bpt<span class="operator">.</span>insert<span class="operator">(</span>Random<span class="operator">(</span><span class="int">0</span><span class="operator">,</span><span class="int">100</span><span class="operator">));</span>
+    cout<span class="operator">&lt;&lt;</span>bpt<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+
+
+    cout<span class="operator">&lt;&lt;</span><span class="string">"------------------------------------------------------------"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="flow">
+    for</span><span class="operator">(</span>BPlusTree<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;::</span>Iterator it<span class="operator"> =</span> bpt<span class="operator">.</span>begin<span class="operator">();</span>
+                                    it<span class="operator">!=</span> bpt<span class="operator">.</span>end<span class="operator">(); ++</span>it<span class="operator">){</span><span class="flow">
+        if</span><span class="operator"> (</span>debug<span class="operator">)</span> it<span class="operator">.</span>print_Iterator<span class="operator">();</span>
+        cout<span class="operator">&lt;&lt;</span><span class="string">"["</span><span class="operator">&lt;&lt;*</span>it<span class="operator">&lt;&lt;</span><span class="string">"] "</span><span class="operator">;</span><span class="flow">
+        if</span><span class="operator"> (</span>debug<span class="operator">)</span> cout<span class="operator">&lt;&lt;</span>endl<span class="operator">;
+    }</span>
+    cout<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"------------------------------------------------------------"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"test ++ operator: "</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    BPlusTree<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;::</span>Iterator it<span class="operator"> =</span> bpt<span class="operator">.</span>begin<span class="operator">();</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"{"</span><span class="operator">&lt;&lt;*(</span>it<span class="operator">++)&lt;&lt;</span><span class="string">"}"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"{"</span><span class="operator">&lt;&lt;*</span>it<span class="operator">&lt;&lt;</span><span class="string">"}"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="flow">
+    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator"> =</span><span class="int"> 60</span><span class="operator">;</span> i<span class="operator">&lt;</span><span class="int">75</span><span class="operator">;</span> i<span class="operator">++){</span>
+        it<span class="operator"> =</span> bpt<span class="operator">.</span>find<span class="operator">(</span>i<span class="operator">);</span><span class="flow">
+        if</span><span class="operator"> (!</span>it<span class="operator">.</span>is_null<span class="operator">())</span>
+            cout<span class="operator">&lt;&lt;*</span>it<span class="operator">&lt;&lt;</span><span class="string">" was found."</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="flow">
+        else</span>
+            cout<span class="operator">&lt;&lt;</span>i<span class="operator">&lt;&lt;</span><span class="string">" was not found"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;
+        }</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"===================================================================="</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;
+
+}</span><span class="type">
+
+void</span> test_bplustree_auto<span class="operator">(</span><span class="type">int</span> tree_size<span class="operator">,</span><span class="type"> int</span> how_many<span class="operator">,</span><span class="type"> bool</span> report<span class="operator">){</span><span class="type">
+    bool</span> verified<span class="operator"> =</span><span class="bool"> true</span><span class="operator">;</span><span class="flow">
+    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span> i<span class="operator">&lt;</span> how_many<span class="operator">;</span> i<span class="operator">++){</span><span class="flow">
+        if</span><span class="operator"> (</span>report<span class="operator">){</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"*********************************************************"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">" T E S T:    "</span><span class="operator">&lt;&lt;</span>i<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"*********************************************************"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;
+        }</span><span class="flow">
+        if</span><span class="operator"> (!</span>test_bplustree_auto<span class="operator">(</span>tree_size<span class="operator">,</span> report<span class="operator">)){</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"T E S T :   ["</span><span class="operator">&lt;&lt;</span>i<span class="operator">&lt;&lt;</span><span class="string">"]    F A I L E D ! ! !"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            verified<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;</span><span class="flow">
+            return</span><span class="operator">;
+        }
+
+    }</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"**************************************************************************"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"**************************************************************************"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"             E N D     T E S T: "</span><span class="operator">&lt;&lt;</span>how_many<span class="operator">&lt;&lt;</span><span class="string">" tests of "</span><span class="operator">&lt;&lt;</span>tree_size<span class="operator">&lt;&lt;</span><span class="string">" items: "</span><span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;(</span>verified<span class="operator">?</span><span class="string">"VERIFIED"</span><span class="operator">:</span><span class="string"> "VERIFICATION FAILED"</span><span class="operator">)&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"**************************************************************************"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"**************************************************************************"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;
+
+}</span><span class="type">
+
+bool</span> test_bplustree_auto<span class="operator">(</span><span class="type">int</span> how_many<span class="operator">,</span><span class="type"> bool</span> report<span class="operator">){</span><span class="keyword">
+    const</span><span class="type"> int</span> MAX<span class="operator"> =</span><span class="int"> 10000</span><span class="operator">;</span>
+    assert<span class="operator">(</span>how_many<span class="operator"> &lt;</span> MAX<span class="operator">);</span>
+    BPlusTree<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;</span> bpt<span class="operator">;</span><span class="type">
+    int</span> a<span class="operator">[</span>MAX<span class="operator">];</span><span class="type">
+    int</span> original<span class="operator">[</span>MAX<span class="operator">];</span><span class="type">
+    int</span> deleted_list<span class="operator">[</span>MAX<span class="operator">];</span><span class="type">
+
+    int</span> original_size<span class="operator">;</span><span class="type">
+    int</span> size<span class="operator">;</span><span class="type">
+    int</span> deleted_size<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span><span class="comment">
+
+    //fill a[ ]
+</span><span class="flow">    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator">=</span><span class="int"> 0</span><span class="operator">;</span> i<span class="operator">&lt;</span> how_many<span class="operator">;</span> i<span class="operator">++){</span>
+        a<span class="operator">[</span>i<span class="operator">] =</span> i<span class="operator">;
+    }</span><span class="comment">
+    //shuffle a[ ]: Put this in a function!
+</span><span class="flow">    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span> i<span class="operator">&lt;</span> how_many<span class="operator">;</span> i<span class="operator">++){</span><span class="type">
+        int</span> from<span class="operator"> =</span> Random<span class="operator">(</span><span class="int">0</span><span class="operator">,</span> how_many<span class="operator">-</span><span class="int">1</span><span class="operator">);</span><span class="type">
+        int</span> to<span class="operator"> =</span> Random<span class="operator">(</span><span class="int">0</span><span class="operator">,</span> how_many<span class="operator"> -</span><span class="int">1</span><span class="operator">);</span><span class="type">
+        int</span> temp<span class="operator"> =</span> a<span class="operator">[</span>to<span class="operator">];</span>
+        a<span class="operator">[</span>to<span class="operator">] =</span> a<span class="operator">[</span>from<span class="operator">];</span>
+        a<span class="operator"> [</span>from<span class="operator">] =</span> temp<span class="operator">;
+    }</span><span class="comment">
+    //copy  a[ ] -&gt; original[ ]:
+</span>    copy_array<span class="operator">(</span>original<span class="operator">,</span> a<span class="operator">,</span> how_many<span class="operator">);</span>
+    size<span class="operator"> =</span> how_many<span class="operator">;</span>
+    original_size<span class="operator"> =</span> how_many<span class="operator">;</span><span class="flow">
+    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator">=</span><span class="int">0</span><span class="operator">;</span> i<span class="operator">&lt;</span>size<span class="operator">;</span> i<span class="operator">++){</span>
+        bpt<span class="operator">.</span>insert<span class="operator">(</span>a<span class="operator">[</span>i<span class="operator">]);
+
+    }</span><span class="flow">
+    if</span><span class="operator"> (</span>report<span class="operator">){</span>
+        cout<span class="operator">&lt;&lt;</span><span class="string">"========================================================"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+        cout<span class="operator">&lt;&lt;</span><span class="string">"  "</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+        cout<span class="operator">&lt;&lt;</span><span class="string">"========================================================"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+        cout<span class="operator">&lt;&lt;</span>bpt<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">;
+    }</span><span class="flow">
+    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator">=</span><span class="int"> 0</span><span class="operator">;</span> i<span class="operator">&lt;</span>how_many<span class="operator">;</span> i<span class="operator">++){</span><span class="type">
+        int</span> r<span class="operator"> =</span> Random<span class="operator">(</span><span class="int">0</span><span class="operator">,</span> how_many<span class="operator"> -</span> i<span class="operator"> -</span><span class="int"> 1</span><span class="operator">);</span><span class="flow">
+        if</span><span class="operator"> (</span>report<span class="operator">){</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"========================================================"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span>bpt<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">". . . . . . . . . . . . . . . . . . . . . . . . . . . . "</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"deleted: "</span><span class="operator">;</span> print_array<span class="operator">(</span>deleted_list<span class="operator">,</span> deleted_size<span class="operator">);</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"   from: "</span><span class="operator">;</span> print_array<span class="operator">(</span>original<span class="operator">,</span> original_size<span class="operator">);</span>
+            cout<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"  REMOVING ["</span><span class="operator">&lt;&lt;</span>a<span class="operator">[</span>r<span class="operator">]&lt;&lt;</span><span class="string">"]"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"========================================================"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;
+        }</span>
+        bpt<span class="operator">.</span>remove<span class="operator">(</span>a<span class="operator">[</span>r<span class="operator">]);</span>
+
+
+        delete_item<span class="operator">(</span>a<span class="operator">,</span> r<span class="operator">,</span> size<span class="operator">,</span> deleted_list<span class="operator">[</span>deleted_size<span class="operator">++]);</span><span class="flow">
+        if</span><span class="operator"> (!</span>bpt<span class="operator">.</span>is_valid<span class="operator">()){</span>
+            cout<span class="operator">&lt;&lt;</span>setw<span class="operator">(</span><span class="int">6</span><span class="operator">)&lt;&lt;</span>i<span class="operator">&lt;&lt;</span><span class="string">" I N V A L I D   T R E E"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"Original Array: "</span><span class="operator">;</span> print_array<span class="operator">(</span>original<span class="operator">,</span> original_size<span class="operator">);</span>
+            cout<span class="operator">&lt;&lt;</span><span class="string">"Deleted Items : "</span><span class="operator">;</span> print_array<span class="operator">(</span>deleted_list<span class="operator">,</span> deleted_size<span class="operator">);</span>
+            cout<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>bpt<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="flow">
+            return</span><span class="bool"> false</span><span class="operator">;
+        }
+
+    }</span><span class="flow">
+    if</span><span class="operator"> (</span>report<span class="operator">)</span> cout<span class="operator">&lt;&lt;</span><span class="string">" V A L I D    T R E E"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="flow">
+
+    return</span><span class="bool"> true</span><span class="operator">;
+}</span>
+</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Random Function:</strong></p>
+<pre><span class="type">int</span> Random<span class="operator">(</span><span class="type">int</span> lo<span class="operator">,</span><span class="type"> int</span> hi<span class="operator">)
+{</span><span class="type">
+    int</span> r<span class="operator"> =</span> rand<span class="operator">()%(</span>hi<span class="operator">-</span>lo<span class="operator">+</span><span class="int">1</span><span class="operator">)+</span>lo<span class="operator">;</span><span class="flow">
+
+    return</span> r<span class="operator">;
+}</span></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

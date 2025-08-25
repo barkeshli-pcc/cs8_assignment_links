@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 08_09_airport</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2><strong>Airport Simulation:&nbsp;</strong></h2>
+<p>&nbsp;</p>
+<p>Take a very close look at the Car Wash program in chapter 8. It is a very well-designed and insightful program that introduces key concepts that are used in design of the Airport Simulation program. (<span style="text-decoration: underline;">You must use the concepts&nbsp;and classes used in the Car Wash project in your project</span>.)</p>
+<p>You will be using your own Queue class for this project.&nbsp;</p>
+<p>Running the Car Wash program using your own Queue class and providing <em>detailed</em> comments will be very helpful in implementing the Airport Simulation program. You need to know <em>exactly</em> how the different pieces fit together. Doing this will cut your development time in half.</p>
+<p>Submit all your source files (including queue.h) along with your output.</p>
+<p>&nbsp;Here are some of the variables your program will keep track of:</p>
+<pre><span class="type">unsigned int</span> takeoff_time<span class="operator">,</span><span class="comment">      //how long it takes for a take off once plane <br>                                //    is on the runway 
+</span><span class="type">double</span> takeoff_probability<span class="operator">,</span><span class="comment">     //probability of arrival of a plane into the <br>                                //    take off line 
+</span><span class="type">unsigned int</span> landing_time<span class="operator">,</span><span class="comment">      //how long it takes for a plane to land on the <br>                                //    runway in each second
+</span><span class="type">double</span> landing_probability<span class="operator">,</span><span class="comment">     //probability of arrival of planes for landing <br>                                //     in each second
+</span><span class="type">unsigned int</span> fuel_limit<span class="operator">,</span><span class="comment">        //maximum amount of time a plan can stay in <br>                                //      landing queue without crashing
+</span><span class="type">unsigned int</span> total_time<span class="operator">;</span><span class="comment">        //total time you will run the simulation.
+</span></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>If I were you, I would write a class to take care of all these variables and to perform the simulation.</p>
+<p>&nbsp;Run your program&nbsp;once with the debug flag on (printing all your debugs) and once without the debug so it prints the results only.</p>
+<p>Use these values to test your program. (Thanks to Andrew Miner for these values)</p>
+<pre><span class="type">    unsigned int</span> time_to_land<span class="operator"> =</span><span class="int"> 5</span><span class="operator">;</span><span class="type">
+    unsigned int</span> time_to_take_off<span class="operator"> =</span><span class="int"> 15</span><span class="operator">;</span><span class="type">
+
+    double</span> landing_probability<span class="operator"> =</span><span class="float"> 0.10</span><span class="operator">;</span><span class="type">
+    double</span> takeoff_probability<span class="operator"> =</span><span class="float"> 0.8</span><span class="operator">;</span><span class="type">
+
+    unsigned int</span> fuel_limit<span class="operator"> =</span><span class="int"> 20</span><span class="operator">;</span><span class="type">
+    unsigned int</span> simulation_time<span class="operator"> =</span><span class="int"> 1440</span><span class="operator">;<br><br><br></span></pre>
+<p>Sample (no debug) run:<span class="operator"><br></span></p>
+<pre><span class="operator">============================================</span>
+time to take off<span class="operator">      :</span><span class="int"> 15</span>
+time to land<span class="operator">:         :</span><span class="int"> 5</span>
+probability of landing<span class="operator">:</span><span class="float"> 0.1</span>
+probability of takeoff<span class="operator">:</span><span class="float"> 0.08</span>
+fuel<span class="operator">:</span> time to crash<span class="operator">   :</span><span class="int"> 20</span>
+total simulation time<span class="operator"> :</span><span class="int"> 1440</span><span class="operator">
+
+
+. . . . . . . . . . . . . . . . . . . . . . .</span><span class="int"> 
+145</span> landed<span class="int">
+48</span> took off<span class="int">
+2</span> planes crashed<span class="operator">. :(</span>
+Average waiting time to land<span class="operator">:</span><span class="int"> 9</span>
+Average waiting time to take off<span class="operator">:</span><span class="float"> 457.271</span>
+planes in landing queue<span class="operator"> :</span><span class="int"> 0</span>
+planes in take off queue<span class="operator">:</span><span class="int"> 72</span><span class="operator">
+============================================</span><span class="operator">&nbsp; </span></pre>
+<p><span class="operator">Run this program a few dozen times and see how the results will differ.</span></p>
+<p><span class="operator">Also try running for a much longer period of time like 100000. Try running this a few times and report your observations.</span></p>
+<p><span class="operator">REPORT YOUR FINDINGS in the "work report comments"</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

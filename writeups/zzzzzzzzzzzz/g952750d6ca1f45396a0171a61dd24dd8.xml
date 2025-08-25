@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<topic xmlns="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsccv1p1/imsdt_v1p1  http://www.imsglobal.org/profile/cc/ccv1p1/ccv1p1_imsdt_v1p1.xsd">
-  <title>The correct way to initialize const member variable </title>
-  <text texttype="text/html">&lt;pre&gt;&lt;span style="font-size: 12pt;"&gt;This is the correct way to initialize const member variable: &lt;br&gt;&lt;br&gt;NOTE: Don't use "&lt;span style="color: #ff0000;"&gt;_key = k&lt;/span&gt;" because this is actually &lt;span style="color: #ff0000;"&gt;ASSIGNING&lt;/span&gt;(&lt;span style="color: #ff0000;"&gt;NOT INITIALIZING&lt;/span&gt;) k to _key.&lt;br&gt;&lt;br&gt;Pair&lt;br&gt;{   &lt;br&gt;const K _key;&lt;/span&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;span style="font-size: 12pt;"&gt;V _value;&lt;br&gt;}&lt;br&gt;&lt;br&gt;template &amp;lt;typename K, typename V&amp;gt;&lt;/span&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;span style="font-size: 12pt;"&gt;Pair&amp;lt;K, V&amp;gt;::Pair(K k, V v):&lt;span style="color: #ff0000;"&gt;_key(k)&lt;/span&gt;,_value(v)&lt;/span&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;span style="font-size: 12pt;"&gt;{&lt;/span&gt;&lt;/pre&gt;
-&lt;pre&gt;&lt;span style="font-size: 12pt;"&gt;}&lt;/span&gt;&lt;/pre&gt;</text>
-</topic>

@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Fira+Code&display=swap');
+
+body {
+  font-family: 'EB Garamond', serif;
+  background: linear-gradient(to bottom right, #fcfcfc, #f2f2f2);
+  color: #1a1a1a;
+  margin: 0;
+  padding: 2rem;
+  line-height: 1.8;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+h2 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: #2a2a2a;
+  border-bottom: 2px solid #bbb;
+  padding-bottom: 0.4rem;
+}
+
+h3 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: #2a2a2a;
+}
+
+h4 {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  color: #2a2a2a;
+}
+
+a {
+  color: #005c99;
+  text-decoration: none;
+  border-bottom: 1px dotted #888;
+  transition: all 0.3s ease-in-out;
+}
+
+a:hover {
+  color: #003366;
+  border-bottom: 1px solid #003366;
+}
+
+p {
+  margin-bottom: 1.2rem;
+}
+
+pre {
+  background-color: #f5f5f5;
+  border-left: 4px solid #999;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.92rem;
+  color: #2e2e2e;
+  border-radius: 4px;
+  margin: 1.5rem 0;
+}
+
+/* Special bordered code blocks (for BST document) */
+.bordered-code {
+  background: #ffffff;
+  border: solid gray;
+  border-width: .1em .1em .1em .8em;
+  padding: .2em .6em;
+  margin: 1rem 0;
+  overflow: auto;
+}
+
+strong {
+  font-weight: 600;
+}
+
+code {
+  background-color: #eaeaea;
+  padding: 0.25em 0.4em;
+  font-family: 'Fira Code', monospace;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+ul li {
+  margin-bottom: 0.75rem;
+}
+
+/* Inline text styling helpers */
+.underline {
+  text-decoration: underline;
+}
+
+.highlight {
+  background-color: #ffff00;
+  padding: 0.1em 0.2em;
+}
+
+/* Syntax highlighting classes */
+.keyword { 
+  color: #008800; 
+  font-weight: bold; 
+}
+
+.operator { 
+  color: #333333; 
+}
+
+.string { 
+  color: #aa5500; 
+}
+
+.flow { 
+  color: #008800; 
+  font-weight: bold; 
+}
+
+.comment { 
+  color: #888888; 
+}
+
+.int { 
+  color: #880000; 
+}
+
+.float {
+  color: #880000;
+}
+
+.class { 
+  color: #bb0066; 
+  font-weight: bold; 
+}
+
+.public { 
+  color: #997700; 
+}
+
+.function { 
+  color: #0066bb; 
+}
+
+.typename { 
+  color: #008800; 
+}
+
+.type { 
+  color: #333399; 
+}

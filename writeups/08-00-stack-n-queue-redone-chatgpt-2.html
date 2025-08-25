@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment: 08_00_stack_n_queue</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Fira+Code&display=swap');
+
+    body {
+      font-family: 'EB Garamond', serif;
+      background: linear-gradient(to bottom right, #fcfcfc, #f2f2f2);
+      color: #1a1a1a;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.8;
+      max-width: 860px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    h2 {
+      text-align: center;
+      font-weight: 600;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #2a2a2a;
+      border-bottom: 2px solid #bbb;
+      padding-bottom: 0.4rem;
+    }
+
+    a {
+      color: #005c99;
+      text-decoration: none;
+      border-bottom: 1px dotted #888;
+      transition: all 0.3s ease-in-out;
+    }
+
+    a:hover {
+      color: #003366;
+      border-bottom: 1px solid #003366;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+
+    pre {
+      background-color: #f5f5f5;
+      border-left: 4px solid #999;
+      padding: 1rem 1.2rem;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.92rem;
+      color: #2e2e2e;
+      border-radius: 4px;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    code {
+      background-color: #eaeaea;
+      padding: 0.25em 0.4em;
+      font-family: 'Fira Code', monospace;
+      border-radius: 4px;
+      font-size: 0.95em;
+    }
+
+    hr {
+      margin: 2.5rem 0;
+      border: none;
+      border-top: 1px solid #ccc;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    ul li {
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <h2 style="text-align: center;"><strong>Stack and Queue Design:</strong></h2>
+  <p>You may want to take a look at the <a title="12.00 A Simple Iterator (Nested Classes)_CS3" href="$CANVAS_OBJECT_REFERENCE$/assignments/g91d20e8006260ab2f030b21c95a11f93" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1117416/assignments/8969728" data-api-returntype="Assignment">Iterators</a>' page, and the page for <a title="12.00 Iterated List_CS3" href="$CANVAS_OBJECT_REFERENCE$/assignments/gb7237241a4177aec144d405fb21da802" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1117416/assignments/8969729" data-api-returntype="Assignment">lists with iterators</a>.</p>
+  <p>In this project, we will design two templated classes called Stack and Queue. These two classes are based on linked lists. All classes and functions in this course will be templated unless otherwise instructed by me.</p>
+  <p><strong>1. Linked List Functions (list.h)</strong></p>
+  <p>DO NOT implement a linked list class. We are simply writing low level functions that will perform linked list operations. We will use these functions to implement our Stack and Queue:</p>
+  <p>First, define a node struct:</p>
+  <pre>template<class T>
+  struct node{
+      T _item;
+      node<T>* _next;
+      node<T>* _prev;
+      node(const T& item = T(), node<T>* next = NULL, node<T>* prev = NULL):
+                                                                         _item(item), 
+                                                                         _next(next),
+                                                                         _prev(prev){}
+      friend ostream& operator << (ostream& outs, const node<T>& print_me){
+          outs <<"["<<print_me._item<<"]->";
+          return outs;
+      }
+  };</pre>
+  <p>Now, define the following functions with this exact signature and functionality:</p>
+  <pre>//Linked List General Functions:
+  template <typename T>
+  void _print_list(node<T>* head);
+  
+  template <typename T>
+  void _print_list_backwards(node<T> *head);
+  
+  template <typename T>
+  node<T>* _search_list(node<T>* head,
+                              T key);
+  
+  template <typename T>
+  node<T>* _insert_head(node<T> *&head,
+                              T insert_this);
+  
+  template <typename T>
+  node<T>* _insert_after(node<T>*& head,
+                                  node<T> * after_this,
+                                  T insert_this);
+  
+  template <typename T>
+  node<T>* _insert_before(node<T>*& head,
+                                  node<T>* before_this,
+                                  T insert_this);
+  
+  template <typename T>
+  node<T>* _previous_node(node<T>* prev_to_this);
+  
+  template <typename T>
+  T _delete_node(node<T>*& head, node<T>* delete_this);
+  
+  template <typename T>
+  node<T>* _copy_list(node<T>* head);
+  
+  template <typename T>
+  node<T>* _copy_list(node<T> *&dest, node<T> * src);
+  
+  template <typename T>
+  void _clear_list(node<T>*& head);
+  
+  template <typename T>
+  T& _at(node<T>* head, int pos);
+  </pre>
+  <p><strong>2. Define a Queue class (use upper case Q for the name) as follows: (queue.h)</strong></p>
+  <pre>template <typename T>
+  class Queue
+  {
+  public:
+      class Iterator{
+      public:
+          friend class Queue;
+          Iterator(){_ptr = NULL;}
+          Iterator(node<T>* p){}
+          T operator *(){}
+          bool is_null(){}
+          friend bool operator !=(const Iterator& left,
+                                  const Iterator& right){}
+  
+          friend bool operator ==(const Iterator& left,
+                                  const Iterator& right){}
+  
+          Iterator& operator++(){
+          }
+  
+          friend Iterator operator++(Iterator& it,
+                                     int unused){
+          }
+  
+      private:
+          node<T>* _ptr;
+      };
+  
+      Queue();
+  
+      Queue(const Queue<T>& copyMe);
+      ~Queue();
+      Queue& operator=(const Queue<T>& RHS);
+  
+      bool empty();
+      T front();
+      T back();
+  
+      void push(T item);
+      T pop();
+  
+      Iterator begin() const;
+      Iterator end() const;
+      void print_pointers();
+      int size() const { return _size; }
+      template<typename TT>
+      friend ostream& operator << (ostream& outs, const Queue<TT>& printMe);
+  private:
+      node<T>* _front;
+      node<T>* _rear;
+      int _size;
+  };</pre>
+  <p><strong>3. Define a Stack class (upper case S for the name) as follows: (stack.h)</strong></p>
+  <pre>template <typename ITEM_TYPE>
+  class Stack{
+  public:
+      class Iterator{
+      public:
+          friend class Stack;
+          Iterator(){_ptr = NULL;}
+          Iterator(node<ITEM_TYPE>* p){}
+          ITEM_TYPE operator *(){}
+          bool is_null(){return _ptr == NULL;}
+          friend bool operator !=(const Iterator& left,
+                                  const Iterator& right){return left._ptr != right._ptr;}
+  
+          friend bool operator ==(const Iterator& left,
+                                  const Iterator& right){}
+  
+          Iterator& operator++(){
+          }
+  
+          friend Iterator operator++(Iterator& it,
+                                     int unused){
+              assert(it._ptr!=NULL);
+          }
+  
+      private:
+          node<ITEM_TYPE>* _ptr;
+      };
+  
+      Stack();
+      Stack(const Stack<ITEM_TYPE>& copyMe);
+      ~Stack();
+      Stack<ITEM_TYPE>& operator=(const Stack<ITEM_TYPE>& RHS);
+      ITEM_TYPE top();
+      bool empty();
+      void push(ITEM_TYPE item);
+      ITEM_TYPE pop();
+      template<typename T>
+      friend ostream& operator<<(ostream& outs, const Stack<T>& printMe);
+      Iterator begin() const;
+      Iterator end() const;
+      int size() const { return _size; }
+  
+  private:
+      node<ITEM_TYPE>* _top;
+      int _size;
+  };</pre>
+  <p><strong>4. Test your Stack and Queue classes</strong> by writing a pair of functions to output what is shown below:</p>
+  <p>1. declare an instance of the Stack (Queue) class, in a for loop, push 0..9 into the object, print the object</p>
+  <p>2. Declare another object using the copy constructor to be a copy of this first object.</p>
+  <p>3. while the container is not empty, pop (show the popped item in braces { } )and reprint the object</p>
+  <p>4. when the object is empty, assign the second object back into the first and reprint both objects.</p>
+  <p>This should test all the functions of the class as well as the big three functions.</p>
+  <p>Output For Stack:</p>
+  <pre>s: [9]->[8]->[7]->[6]->[5]->[4]->[3]->[2]->[1]->[0]->|||
+  
+  s2: [9]->[8]->[7]->[6]->[5]->[4]->[3]->[2]->[1]->[0]->|||
+  
+  { 9 } [8]->[7]->[6]->[5]->[4]->[3]->[2]->[1]->[0]->|||
+  
+  { 8 } [7]->[6]->[5]->[4]->[3]->[2]->[1]->[0]->|||
+  
+  { 7 } [6]->[5]->[4]->[3]->[2]->[1]->[0]->|||
+  
+  { 6 } [5]->[4]->[3]->[2]->[1]->[0]->|||
+  
+  { 5 } [4]->[3]->[2]->[1]->[0]->|||
+  
+  { 4 } [3]->[2]->[1]->[0]->|||
+  
+  { 3 } [2]->[1]->[0]->|||
+  
+  { 2 } [1]->[0]->|||
+  
+  { 1 } [0]->|||
+  
+  { 0 } |||
+  
+  assigning s back to s2:
+  
+  s: [9]->[8]->[7]->[6]->[5]->[4]->[3]->[2]->[1]->[0]->|||
+  
+  s2: [9]->[8]->[7]->[6]->[5]->[4]->[3]->[2]->[1]->[0]->|||</pre>
+  <p>Output For Queue:</p>
+  <pre>q: [0]->[1]->[2]->[3]->[4]->[5]->[6]->[7]->[8]->[9]->|||
+  
+  q2: [0]->[1]->[2]->[3]->[4]->[5]->[6]->[7]->[8]->[9]->|||
+  
+  { 0 } [1]->[2]->[3]->[4]->[5]->[6]->[7]->[8]->[9]->|||
+  
+  { 1 } [2]->[3]->[4]->[5]->[6]->[7]->[8]->[9]->|||
+  
+  { 2 } [3]->[4]->[5]->[6]->[7]->[8]->[9]->|||
+  
+  { 3 } [4]->[5]->[6]->[7]->[8]->[9]->|||
+  
+  { 4 } [5]->[6]->[7]->[8]->[9]->|||
+  
+  { 5 } [6]->[7]->[8]->[9]->|||
+  
+  { 6 } [7]->[8]->[9]->|||
+  
+  { 7 } [8]->[9]->|||
+  
+  { 8 } [9]->|||
+  
+  { 9 } |||
+  
+  assigning q back to q2:
+  
+  q: [0]->[1]->[2]->[3]->[4]->[5]->[6]->[7]->[8]->[9]->|||
+  
+  q2: [0]->[1]->[2]->[3]->[4]->[5]->[6]->[7]->[8]->[9]->|||</pre>
+  </body>
+  </html>

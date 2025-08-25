@@ -1,0 +1,109 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: BST Functions</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2><strong>BST Functions:</strong></h2>
+<p><strong>Do not</strong> implement a class yet. We need these functions to be able to easily implement multiple classes.</p>
+<p>First, let's design a<strong> tree_node</strong> structure:</p>
+<p><span style="background-color: #ffff00;">In addition</span> to the usual item, left, and right, we need to keep track of the<strong> "balance factor".&nbsp;</strong> <br>balance factor is calculated as the height of the left subtree minus the height of the right subtree. <br>But we do not want to be calculating&nbsp;the height of left and right subtrees (by counting the nodes all the way down to the leaves) every time we need the balance factor. So, we need to keep track of the heights&nbsp;"on the fly" by updating the height (by looking at the heights of the left and right children)&nbsp;each time insertion and deletions are made. We can easily calculate the balance factor by subtracting the height of the right child from the height of the left child.</p>
+<p>Do not simply increment (or decrement) the height&nbsp;after an insertion (or deletion.) This will not work.</p>
+<pre><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">typename</span> T<span class="operator">&gt;</span><span class="keyword">
+struct</span> tree_node<span class="operator">{</span>
+    T _item<span class="operator">;</span>
+    tree_node<span class="operator">&lt;</span>T<span class="operator">&gt;*</span> _left<span class="operator">;</span>
+    tree_node<span class="operator">&lt;</span>T<span class="operator">&gt;*</span> _right<span class="operator">;</span><span class="type">
+    int</span> _height<span class="operator">;</span><span class="type">
+    int</span> balance_factor<span class="operator">(){</span><span class="comment">
+        //balance factor = height of the left subtree <br>        //                        - the height of the right subtree
+        //a NULL child has a height of -1
+        //a leaf has a height of 0
+</span>    <span class="operator">}</span><span class="type">
+
+    int</span> height<span class="operator">(){</span><span class="comment">
+        // Height of a node is 1 + height of the "taller" child
+        //A leaf node has a height of zero: 1 + max(-1,-1)
+</span><span class="operator">    }</span><span class="type">
+    int</span> update_height<span class="operator">(){</span><span class="comment">
+        //set the _height member variable (call height();)
+</span><span class="operator">    }</span>
+
+    tree_node<span class="operator">(</span>T item<span class="operator">=</span>T<span class="operator">(),</span> tree_node<span class="operator">*</span> left<span class="operator">=</span>NULL<span class="operator">,</span> <br>                          tree_node<span class="operator">*</span> right<span class="operator">=</span>NULL<span class="operator">):</span>
+                    _item<span class="operator">(</span>item<span class="operator">),</span> _left<span class="operator">(</span>left<span class="operator">),</span> _right<span class="operator">(</span>right<span class="operator">)
+    {</span>
+
+        //don't forget to set the _height.<span class="operator">
+    }</span><span class="keyword">
+    friend</span> ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator"> &lt;&lt;(</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> <br>                                const</span> tree_node<span class="operator">&lt;</span>T<span class="operator">&gt;&amp;</span> t_node<span class="operator">){</span>
+        outs<span class="operator">&lt;&lt;</span><span class="string">"|"</span><span class="operator">&lt;&lt;</span>t_node<span class="operator">.</span>_item<span class="operator">&lt;&lt;</span><span class="string">"|"</span><span class="operator">;
+    }
+};</span>
+</pre>
+<p>Implement the following functions for a <strong style="font-family: sans-serif; font-size: 1rem;">Binary Search Tree: </strong></p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #333399;">void</span> tree_insert(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> <span style="color: #333333;">&amp;</span>root, <span style="color: #008800;">const</span> T<span style="color: #333333;">&amp;</span> insert_me);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> tree_search(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root, <span style="color: #008800;">const</span> T<span style="color: #333333;">&amp;</span> target);
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #333399;">bool</span> tree_search(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root, <span style="color: #008800;">const</span> T<span style="color: #333333;">&amp;</span> target,
+                 tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> <span style="color: #333333;">&amp;</span>found_ptr);
+
+<span style="color: #008800;">template</span><span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #333399;">void</span> tree_print(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root, <span style="color: #333399;">int</span> depth<span style="color: #333333;">=</span><span style="color: #0000dd;">0</span>,
+                                    ostream<span style="color: #333333;">&amp;</span> outs<span style="color: #333333;">=</span>cout);
+
+<span style="color: #008800;">template</span><span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//prints detailes info about each node</span>
+<span style="color: #333399;">void</span> tree_print_debug(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root, <span style="color: #333399;">int</span> depth<span style="color: #333333;">=</span><span style="color: #0000dd;">0</span>,
+                                          ostream<span style="color: #333333;">&amp;</span> outs<span style="color: #333333;">=</span>cout);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//clear the tree</span>
+<span style="color: #333399;">void</span> tree_clear(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> <span style="color: #333333;">&amp;</span>root);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//erase target from the tree</span>
+<span style="color: #333399;">bool</span> tree_erase(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*&amp;</span> root, <span style="color: #008800;">const</span> T<span style="color: #333333;">&amp;</span> target);
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//erase rightmost node from the tree -&gt; max_value</span>
+<span style="color: #333399;">void</span> tree_remove_max(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> <span style="color: #333333;">&amp;</span>root, T<span style="color: #333333;">&amp;</span> max_value);
+
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//print in_order</span>
+<span style="color: #333399;">void</span> in_order(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root,ostream<span style="color: #333333;">&amp;</span> outs<span style="color: #333333;">=</span>cout);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//print pre_order</span>
+<span style="color: #333399;">void</span>  pre_order(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root,ostream<span style="color: #333333;">&amp;</span> outs<span style="color: #333333;">=</span>cout);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//print post_order</span>
+<span style="color: #333399;">void</span>  post_order(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root,ostream<span style="color: #333333;">&amp;</span> outs<span style="color: #333333;">=</span>cout);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//string in_order</span>
+string in_order_string(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//string pre_order</span>
+string pre_order_string(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//string post_order</span>
+string post_order_string(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root);
+
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//return copy of tree pointed to by root</span>
+tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> tree_copy(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> root);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//Add tree src to dest</span>
+<span style="color: #333399;">void</span> tree_add(tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> <span style="color: #333333;">&amp;</span> dest, <span style="color: #008800;">const</span> tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> src);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">//sorted array of ints -&gt; tree</span>
+tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> tree_from_sorted_list(<span style="color: #008800;">const</span> T<span style="color: #333333;">*</span> a);
+
+<span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span> <span style="color: #888888;">// sorted array -&gt; tree</span>
+tree_node<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;*</span> tree_from_sorted_list(<span style="color: #008800;">const</span> T<span style="color: #333333;">*</span> a, <span style="color: #333399;">int</span> size);
+</pre>
+</div>
+<h2><strong>Testing:</strong></h2>
+<p>You will write individual functions that will test every aspect of these. The insertion, the deletion, the copying and clearing and of course searching.&nbsp;</p>
+<h2>&nbsp;</h2>
+</body>
+</html>

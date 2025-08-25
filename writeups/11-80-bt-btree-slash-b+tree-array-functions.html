@@ -1,0 +1,78 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: BT BTree / B+Tree Array Functions</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2 style="text-align: center;"><strong>BTree / B+Tree</strong></h2>
+<h2 style="text-align: center;"><strong>Array Utility Functions</strong></h2>
+<p>Implement the following functions: (test these to death as &nbsp;your future projects will depend on it.)</p>
+<p><span style="text-decoration: underline;"><strong>All functions are templated:</strong></span></p>
+<pre><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span>
+T maximal<span class="operator">(</span><span class="keyword">const</span> T<span class="operator">&amp;</span> a<span class="operator">,</span><span class="keyword"> const</span> T<span class="operator">&amp;</span> b<span class="operator">);</span><span class="comment">                      //return the larger of the two items
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> swap<span class="operator">(</span>T<span class="operator">&amp;</span> a<span class="operator">,</span> T<span class="operator">&amp;</span> b<span class="operator">);</span><span class="comment">  //swap the two items
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+int</span> index_of_maximal<span class="operator">(</span>T data<span class="operator">[ ],</span><span class="type"> int</span> n<span class="operator">);</span><span class="comment">                 //return index of the largest item in data
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> ordered_insert<span class="operator">(</span>T data<span class="operator">[ ],</span><span class="type"> int</span><span class="operator">&amp;</span> n<span class="operator">,</span> T entry<span class="operator">);</span><span class="comment">        //insert entry into the sorted array
+                                                        //data with length n
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+int</span> first_ge<span class="operator">(</span><span class="keyword">const</span> T data<span class="operator">[ ],</span><span class="type"> int</span> n<span class="operator">,</span><span class="keyword"> const</span> T<span class="operator">&amp;</span> entry<span class="operator">);</span><span class="comment">   //return the first element in data that is
+                                                        //not less than entry
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> attach_item<span class="operator">(</span>T data<span class="operator">[ ],</span><span class="type"> int</span><span class="operator">&amp;</span> n<span class="operator">,</span><span class="keyword"> const</span> T<span class="operator">&amp;</span> entry<span class="operator">);</span><span class="comment">    //append entry to the right of data
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> insert_item<span class="operator">(</span>T data<span class="operator">[ ],</span><span class="type"> int</span> i<span class="operator">,</span><span class="type"> int</span><span class="operator">&amp;</span> n<span class="operator">,</span> T entry<span class="operator">);</span><span class="comment">    //insert entry at index i in data
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> detach_item<span class="operator">(</span>T data<span class="operator">[ ],</span><span class="type"> int</span><span class="operator">&amp;</span> n<span class="operator">,</span> T<span class="operator">&amp;</span> entry<span class="operator">);</span><span class="comment">          //remove the last element in data and place
+                                                        //it in entry
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> delete_item<span class="operator">(</span>T data<span class="operator">[ ],</span><span class="type"> int</span> i<span class="operator">,</span><span class="type"> int</span><span class="operator">&amp;</span> n<span class="operator">,</span> T<span class="operator">&amp;</span> entry<span class="operator">);</span><span class="comment">   //delete item at index i and place it in entry
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> merge<span class="operator">(</span>T data1<span class="operator">[ ],</span><span class="type"> int</span><span class="operator">&amp;</span> n1<span class="operator">,</span> T data2<span class="operator">[ ],</span><span class="type"> int</span><span class="operator">&amp;</span> n2<span class="operator">);</span><span class="comment">   //append data2 to the right of data1
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> split<span class="operator">(</span>T data1<span class="operator">[ ],</span><span class="type"> int</span><span class="operator">&amp;</span> n1<span class="operator">,</span> T data2<span class="operator">[ ],</span><span class="type"> int</span><span class="operator">&amp;</span> n2<span class="operator">);</span><span class="comment">   //move n/2 elements from the right of data1
+                                                        //and move to data2
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> copy_array<span class="operator">(</span>T dest<span class="operator">[],</span><span class="keyword"> const</span> T src<span class="operator">[],</span><span class="type">
+                int</span><span class="operator">&amp;</span> dest_size<span class="operator">,</span><span class="type"> int</span> src_size<span class="operator">);</span><span class="comment">              //copy src[] into dest[]
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+void</span> print_array<span class="operator">(</span><span class="keyword">const</span> T data<span class="operator">[],</span><span class="type"> int</span> n<span class="operator">,</span><span class="type"> int</span> pos<span class="operator"> = -</span><span class="int">1</span><span class="operator">);</span><span class="comment">  //print array data
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+bool</span> is_gt<span class="operator">(</span><span class="keyword">const</span> T data<span class="operator">[],</span><span class="type"> int</span> n<span class="operator">,</span><span class="keyword"> const</span> T<span class="operator">&amp;</span> item<span class="operator">);</span><span class="comment">       //item &gt; all data[i]
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">class</span> T<span class="operator">&gt;</span><span class="type">
+bool</span> is_le<span class="operator">(</span><span class="keyword">const</span> T data<span class="operator">[],</span><span class="type"> int</span> n<span class="operator">,</span><span class="keyword"> const</span> T<span class="operator">&amp;</span> item<span class="operator">);</span><span class="comment">       //item &lt;= all data[i]
+
+//-------------- Vector Extra operators: ---------------------
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">typename</span> T<span class="operator">&gt;</span>
+ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator"> &lt;&lt;(</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> const</span> vector<span class="operator">&lt;</span>T<span class="operator">&gt;&amp;</span> list<span class="operator">);</span><span class="comment"> //print vector list
+</span><span class="keyword">
+template</span><span class="operator"> &lt;</span><span class="keyword">typename</span> T<span class="operator">&gt;</span>
+vector<span class="operator">&lt;</span>T<span class="operator">&gt;&amp;</span><span class="keyword"> operator</span><span class="operator"> +=(</span>vector<span class="operator">&lt;</span>T<span class="operator">&gt;&amp;</span> list<span class="operator">,</span><span class="keyword"> const</span> T<span class="operator">&amp;</span> addme<span class="operator">);</span><span class="comment"> //list.push_back addme
+</span>
+
+</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

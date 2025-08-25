@@ -1,0 +1,75 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 11_priority_q_class</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h4 style="text-align: left;">The <a title="11_heap_class: " href="11-heap-class.html">Heap</a> class this project is based on.</h4>
+<h2 style="text-align: center;"><strong>PQueue class:</strong></h2>
+<h4 style="text-align: center;">A composition of Heap</h4>
+<p>A priority queue is a structure that keeps the largest element handy so that when it is popped, it will remove and return the largest item. Comparisons between items is usually done on a structure with a member variable representing the priority of the item. A heap is the traditional data structure used to implement a priority queue:</p>
+<p><strong>The info struct:</strong></p>
+<p>The templated info struct has two member variables: item and priority. It will also implement comparison operator less than and the insertion operator:</p>
+<p><br><br></p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #008800;">struct</span> info{
+    T item;
+    <span style="color: #333399;">int</span> priority;
+
+    info()<span style="color: #333333;">:</span>item(T()), priority(<span style="color: #0000dd;">0</span>){}
+    info(T i, <span style="color: #333399;">int</span> p)<span style="color: #333333;">:</span>item(i), priority(p){}
+
+    <span style="color: #008800;">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;&lt;</span>(ostream<span style="color: #333333;">&amp;</span> outs, <span style="color: #008800;">const</span> info<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> print_me){
+        <span style="color: #008800;">const</span> <span style="color: #333399;">bool</span> tldr <span style="color: #333333;">=</span> <span style="color: #007020;">true</span>;
+<br>        <span style="color: #008800;">return</span> outs;
+    }
+
+    <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;</span>(<span style="color: #008800;">const</span> info<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> lhs, <span style="color: #008800;">const</span> info<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> rhs){
+        <span style="color: #008800;">return</span> ...
+    }
+    <span style="color: #008800;">friend</span> <span style="color: #333399;">bool</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&gt;</span>(<span style="color: #008800;">const</span> info<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> lhs, <span style="color: #008800;">const</span> info<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> rhs){
+        <span style="color: #008800;">return</span> ...
+    }
+
+};
+</pre>
+</div>
+<p><br><br><br></p>
+<p>We use a heap, templated with the info structure to build our <strong>PQueue class:</strong></p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">typename</span> T<span style="color: #333333;">&gt;</span>
+<span style="color: #008800;">class</span> <span style="color: #bb0066;">PQueue</span>
+{
+<span style="color: #997700;">public:</span>
+    PQueue(){}
+
+    <span style="color: #333399;">bool</span> push(<span style="color: #008800;">const</span> T<span style="color: #333333;">&amp;</span> value, <span style="color: #333399;">int</span> p);
+    T <span style="color: #0066bb;">pop</span>();
+    info<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> Pop_debug();
+    <span style="color: #333399;">bool</span> <span style="color: #0066bb;">is_empty</span>() <span style="color: #008800;">const</span> {<span style="color: #008800;">return</span> _heap.is_empty();}
+    <span style="color: #333399;">int</span> size() <span style="color: #008800;">const</span> {<span style="color: #008800;">return</span> _heap.size();}
+    <span style="color: #333399;">void</span> print_tree() <span style="color: #008800;">const</span>;
+    <span style="color: #008800;">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;&lt;</span>(ostream<span style="color: #333333;">&amp;</span> outs, <span style="color: #008800;">const</span> PQueue<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;&amp;</span> print_me){
+        outs<span style="color: #333333;">&lt;&lt;</span>print_me._heap;
+        <span style="color: #008800;">return</span> outs;
+    }
+    <span style="color: #333399;">bool</span> verify() <span style="color: #008800;">const</span>;
+<span style="color: #997700;">private:</span>
+    Heap<span style="color: #333333;">&lt;</span>info<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> <span style="color: #333333;">&gt;</span> _heap;
+
+};
+</pre>
+</div>
+<p><br><br></p>
+<p>The PQueue class functions rely on Heap class services.</p>
+<p>using a random generating function push (insert) 100 elements into the queue and then pop and print them. The items should show print in descending order of info priority:</p>
+<pre>    PQueue<span class="operator">&lt;</span><span class="type">int</span><span class="operator">&gt;</span> pq<span class="operator">;</span><span class="flow">
+    for</span><span class="operator"> (</span><span class="type">int</span> i<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span> i<span class="operator">&lt;100</span><span class="operator">;</span> i<span class="operator">++){</span>
+        pq<span class="operator">.</span>insert<span class="operator">(</span>Random<span class="operator">(</span><span class="int">1</span><span class="operator">,</span><span class="int">1000</span><span class="operator">),</span> Random<span class="operator">(</span><span class="int">1</span><span class="operator">,</span><span class="int">10</span><span class="operator">));
+    }</span></pre>
+<p><span style="text-decoration: underline;">as you see, the end user (the test program,) knows nothing of the info structure.</span></p>
+</body>
+</html>

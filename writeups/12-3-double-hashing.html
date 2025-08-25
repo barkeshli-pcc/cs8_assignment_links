@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 12-3 Double Hashing</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2 style="text-align: center;"><strong>Timing Double Hash and Open Hash objects</strong></h2>
+<h3><strong>Getting started:</strong></h3>
+<p>Design a double hash class as described here: (more detail in textbook)</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">class</span> <span style="color: #bb0066;">DoubleHash</span>
+{
+<span style="color: #997700;">public:</span>
+    <span style="color: #008800;">static</span> <span style="color: #008800;">const</span> <span style="color: #333399;">int</span> CAPACITY <span style="color: #333333;">=</span> TABLE_SIZE;        <span style="color: #888888;">//size of the table</span>
+    DoubleHash( );                      <span style="color: #888888;">//CTOR</span>
+
+    <span style="color: #333399;">bool</span> <span style="color: #0066bb;">insert</span>(<span style="color: #008800;">const</span> T<span style="color: #333333;">&amp;</span> entry);         <span style="color: #888888;">//insert entry; false if overwriting.</span>
+    <span style="color: #333399;">bool</span> <span style="color: #0066bb;">remove</span>(<span style="color: #333399;">int</span> key);                <span style="color: #888888;">//remove this key</span>
+
+    <span style="color: #333399;">bool</span> is_present(<span style="color: #333399;">int</span> key) <span style="color: #008800;">const</span>;      <span style="color: #888888;">//is this key present?</span>
+    <span style="color: #333399;">bool</span> find(<span style="color: #333399;">int</span> key, T<span style="color: #333333;">&amp;</span> result) <span style="color: #008800;">const</span>; <span style="color: #888888;">//result &lt;- record with this key</span>
+    <span style="color: #333399;">int</span> size( ) <span style="color: #008800;">const</span> { <span style="color: #008800;">return</span> used; }   <span style="color: #888888;">//number of keys in this table</span>
+                                         <span style="color: #888888;">//number of collisions in this table</span>
+    <span style="color: #333399;">long</span> collisions() <span style="color: #008800;">const</span> {<span style="color: #008800;">return</span> _collisions;}
+    <span style="color: #333399;">long</span> capacity() <span style="color: #008800;">const</span> {<span style="color: #008800;">return</span> CAPACITY;}
+
+    <span style="color: #888888;">//print the entire talbe with keys, records, and hash values</span>
+    <span style="color: #008800;">template</span><span style="color: #333333;">&lt;</span><span style="color: #008800;">class</span> <span style="color: #bb0066;">TT</span><span style="color: #333333;">&gt;</span>
+    <span style="color: #008800;">friend</span> ostream<span style="color: #333333;">&amp;</span> <span style="color: #008800;">operator</span> <span style="color: #333333;">&lt;&lt;</span> (ostream<span style="color: #333333;">&amp;</span> outs,
+                                 <span style="color: #008800;">const</span> DoubleHash<span style="color: #333333;">&lt;</span>TT<span style="color: #333333;">&gt;&amp;</span> h);
+<span style="color: #997700;">private:</span>
+
+    <span style="color: #008800;">static</span> <span style="color: #008800;">const</span> <span style="color: #333399;">int</span> NEVER_USED <span style="color: #333333;">=</span> <span style="color: #333333;">-</span><span style="color: #0000dd;">1</span>;        <span style="color: #888888;">//this cell has never had a value</span>
+    <span style="color: #008800;">static</span> <span style="color: #008800;">const</span> <span style="color: #333399;">int</span> PREVIOUSLY_USED <span style="color: #333333;">=</span> <span style="color: #333333;">-</span><span style="color: #0000dd;">2</span>;   <span style="color: #888888;">//this cell has previously</span>
+                                             <span style="color: #888888;">//   held a value that has since</span>
+                                             <span style="color: #888888;">//been deleted.</span>
+
+    vector<span style="color: #333333;">&lt;</span>T<span style="color: #333333;">&gt;</span> _data;                          <span style="color: #888888;">//table of records</span>
+    <span style="color: #333399;">int</span> used;                                <span style="color: #888888;">//number of keys in the table</span>
+    <span style="color: #333399;">long</span> _collisions;
+
+    <span style="color: #333399;">int</span> hash(<span style="color: #333399;">int</span> key) <span style="color: #008800;">const</span>;                <span style="color: #888888;">//hash function</span>
+    <span style="color: #333399;">int</span> hash2(<span style="color: #333399;">int</span> key) <span style="color: #008800;">const</span>;               <span style="color: #888888;">//hash2 function</span>
+    <span style="color: #333399;">int</span> next_index(<span style="color: #333399;">int</span> index, <span style="color: #333399;">int</span> key) <span style="color: #008800;">const</span>;       <span style="color: #888888;">//wrap around index</span>
+    <span style="color: #333399;">bool</span> find_index(<span style="color: #333399;">int</span> key, <span style="color: #333399;">int</span><span style="color: #333333;">&amp;</span> index) <span style="color: #008800;">const</span>;     <span style="color: #888888;">//find index of this key</span>
+    <span style="color: #333399;">bool</span> never_used(<span style="color: #333399;">int</span> index) <span style="color: #008800;">const</span>;      <span style="color: #888888;">//is this cell NEVER_USED</span>
+    <span style="color: #333399;">bool</span> is_vacant(<span style="color: #333399;">int</span> index) <span style="color: #008800;">const</span>;       <span style="color: #888888;">//is this cell available for insert</span>
+};
+</pre>
+</div>
+<p>&nbsp;</p>
+<p>In your constants.h file:&nbsp;<span style="color: var(--ic-brand-font-color-dark); font-family: inherit; font-size: 1rem;">Set your capacity to 811</span></p>
+<p>&nbsp;</p>
+<div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
+<pre style="margin: 0; line-height: 125%;"><span style="color: #557799;">#ifndef CONSTANTS_H</span>
+<span style="color: #557799;">#define CONSTANTS_H</span>
+<span style="color: #557799;">#include  &lt;math.h&gt;</span>
+<span style="color: #008800;">using</span> <span style="color: #008800;">namespace</span> std;
+
+<span style="color: #008800;">const</span> <span style="color: #333399;">int</span> TABLE_SIZE <span style="color: #333333;">=</span> <span style="color: #0000dd;">811</span>; <span style="color: #888888;">//811; //180799; //2121737;//180799;// 101119; //811;</span>
+
+<span style="color: #557799;">#endif </span><span style="color: #888888;">// CONSTANTS_H</span>
+</pre>
+</div>
+<p>&nbsp;</p>
+<p><span style="color: #ffffff;">in a for loop (700 iterations), create a record object with random key of 0..10000 (MAX_KEY_SIZE)</span></p>
+<p><span style="color: #ffffff;">Insert this record into both the open_hash and double_hash objects.</span></p>
+<p><span style="color: #ffffff;">At the end of the loop, report the number of collisions for each object.</span></p>
+<p><span style="color: #ffffff;">Place this code in the following function:</span></p>
+<h3><span style="color: #ffffff;"><strong>Timing Inserts:</strong>&nbsp;</span></h3>
+<p><span style="color: #ffffff;">Now, change this program so we can time the two object. How long did it take for the open_hash table to insert the 700 random records? How long did it take for the double_hash table to insert THE SAME random records? Do not insert different records into the two tables.</span></p>
+<h3><span style="color: #ffffff;"><strong>Timing Searches:</strong></span></h3>
+<p><span style="color: #ffffff;">How long did it take to search for 250 of the EXISTING keys in each object?</span></p>
+<p><span style="color: #ffffff;">How long did it take to search for 250 NONEXISTENT keys in each object?</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

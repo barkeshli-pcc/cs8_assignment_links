@@ -1,0 +1,232 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 11_90_bplustree_map</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2><strong>Map class:</strong></h2>
+<p>A map is an associative array (sorted structure) of pairs of key and values.</p>
+<p>Design a <strong>Pair class</strong> as follows:</p>
+<p>&nbsp;</p>
+<pre><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">typename</span> K<span class="operator">,</span><span class="keyword"> typename</span> V<span class="operator">&gt;</span><span class="keyword">
+struct</span> Pair<span class="operator">{</span>
+    K key<span class="operator">;</span>
+    V value<span class="operator">;</span>
+
+    Pair<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> k<span class="operator">=</span>K<span class="operator">(),</span><span class="keyword"> const</span> V<span class="operator">&amp;</span> v<span class="operator">=</span>V<span class="operator">());</span><span class="keyword">
+    friend</span> ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator"> &lt;&lt;(</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> print_me<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> ==(</span><span class="keyword">const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> &lt; (</span><span class="keyword">const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> &gt; (</span><span class="keyword">const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> &lt;= (</span><span class="keyword">const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;</span><span class="keyword"> operator</span><span class="operator"> + (</span><span class="keyword">const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);
+};</span></pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Now, implement a templated <strong>Map class</strong> as follows:</p>
+<pre><span class="keyword">class</span> Map<span class="operator">
+{</span><span class="keyword">
+public</span><span class="operator">:</span><span class="keyword">
+    typedef</span> BPlusTree<span class="operator">&lt;</span>Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt; &gt;</span> map_base<span class="operator">;</span><span class="keyword">
+    class</span> Iterator<span class="operator">{</span><span class="keyword">
+    public</span><span class="operator">:</span><span class="keyword">
+        friend class</span> Map<span class="operator">;</span>
+        Iterator<span class="operator">(</span><span class="keyword">typename</span> map_base<span class="operator">::</span>Iterator it<span class="operator">);</span>
+        Iterator<span class="keyword"> operator</span><span class="operator"> ++(</span><span class="type">int</span> unused<span class="operator">);</span>
+        Iterator<span class="keyword"> operator</span><span class="operator"> ++();</span>
+        Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;</span><span class="keyword"> operator</span><span class="operator"> *();</span><span class="keyword">
+        friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> ==(</span><span class="keyword">const</span> Iterator<span class="operator">&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Iterator<span class="operator">&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+        friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> !=(</span><span class="keyword">const</span> Iterator<span class="operator">&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Iterator<span class="operator">&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    private</span><span class="operator">:</span><span class="keyword">
+        typename</span> map_base<span class="operator">::</span>Iterator _it<span class="operator">;
+
+    };</span>
+
+    Map<span class="operator">();</span><span class="comment">
+//  Iterators
+</span>    Iterator begin<span class="operator">();</span>
+    Iterator end<span class="operator">();</span><span class="comment">
+
+//  Capacity
+</span><span class="type">    int</span> size<span class="operator">()</span><span class="keyword"> const</span><span class="operator">;</span><span class="type">
+    bool</span> empty<span class="operator">()</span><span class="keyword"> const</span><span class="operator">;</span><span class="comment">
+
+//  Element Access
+</span>    V<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator">[](</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span>
+    V<span class="operator">&amp;</span> at<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="keyword">
+    const</span> V<span class="operator">&amp;</span> at<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">)</span><span class="keyword"> const</span><span class="operator">;</span><span class="comment">
+
+
+//  Modifiers
+</span><span class="type">    void</span> insert<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> k<span class="operator">,</span><span class="keyword"> const</span> V<span class="operator">&amp;</span> v<span class="operator">);</span><span class="type">
+    void</span> erase<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="type">
+    void</span> clear<span class="operator">();</span>
+    V get<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="comment">
+
+//  Operations:
+</span>    Iterator find<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="type">
+    bool</span> contains<span class="operator">(</span><span class="keyword">const</span> Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> target<span class="operator">)</span><span class="keyword"> const</span><span class="operator">;</span><span class="comment">
+
+    // I have not writtent hese yet, but we will need them:
+    //    int count(const K&amp; key);
+    //    lower_bound
+    //    upper_bound
+    //    equal_range:
+</span><span class="type">
+    bool</span> is_valid<span class="operator">(){</span><span class="flow">return</span> map<span class="operator">.</span>is_valid<span class="operator">();}</span><span class="keyword">
+
+    friend</span> ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator">&lt;&lt;(</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> const</span> Map<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> print_me<span class="operator">){</span>
+        outs<span class="operator">&lt;&lt;</span>print_me<span class="operator">.</span>map<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="flow">
+        return</span> outs<span class="operator">;
+    }</span><span class="keyword">
+private</span><span class="operator">:</span><span class="type">
+    int</span> key_count<span class="operator">;</span>
+    BPlusTree<span class="operator">&lt;</span>Pair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt; &gt;</span> map<span class="operator">;
+};</span>
+
+</pre>
+<p>&nbsp;</p>
+<h2><strong>MMap class&nbsp;</strong></h2>
+<p>A Multimap is an associative array of key / value pairs. multiple keys with different values are allowed.</p>
+<p>Again, we design an <strong>MPair class</strong> that holds a key and a vector of keys:</p>
+<p>&nbsp;</p>
+<pre><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">typename</span> K<span class="operator">,</span><span class="keyword"> typename</span> V<span class="operator">&gt;</span><span class="keyword">
+struct</span> MPair<span class="operator">{</span>
+    K key<span class="operator">;</span>
+    vector<span class="operator">&lt;</span>V<span class="operator">&gt;</span> value_list<span class="operator">;</span><span class="comment">
+
+    //--------------------------------------------------------------------------------
+</span><span class="comment">    /*      MPair CTORs:
+     *  must have these CTORs:
+     *  - default CTOR / CTOR with a key and no value: this will create an empty vector
+     *  - CTOR with a key AND a value: pushes the value into the value_list
+     *  _ CTOR with a key and a vector of values (to replace value_list)
+     */</span><span class="comment">
+    //--------------------------------------------------------------------------------
+</span>    MPair<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> k<span class="operator">=</span>K<span class="operator">());</span>
+    MPair<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> k<span class="operator">,</span><span class="keyword"> const</span> V<span class="operator">&amp;</span> v<span class="operator">);</span>
+    MPair<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> k<span class="operator">,</span><span class="keyword"> const</span> vector<span class="operator">&lt;</span>V<span class="operator">&gt;&amp;</span> vlist<span class="operator">);</span><span class="comment">
+    //--------------------------------------------------------------------------------
+
+    //You'll need to overlod &lt;&lt; for your vector:
+</span><span class="keyword">    friend</span> ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator"> &lt;&lt;(</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> print_me<span class="operator">);</span><span class="keyword">
+    
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> ==(</span><span class="keyword">const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> &lt; (</span><span class="keyword">const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> &lt;= (</span><span class="keyword">const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> &gt; (</span><span class="keyword">const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+    friend</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;</span><span class="keyword"> operator</span><span class="operator"> + (</span><span class="keyword">const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> rhs<span class="operator">);
+};</span>
+</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Now, we can implement our <strong>MMap class</strong>:</p>
+<p>&nbsp;</p>
+<pre><span class="keyword">template</span><span class="operator"> &lt;</span><span class="keyword">typename</span> K<span class="operator">,</span><span class="keyword"> typename</span> V<span class="operator">&gt;</span><span class="keyword">
+class</span> MMap<span class="operator">
+{</span><span class="keyword">
+public</span><span class="operator">:</span><span class="keyword">
+    typedef</span> BPlusTree<span class="operator">&lt;</span>MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt; &gt;</span> map_base<span class="operator">;</span><span class="keyword">
+    class</span> Iterator<span class="operator">{</span><span class="keyword">
+    public</span><span class="operator">:</span><span class="keyword">
+        friend class</span> MMap<span class="operator">;</span>
+        Iterator<span class="operator">(</span><span class="keyword">typename</span> map_base<span class="operator">::</span>Iterator it<span class="operator">);</span>
+        Iterator<span class="keyword"> operator</span><span class="operator"> ++(</span><span class="type">int</span> unused<span class="operator">);</span>
+        Iterator<span class="keyword"> operator</span><span class="operator"> ++();</span>
+        MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;</span><span class="keyword"> operator</span><span class="operator"> *();</span><span class="keyword">
+        friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> ==(</span><span class="keyword">const</span> Iterator<span class="operator">&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Iterator<span class="operator">&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+        friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> !=(</span><span class="keyword">const</span> Iterator<span class="operator">&amp;</span> lhs<span class="operator">,</span><span class="keyword"> const</span> Iterator<span class="operator">&amp;</span> rhs<span class="operator">);</span><span class="keyword">
+
+    private</span><span class="operator">:</span><span class="keyword">
+        typename</span> map_base<span class="operator">::</span>Iterator _it<span class="operator">;
+    };</span>
+
+    MMap<span class="operator">();</span><span class="comment">
+
+//  Iterators
+</span>    Iterator begin<span class="operator">();</span>
+    Iterator end<span class="operator">();</span><span class="comment">
+
+//  Capacity
+</span><span class="type">    int</span> size<span class="operator">()</span><span class="keyword"> const</span><span class="operator">;</span><span class="type">
+    bool</span> empty<span class="operator">()</span><span class="keyword"> const</span><span class="operator">;</span><span class="comment">
+
+//  Element Access
+</span><span class="keyword">    const</span> vector<span class="operator">&lt;</span>V<span class="operator">&gt;&amp;</span><span class="keyword"> operator</span><span class="operator">[](</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">)</span><span class="keyword"> const</span><span class="operator">;</span>
+    vector<span class="operator">&lt;</span>V<span class="operator">&gt;&amp;</span><span class="keyword"> operator</span><span class="operator">[](</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="comment">
+
+//  Modifiers
+</span><span class="type">    void</span> insert<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> k<span class="operator">,</span><span class="keyword"> const</span> V<span class="operator">&amp;</span> v<span class="operator">);</span><span class="type">
+    void</span> erase<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="type">
+    void</span> clear<span class="operator">();</span><span class="comment">
+
+//  Operations:
+</span><span class="type">    bool</span> contains<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">)</span><span class="keyword"> const</span><span class="operator"> ;</span>
+    vector<span class="operator">&lt;</span>V<span class="operator">&gt; &amp;</span>get<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span>
+
+    Iterator find<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="type">
+    int</span> count<span class="operator">(</span><span class="keyword">const</span> K<span class="operator">&amp;</span> key<span class="operator">);</span><span class="comment">
+    // I have not writtent hese yet, but we will need them:
+    //    int count(const K&amp; key);
+    //    lower_bound
+    //    upper_bound
+    //    equal_range:
+</span><span class="type">
+
+
+    bool</span> is_valid<span class="operator">();</span><span class="keyword">
+
+    friend</span> ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator">&lt;&lt;(</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> const</span> MMap<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt;&amp;</span> print_me<span class="operator">){</span>
+        outs<span class="operator">&lt;&lt;</span>print_me<span class="operator">.</span>mmap<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="flow">
+        return</span> outs<span class="operator">;
+    }</span><span class="keyword">
+
+private</span><span class="operator">:</span>
+    BPlusTree<span class="operator">&lt;</span>MPair<span class="operator">&lt;</span>K<span class="operator">,</span> V<span class="operator">&gt; &gt;</span> mmap<span class="operator">;
+};</span></pre>
+<p>&nbsp;</p>
+<h2><strong>About Multimap Subscript Operator [ ]</strong></h2>
+<p>the MMap subscript operator returns a reference to the vector associated with the key.</p>
+<p>In the const version of the operator, the underlying const get function will assert that the key is in the Tree. In the non_cost version, the underlying get function will add a new node with the key and an empty vector.</p>
+<p>NOTE: Accessing the non-existent elements of an empty array crashes the program. So, if you need to print or access values of a key, make sure the key exists in your tree</p>
+<pre>    cout<span class="operator">&lt;&lt;</span><span class="string">"read key G: "</span><span class="operator">&lt;&lt;</span>m<span class="operator">[</span><span class="string">"G"</span><span class="operator">]&lt;&lt;</span>endl<span class="operator">;</span><span class="comment">
+
+    //reading a non_existent key will crash without warning.
+    //  we will need to deal with this.
+    //  perhaps the operator that will take m["Z"] 
+    //  (operator &lt;&lt; in this example) can verify that 
+    //  it is not an empty vector. 
+    //
+    //cout&lt;&lt;"read non_existent key Z: "&lt;&lt;m["Z"]&lt;&lt;endl;
+</span>
+    cout<span class="operator">&lt;&lt;</span><span class="string">"add 99 to the non_existent key Z: "</span><span class="operator">;</span>
+    m<span class="operator">[</span><span class="string">"Z"</span><span class="operator">]+=</span><span class="int">99</span><span class="operator">;</span><span class="comment">                     //returns a reference to an empty 
+                                    //  vector to which we are pushing back
+                                    //  the value 99
+                                    //could also use m["Z"].push_back(99);
+</span>    cout<span class="operator">&lt;&lt;</span>m<span class="operator">[</span><span class="string">"Z"</span><span class="operator">];</span><span class="comment"> 
+    
+    //or simply;
+    //cout&lt;&lt;"add 99 to the non_existent key Z: "
+    //    &lt;&lt;(m["Z"]+=99)&lt;&lt;endl; //could also push_back
+</span>
+
+</pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

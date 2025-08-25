@@ -1,0 +1,1070 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 12_05_hash_demo</title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<ul>
+<li>
+<a title="12-3 Double Hashing" href="12-3-double-hashing.html">DoubleHash</a> class</li>
+<li>
+<a title="12.01 Chained Hash Class" href="12-1-chained-hash-class.html">ChainedHash</a> class</li>
+</ul>
+<h2>
+<span style="font-size: 36pt; color: #ff0000; background-color: #ffff99;"><strong>PLEASE NOTE</strong></span>: This document is asking you to implement open and chain hash. But this semester, we will be implementing <span style="text-decoration: underline;"><strong>open, double and chain hashing</strong></span> schemes. The rest of the specifications remain the same.</h2>
+<p>&nbsp;</p>
+<h2 style="text-align: center;"><strong>Hash Table Demonstration Program</strong></h2>
+<h3><strong>Two Hash Classes:</strong></h3>
+<p>We have discussed (and implemented) two Hash classes: the open_hash class and a chained_hash class.</p>
+<h3><strong>The Application:</strong></h3>
+<p>&nbsp;</p>
+<p>We will write an application that will demonstrate the functionality of these two classes.</p>
+<p>The application has two parts: a random test and an interactive test.</p>
+<p>The main function may run a random test on open_hash, or chained_hash objects. Or allow the user to interact with either of the two objects.</p>
+<p>To accomplish this, I wrote two templated functions that take a generic hash table as argument. These functions will be called with an open_hash or chained_hash objects.</p>
+<p>So, the main looks something like this:</p>
+<pre><span class="type">int</span><span class="keyword"> main</span><span class="operator">(){</span>
+    cout<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span><span class="string">"----------------------"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">;</span><span class="keyword">
+    const</span><span class="type"> bool</span> RANDOM_CHAINED<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;</span><span class="keyword">
+    const</span><span class="type"> bool</span> RANDOM_OPEN<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;</span><span class="keyword">
+    const</span><span class="type"> bool</span> INTERACTIVE_OPEN<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;</span><span class="keyword">
+    const</span><span class="type"> bool</span> INTERACTIVE_CHAINED<span class="operator"> =</span><span class="bool"> true</span><span class="operator">;</span><span class="flow">
+    
+    if</span><span class="operator"> (</span>INTERACTIVE_OPEN<span class="operator">){</span>
+        cout<span class="operator">&lt;&lt;</span><span class="string">"-------  INTERACTIVE TESTS ---------------------------"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+        open_hash<span class="operator">&lt;</span>record<span class="operator">&gt;</span> open<span class="operator">;</span>
+        test_hash_table_interactive<span class="operator">(</span>open<span class="operator">,</span><span class="string"> "open_hash_table"</span><span class="operator"> );
+    }</span><span class="flow">
+
+    if</span><span class="operator"> (</span>INTERACTIVE_CHAINED<span class="operator">){</span>
+        cout<span class="operator">&lt;&lt;</span><span class="string">"-------  INTERACTIVE TESTS ---------------------------"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;</span>
+        chained_hash<span class="operator">&lt;</span>record<span class="operator">&gt;</span> chained<span class="operator">;</span>
+        test_hash_table_interactive<span class="operator">(</span>chained<span class="operator">,</span><span class="string"> "chained_hash_table"</span><span class="operator"> );
+    }</span><span class="flow">
+
+    if</span><span class="operator"> (</span>RANDOM_CHAINED<span class="operator">){</span><span class="comment">
+        //----------- RANDOM TEST ------------------------------
+        //. . . . . .  Chained Hash Table . . . . . . . . . . .;
+</span>        chained_hash<span class="operator">&lt;</span>record<span class="operator">&gt;</span> c_table<span class="operator">;</span>
+        test_hash_table_random<span class="operator">(</span>c_table<span class="operator">,</span><span class="int"> 2500</span><span class="operator">,</span><span class="string"> "chained_hash_table&lt;record&gt;"</span><span class="operator">);</span>
+        cout<span class="operator">&lt;&lt;</span>c_table<span class="operator">&lt;&lt;</span>endl<span class="operator">;
+    }</span><span class="flow">
+
+    if</span><span class="operator"> (</span>RANDOM_OPEN<span class="operator">){</span><span class="comment">
+        //----------- RANDOM TEST ------------------------------
+        //. . . . . .  Simple Hash Table . . . . . . . . . . .;
+</span>        open_hash<span class="operator">&lt;</span>record<span class="operator">&gt;</span> h_table<span class="operator">;</span>
+        test_hash_table_random<span class="operator">(</span>h_table<span class="operator">,</span><span class="int"> 500</span><span class="operator">,</span><span class="string"> "hash_table&lt;record&gt;"</span><span class="operator">);</span>
+        cout<span class="operator">&lt;&lt;</span>h_table<span class="operator">&lt;&lt;</span>endl<span class="operator">;
+    }</span>
+
+    cout<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span>endl<span class="operator">&lt;&lt;</span><span class="string">"---------------------------------"</span><span class="operator">&lt;&lt;</span>endl<span class="operator">;
+
+}</span></pre>
+<p><strong>struct record:</strong></p>
+<p>Where the record type is defined as follows:</p>
+<pre><span class="keyword">struct</span> record<span class="operator">
+{</span><span class="type">
+    int</span> _key<span class="operator">;</span><span class="type">
+    double</span> _value<span class="operator">;</span>
+
+    record<span class="operator">(</span><span class="type">int</span> k<span class="operator">=</span><span class="int">0</span><span class="operator">,</span><span class="type"> double</span> v<span class="operator">=</span><span class="int">0</span><span class="operator">):</span>_key<span class="operator">(</span>k<span class="operator">),</span> _value<span class="operator">(</span>v<span class="operator">);</span><span class="keyword">
+    friend</span><span class="type"> bool</span><span class="keyword"> operator</span><span class="operator"> ==(</span><span class="keyword">const</span> record<span class="operator">&amp;</span> left<span class="operator">,</span><span class="keyword"> const</span> record<span class="operator">&amp;</span> right<span class="operator">);</span><span class="keyword">
+    friend</span> ostream<span class="operator">&amp;</span><span class="keyword"> operator</span><span class="operator"> &lt;&lt;(</span>ostream<span class="operator">&amp;</span> outs<span class="operator">,</span><span class="keyword"> const</span> record<span class="operator">&amp;</span> print_me<span class="operator">);
+};</span></pre>
+<p>Here value can be any type or instance of any class that has the required interface.</p>
+<h3><strong>Interactive Test:</strong></h3>
+<p>When running this, an unreasonably small table would be more suitable (I used 17) since we require all the data in the tables to be displayed.</p>
+<p>User will be presented with this menu:</p>
+<pre><span class="operator">[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span></pre>
+<p>The user can insert a pair of numbers (key, value), delete a given key, find or test the existence of a key, get a report of how many keys are in the table or the most useful of all, insert a random record in the table. (the random record will obviously not work with a record of keys and strings)</p>
+<p><strong>NOTE:</strong> If the user attepts to delete a nonexistent key, the test function will report that the delete has failed. (the Remove function should return false if the removal has failed)</p>
+<p>Once the user has made a choice, you will respond accordingly and will use the hash object's insertion operator to print the entire table with useful information:</p>
+<p><strong>Sample Interactive Run:&nbsp;open_hash</strong></p>
+<pre><span class="operator">-------</span>  INTERACTIVE TESTS<span class="operator"> ---------------------------</span>
+Table of<span class="operator"> {</span><span class="type">int</span><span class="operator">:</span><span class="type">double</span><span class="operator">}</span><span class="comment">
+/*
+ * After each operation, tell the user what you did:
+ * e.g: 9272:2231 has been INSERTED.
+ */</span><span class="operator">
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+9272</span><span class="operator">:</span><span class="int">2231</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]  
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]  
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]  
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]  
+[</span><span class="int">013</span><span class="operator">]  
+[</span><span class="int">014</span><span class="operator">]  
+[</span><span class="int">015</span><span class="operator">]  
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+7733</span><span class="operator">:</span><span class="int">1077</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]  
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]  
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]  
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]  
+[</span><span class="int">013</span><span class="operator">]  
+[</span><span class="int">014</span><span class="operator">]  
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+4755</span><span class="operator">:</span><span class="int">4919</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]  
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]  
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]  
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]  
+[</span><span class="int">014</span><span class="operator">]  
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]</span><span class="comment">  
+
+/*
+ * Collisions:
+ * when there is a collision, put a star next to the record:
+ *     the hash code for the key does not match the index
+ *     at which it is stored.
+ */</span><span class="operator">
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+4908</span><span class="operator">:</span><span class="int">7544</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]  
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]  
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]  
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]  
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+9135</span><span class="operator">:</span><span class="int">1852</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]  
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]</span><span class="int"> 9135</span><span class="operator">:</span><span class="int">1852</span><span class="operator">(</span><span class="int">006</span><span class="operator">) 
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]  
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]  
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+1408</span><span class="operator">:</span><span class="int">4397</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]  
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]</span><span class="int"> 9135</span><span class="operator">:</span><span class="int">1852</span><span class="operator">(</span><span class="int">006</span><span class="operator">) 
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]  
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+8592</span><span class="operator">:</span><span class="int">6345</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]  
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]</span><span class="int"> 9135</span><span class="operator">:</span><span class="int">1852</span><span class="operator">(</span><span class="int">006</span><span class="operator">) 
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+9453</span><span class="operator">:</span><span class="int">8696</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]</span><span class="int"> 9135</span><span class="operator">:</span><span class="int">1852</span><span class="operator">(</span><span class="int">006</span><span class="operator">) 
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]  
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>i<span class="int"> 7 42</span><span class="operator">
+&gt;&gt;</span><span class="int">7</span><span class="operator">:</span><span class="int">2</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">]</span><span class="int"> 9135</span><span class="operator">:</span><span class="int">1852</span><span class="operator">(</span><span class="int">006</span><span class="operator">) 
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>d<span class="int"> 9135</span><span class="operator">
+&gt;&gt;</span><span class="int">9135</span> was REMOVED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">]</span><span class="int"> 9272</span><span class="operator">:</span><span class="int">2231</span><span class="operator">(</span><span class="int">007</span><span class="operator">) 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]</span><span class="comment">  
+
+/*
+ * if a cell is PREVIOUSLY_USED, mark it with a line of dashes
+ */</span><span class="operator">
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>d<span class="int"> 9272</span><span class="operator">   
+&gt;&gt;</span><span class="int">9272</span> was REMOVED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>f<span class="int"> 9272</span><span class="operator">
+&gt;&gt;</span><span class="int">9272</span> NOT FOUND<span class="operator">
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>f<span class="int"> 7</span><span class="operator">
+&gt;&gt;</span><span class="int">7</span><span class="operator">:</span><span class="int">2</span><span class="operator">
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>f<span class="int"> 4755</span><span class="operator">
+&gt;&gt;</span><span class="int">4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :?</span><span class="int"> 1408</span><span class="operator">
+&gt;&gt;</span><span class="int">1408</span> EXISTS<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 1408</span><span class="operator">:</span><span class="int">4397</span><span class="operator">(</span><span class="int">014</span><span class="operator">) 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>d<span class="int"> 1408</span><span class="operator">
+&gt;&gt;</span><span class="int">1408</span> was REMOVED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]  
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">] - - - - - - 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+7201</span><span class="operator">:</span><span class="int">8569</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">] - - - - - - 
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+8342</span><span class="operator">:</span><span class="int">2211</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]  
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+6095</span><span class="operator">:</span><span class="int">1343</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]  
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]</span><span class="int"> 6095</span><span class="operator">:</span><span class="int">1343</span><span class="operator">(</span>009<span class="operator">) *
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+8912</span><span class="operator">:</span><span class="int">12</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]</span><span class="int"> 8912</span><span class="operator">:</span><span class="int">0012</span><span class="operator">(</span><span class="int">004</span><span class="operator">) 
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]</span><span class="int"> 6095</span><span class="operator">:</span><span class="int">1343</span><span class="operator">(</span>009<span class="operator">) *
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]  
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+877</span><span class="operator">:</span><span class="int">6201</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]  
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]</span><span class="int"> 8912</span><span class="operator">:</span><span class="int">0012</span><span class="operator">(</span><span class="int">004</span><span class="operator">) 
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]</span><span class="int"> 6095</span><span class="operator">:</span><span class="int">1343</span><span class="operator">(</span>009<span class="operator">) *
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]</span> 0877<span class="operator">:</span><span class="int">6201</span><span class="operator">(</span><span class="int">010</span><span class="operator">) *</span><span class="comment">
+
+/*
+ * Primary Clustering: Note how the two numbers with hash of 7
+ *            caused the number with hash of 9 to be misplaced. In 
+ *            larger scale projects, this is a real problem.
+ */</span><span class="operator">
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+4706</span><span class="operator">:</span><span class="int">7240</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]</span><span class="int"> 4706</span><span class="operator">:</span><span class="int">7240</span><span class="operator">(</span><span class="int">014</span><span class="operator">) *
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]  
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]</span><span class="int"> 8912</span><span class="operator">:</span><span class="int">0012</span><span class="operator">(</span><span class="int">004</span><span class="operator">) 
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]</span><span class="int"> 6095</span><span class="operator">:</span><span class="int">1343</span><span class="operator">(</span>009<span class="operator">) *
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]</span> 0877<span class="operator">:</span><span class="int">6201</span><span class="operator">(</span><span class="int">010</span><span class="operator">) *
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+6479</span><span class="operator">:</span><span class="int">762</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]</span><span class="int"> 4706</span><span class="operator">:</span><span class="int">7240</span><span class="operator">(</span><span class="int">014</span><span class="operator">) *
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]</span><span class="int"> 6479</span><span class="operator">:</span><span class="int">0762</span><span class="operator">(</span><span class="int">002</span><span class="operator">) 
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]</span><span class="int"> 8912</span><span class="operator">:</span><span class="int">0012</span><span class="operator">(</span><span class="int">004</span><span class="operator">) 
+[</span><span class="int">005</span><span class="operator">]  
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]</span><span class="int"> 6095</span><span class="operator">:</span><span class="int">1343</span><span class="operator">(</span>009<span class="operator">) *
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]</span> 0877<span class="operator">:</span><span class="int">6201</span><span class="operator">(</span><span class="int">010</span><span class="operator">) *
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+4968</span><span class="operator">:</span><span class="int">2387</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]</span><span class="int"> 4706</span><span class="operator">:</span><span class="int">7240</span><span class="operator">(</span><span class="int">014</span><span class="operator">) *
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]</span><span class="int"> 6479</span><span class="operator">:</span><span class="int">0762</span><span class="operator">(</span><span class="int">002</span><span class="operator">) 
+[</span><span class="int">003</span><span class="operator">]  
+[</span><span class="int">004</span><span class="operator">]</span><span class="int"> 8912</span><span class="operator">:</span><span class="int">0012</span><span class="operator">(</span><span class="int">004</span><span class="operator">) 
+[</span><span class="int">005</span><span class="operator">]</span><span class="int"> 4968</span><span class="operator">:</span><span class="int">2387</span><span class="operator">(</span><span class="int">004</span><span class="operator">) *
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]</span><span class="int"> 6095</span><span class="operator">:</span><span class="int">1343</span><span class="operator">(</span>009<span class="operator">) *
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]</span> 0877<span class="operator">:</span><span class="int">6201</span><span class="operator">(</span><span class="int">010</span><span class="operator">) *
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+7427</span><span class="operator">:</span><span class="int">6289</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">]</span><span class="int"> 4706</span><span class="operator">:</span><span class="int">7240</span><span class="operator">(</span><span class="int">014</span><span class="operator">) *
+[</span><span class="int">001</span><span class="operator">]</span><span class="int"> 9453</span><span class="operator">:</span><span class="int">8696</span><span class="operator">(</span><span class="int">001</span><span class="operator">) 
+[</span><span class="int">002</span><span class="operator">]</span><span class="int"> 6479</span><span class="operator">:</span><span class="int">0762</span><span class="operator">(</span><span class="int">002</span><span class="operator">) 
+[</span><span class="int">003</span><span class="operator">]</span><span class="int"> 7427</span><span class="operator">:</span><span class="int">6289</span><span class="operator">(</span><span class="int">015</span><span class="operator">) *
+[</span><span class="int">004</span><span class="operator">]</span><span class="int"> 8912</span><span class="operator">:</span><span class="int">0012</span><span class="operator">(</span><span class="int">004</span><span class="operator">) 
+[</span><span class="int">005</span><span class="operator">]</span><span class="int"> 4968</span><span class="operator">:</span><span class="int">2387</span><span class="operator">(</span><span class="int">004</span><span class="operator">) *
+[</span><span class="int">006</span><span class="operator">] - - - - - - 
+[</span><span class="int">007</span><span class="operator">] - - - - - - 
+[</span>008<span class="operator">]</span><span class="int"> 8592</span><span class="operator">:</span><span class="int">6345</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span>009<span class="operator">]</span><span class="int"> 0007</span><span class="operator">:</span><span class="int">0002</span><span class="operator">(</span><span class="int">007</span><span class="operator">) *
+[</span><span class="int">010</span><span class="operator">]</span><span class="int"> 7201</span><span class="operator">:</span><span class="int">8569</span><span class="operator">(</span><span class="int">010</span><span class="operator">) 
+[</span><span class="int">011</span><span class="operator">]</span><span class="int"> 6095</span><span class="operator">:</span><span class="int">1343</span><span class="operator">(</span>009<span class="operator">) *
+[</span><span class="int">012</span><span class="operator">]</span><span class="int"> 4755</span><span class="operator">:</span><span class="int">4919</span><span class="operator">(</span><span class="int">012</span><span class="operator">) 
+[</span><span class="int">013</span><span class="operator">]</span><span class="int"> 4908</span><span class="operator">:</span><span class="int">7544</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">014</span><span class="operator">]</span><span class="int"> 8342</span><span class="operator">:</span><span class="int">2211</span><span class="operator">(</span><span class="int">012</span><span class="operator">) *
+[</span><span class="int">015</span><span class="operator">]</span><span class="int"> 7733</span><span class="operator">:</span><span class="int">1077</span><span class="operator">(</span><span class="int">015</span><span class="operator">) 
+[</span><span class="int">016</span><span class="operator">]</span> 0877<span class="operator">:</span><span class="int">6201</span><span class="operator">(</span><span class="int">010</span><span class="operator">) *
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>x
+D O N E<span class="operator"> .
+
+
+
+
+---------------------------------</span>
+Press<span class="operator"> &lt;</span>RETURN<span class="operator">&gt;</span> to close<span class="keyword"> this</span> window<span class="operator">...</span></pre>
+<p><strong>Sample Interactive Run: chained_hash</strong></p>
+<p>This method will avoid the problem of Primary Clustering:&nbsp;</p>
+<pre><span class="operator">-------</span>  INTERACTIVE TESTS<span class="operator"> ---------------------------</span>
+Table of<span class="operator"> {</span><span class="type">int</span><span class="operator">:</span><span class="type">double</span><span class="operator">}
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] |||
+[</span>009<span class="operator">] |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] |||
+[</span><span class="int">016</span><span class="operator">] |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>rrrrrrrrr<span class="int">
+8448</span><span class="operator">:</span><span class="int">9784</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] |||
+[</span>009<span class="operator">] |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] |||
+[</span>009<span class="operator">] [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] |||
+[</span>009<span class="operator">] [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] |||
+[</span>009<span class="operator">] [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+2502</span><span class="operator">:</span><span class="int">3474</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>r<span class="int">
+7864</span><span class="operator">:</span><span class="int">3177</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] [</span><span class="int">7864</span><span class="operator">:</span><span class="int">3177</span><span class="operator">]-&gt; |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>rr<span class="int">
+4868</span><span class="operator">:</span><span class="int">1768</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">4868</span><span class="operator">:</span><span class="int">1768</span><span class="operator">]-&gt; [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] [</span><span class="int">7864</span><span class="operator">:</span><span class="int">3177</span><span class="operator">]-&gt; |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span><span class="int">5013</span><span class="operator">:</span><span class="int">779</span> has been INSERTED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">4868</span><span class="operator">:</span><span class="int">1768</span><span class="operator">]-&gt; [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] [</span><span class="int">7864</span><span class="operator">:</span><span class="int">3177</span><span class="operator">]-&gt; |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">5013</span><span class="operator">:</span><span class="int">779</span><span class="operator">]-&gt; [</span><span class="int">270</span><span class="operator">:</span><span class="int">2516</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>d<span class="int"> 270</span><span class="operator">
+&gt;&gt;</span><span class="int">270</span> was REMOVED<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">4868</span><span class="operator">:</span><span class="int">1768</span><span class="operator">]-&gt; [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] [</span><span class="int">7864</span><span class="operator">:</span><span class="int">3177</span><span class="operator">]-&gt; |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">5013</span><span class="operator">:</span><span class="int">779</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>f<span class="int"> 1607</span><span class="operator">
+&gt;&gt;</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">4868</span><span class="operator">:</span><span class="int">1768</span><span class="operator">]-&gt; [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] [</span><span class="int">7864</span><span class="operator">:</span><span class="int">3177</span><span class="operator">]-&gt; |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">5013</span><span class="operator">:</span><span class="int">779</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :?</span><span class="int">8448</span><span class="operator">
+&gt;&gt;</span><span class="int">8448</span> EXISTS<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">4868</span><span class="operator">:</span><span class="int">1768</span><span class="operator">]-&gt; [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] [</span><span class="int">7864</span><span class="operator">:</span><span class="int">3177</span><span class="operator">]-&gt; |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">5013</span><span class="operator">:</span><span class="int">779</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :?</span><span class="int">42</span><span class="operator">
+&gt;&gt;</span><span class="int">42</span> DOES NOT EXIST<span class="operator">.
+[</span><span class="int">000</span><span class="operator">] |||
+[</span><span class="int">001</span><span class="operator">] [</span><span class="int">3061</span><span class="operator">:</span><span class="int">1864</span><span class="operator">]-&gt; |||
+[</span><span class="int">002</span><span class="operator">] [</span><span class="int">3980</span><span class="operator">:</span><span class="int">9301</span><span class="operator">]-&gt; |||
+[</span><span class="int">003</span><span class="operator">] [</span><span class="int">2502</span><span class="operator">:</span><span class="int">3474</span><span class="operator">]-&gt; [</span><span class="int">3556</span><span class="operator">:</span><span class="int">2761</span><span class="operator">]-&gt; |||
+[</span><span class="int">004</span><span class="operator">] |||
+[</span><span class="int">005</span><span class="operator">] |||
+[</span><span class="int">006</span><span class="operator">] [</span><span class="int">4868</span><span class="operator">:</span><span class="int">1768</span><span class="operator">]-&gt; [</span><span class="int">2369</span><span class="operator">:</span><span class="int">2904</span><span class="operator">]-&gt; |||
+[</span><span class="int">007</span><span class="operator">] |||
+[</span>008<span class="operator">] [</span><span class="int">7913</span><span class="operator">:</span><span class="int">6780</span><span class="operator">]-&gt; |||
+[</span>009<span class="operator">] [</span><span class="int">5449</span><span class="operator">:</span><span class="int">3694</span><span class="operator">]-&gt; [</span><span class="int">1607</span><span class="operator">:</span><span class="int">9530</span><span class="operator">]-&gt; |||
+[</span><span class="int">010</span><span class="operator">] [</span><span class="int">7864</span><span class="operator">:</span><span class="int">3177</span><span class="operator">]-&gt; |||
+[</span><span class="int">011</span><span class="operator">] |||
+[</span><span class="int">012</span><span class="operator">] |||
+[</span><span class="int">013</span><span class="operator">] |||
+[</span><span class="int">014</span><span class="operator">] |||
+[</span><span class="int">015</span><span class="operator">] [</span><span class="int">5013</span><span class="operator">:</span><span class="int">779</span><span class="operator">]-&gt; |||
+[</span><span class="int">016</span><span class="operator">] [</span><span class="int">8448</span><span class="operator">:</span><span class="int">9784</span><span class="operator">]-&gt; |||
+
+
+[</span>S<span class="operator">]</span>ize<span class="operator">() [</span>I<span class="operator">]</span>nsert<span class="operator"> [</span>R<span class="operator">]</span>andom<span class="operator"> [</span>D<span class="operator">]</span>elete<span class="operator"> [</span>F<span class="operator">]</span>ind value<span class="operator"> [?]</span>exists<span class="operator">?</span>   e<span class="operator">[</span>X<span class="operator">]</span>it<span class="operator">  :</span>x
+D O N E<span class="operator"> .
+
+
+
+---------------------------------</span>
+Press<span class="operator"> &lt;</span>RETURN<span class="operator">&gt;</span> to close<span class="keyword"> this</span> window<span class="operator">...</span></pre>
+<p>&nbsp;</p>
+<h3><strong>Random Test:</strong></h3>
+<p>Your random test function will take a templaed hash object (chained or open) and a number of elements to insert. Also, add a string to the function signature to make is easier to report which object is being tested. See the descripiton of main above.</p>
+<p>Set your table size back to 811.</p>
+<p>Allocate an array of appropriate size and append random records to it. We want to know what keys have been inserted so we can search for existing keys AND nonexistent keys.</p>
+<p>obvoiusly, for open_hash test, you need a number below 811, say 500.</p>
+<p>Insert these random records into the hash object</p>
+<p>Then take half this amount (how_many/2) and pick random cells in the array and search for them in the object. Count the number of found records and the number of not_found records. For this test, the number of not_found records must be zero.</p>
+<p>Then, generate the same number of keys&nbsp;making&nbsp;sure they are not in the array and search for these keys. The number of found records must be zero.&nbsp;</p>
+<p>Report the result of your test</p>
+<p><strong>Sample Run:</strong></p>
+<p>Here I am running both chained_hash and open_hash random tests:</p>
+<pre><span class="operator">----------------------
+
+
+********************************************************************************</span>
+                 R A N D O M   H A S H   T E S T<span class="operator">:</span> chained_hash_table<span class="operator">&lt;</span>record<span class="operator">&gt;
+********************************************************************************
+---- [</span><span class="int">2500</span><span class="operator">]</span> keys inserted<span class="operator">.
+
+
+- - - - - - - - -</span> Search<span class="flow"> for</span> existing keys<span class="operator"> ----------------</span>
+Search<span class="flow"> for</span> existing keys<span class="operator">:</span><span class="int"> 1250</span> keys to be tested<span class="operator">:</span> 
+EXISTING KEYS LOOKUP<span class="operator">:</span> VERIFID<span class="operator">.</span> EXISTING KEYS EXAMINED<span class="operator">:</span><span class="int"> 1250</span><span class="operator">
+
+
+- - - - - - - - -</span> Search<span class="flow"> for</span> non<span class="operator">-</span>existent keys<span class="operator"> ----------------</span>
+Search<span class="flow"> for</span> nonexistent keys<span class="operator">:</span><span class="int"> 1250</span> keys to be tested<span class="operator">:</span> 
+NONEXISTENT KEYS LOOKUP<span class="operator">:</span> VERIFID<span class="operator">.</span> NONEXISTENT KEYS EXAMINED<span class="operator">:</span><span class="int"> 1250</span><span class="operator">
+
+------------------</span> END RANDOM TEST<span class="operator"> ----------------------
+********************************************************************************</span>
+                 R A N D O M   H A S H   T E S T<span class="operator">:</span> hash_table<span class="operator">&lt;</span>record<span class="operator">&gt;
+********************************************************************************
+---- [</span><span class="int">500</span><span class="operator">]</span> keys inserted<span class="operator">.
+
+
+- - - - - - - - -</span> Search<span class="flow"> for</span> existing keys<span class="operator"> ----------------</span>
+Search<span class="flow"> for</span> existing keys<span class="operator">:</span><span class="int"> 250</span> keys to be tested<span class="operator">:</span> 
+EXISTING KEYS LOOKUP<span class="operator">:</span> VERIFID<span class="operator">.</span> EXISTING KEYS EXAMINED<span class="operator">:</span><span class="int"> 250</span><span class="operator">
+
+
+- - - - - - - - -</span> Search<span class="flow"> for</span> non<span class="operator">-</span>existent keys<span class="operator"> ----------------</span>
+Search<span class="flow"> for</span> nonexistent keys<span class="operator">:</span><span class="int"> 250</span> keys to be tested<span class="operator">:</span> 
+NONEXISTENT KEYS LOOKUP<span class="operator">:</span> VERIFID<span class="operator">.</span> NONEXISTENT KEYS EXAMINED<span class="operator">:</span><span class="int"> 250</span><span class="operator">
+
+------------------</span> END RANDOM TEST<span class="operator"> ----------------------
+
+
+
+---------------------------------</span>
+Press<span class="operator"> &lt;</span>RETURN<span class="operator">&gt;</span> to close<span class="keyword"> this</span> window<span class="operator">...</span>
+</pre>
+<p>&nbsp;</p>
+</body>
+</html>

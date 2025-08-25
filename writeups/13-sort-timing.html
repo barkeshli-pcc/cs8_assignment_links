@@ -1,0 +1,86 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>Assignment: 13_sort_timing: </title>
+<link rel="stylesheet" href="modern-style.css">
+
+</head>
+<body>
+<h2 style="text-align: center;"><strong>Timing Sort Functions:</strong></h2>
+<p>In this project, you will time the sort algorithms you will implement</p>
+<ul>
+<li>insertion sort</li>
+<li>bubble sort</li>
+<li>quick sort</li>
+<li>merge sort</li>
+<li>heap sort</li>
+</ul>
+<p>All your sort functions will have the following signature:</p>
+<pre><span class="type">template &lt;class T&gt;<br>void</span> sort_function<span class="operator">(</span>T a<span class="operator">[],</span><span class="type"> unsigned int</span> size<span class="operator">);</span></pre>
+<p>&nbsp;</p>
+<p><span style="font-size: 18pt;"><strong>The Timer Class:</strong></span></p>
+<p>First, you will need a class to help you time functions:</p>
+<pre><span class="pre">#include &lt;time.h&gt;
+</span><span class="keyword">using namespace</span> std<span class="operator">;</span><span class="keyword">
+class</span> timer<span class="operator">{</span><span class="keyword">
+private</span><span class="operator">:</span>
+    clock_t _start<span class="operator">;</span>
+    clock_t _stop<span class="operator">;</span><span class="keyword">
+public</span><span class="operator">:</span>
+    timer<span class="operator">():</span>_start<span class="operator">(</span>clock<span class="operator">()),</span> _stop<span class="operator">(</span>clock<span class="operator">()){}</span><span class="type">
+    void</span> start<span class="operator">(){</span>
+        _start<span class="operator"> =</span> clock<span class="operator">();
+    }</span><span class="type">
+    void</span> stop<span class="operator">(){</span>
+        _stop<span class="operator"> =</span> clock<span class="operator">();
+    }</span><span class="type">
+    float</span> duration<span class="operator">(){</span><span class="flow">
+        return</span><span class="operator"> (</span><span class="type">float</span><span class="operator">(</span>_stop<span class="operator">) -</span><span class="type"> float</span><span class="operator">(</span>_start<span class="operator">))/</span>CLOCKS_PER_SEC<span class="operator">;
+    }
+};</span></pre>
+<h3><strong>Timer class usage:</strong></h3>
+<pre>    timer t<span class="operator">;</span>
+    t<span class="operator">.</span>start<span class="operator">();</span>
+    f<span class="operator">(</span>a<span class="operator">,</span> size<span class="operator">);</span>
+    t<span class="operator">.</span>stop<span class="operator">();</span><span class="flow">
+    return</span> t<span class="operator">.</span>duration<span class="operator">();</span></pre>
+<pre></pre>
+<h3><strong>Functions as arguments:</strong></h3>
+<p>Now, we need to be able to pass functions as arguments to other functions:</p>
+<pre><span class="type">float</span> time_sort_routine<span class="operator">(</span><span class="type">int</span> a<span class="operator">[],</span><span class="type"> unsigned int</span>  size<span class="operator">,</span><span class="type">
+                        void</span><span class="operator"> (*</span>f<span class="operator">)(</span><span class="type">int</span><span class="operator"> *,</span><span class="type"> unsigned int</span><span class="operator">)){</span>
+    timer t<span class="operator">;</span>
+    t<span class="operator">.</span>start<span class="operator">();</span>
+    f<span class="operator">(</span>a<span class="operator">,</span> size<span class="operator">);</span>
+    t<span class="operator">.</span>stop<span class="operator">();</span><span class="flow">
+    return</span> t<span class="operator">.</span>duration<span class="operator">();
+}</span></pre>
+<p>Here, we are passing an argument called f. f is a void function that takes an array of ints and an unsigned int argument.</p>
+<p><strong>The Call:</strong></p>
+<p>You will call f just like you would any regular function:</p>
+<pre>    f<span class="operator">(</span>a<span class="operator">,</span> size<span class="operator">);</span>
+</pre>
+<p>provided that a is an array of ints and size in an unsigned integer.</p>
+<p>and the call to this example function looks like this:</p>
+<pre><span class="type">double</span> d<span class="operator"> =</span> time_sort_routine<span class="operator">(</span>a<span class="operator">,</span> SIZE<span class="operator">,</span> quickSort<span class="operator">);</span></pre>
+<p>&nbsp;</p>
+<p>The function we used above as an example times one run of the sort function.&nbsp;</p>
+<p>Write a function that will declare an array, then repeats the following code 500 times:</p>
+<ul>
+<li>shuffle the array of a constant size (50,000)</li>
+<li>get the time it took to sort this array,</li>
+<li>keep a running total of the times</li>
+<li>then, after the loop, calculate the average time it took to sort the array of a specific size</li>
+<li>another function will repeatedly call this averaging function to find out how long it will take (on average) to sort 50,000 items shuffled randomly.</li>
+</ul>
+<h3><strong>The output:</strong></h3>
+<pre>average duration<span class="operator"> -</span> quickSort<span class="operator">(</span><span class="int">50000</span><span class="operator">):</span><span class="float"> 0.008105</span>
+average duration<span class="operator"> -</span> mergeSort<span class="operator">(</span><span class="int">50000</span><span class="operator">):</span><span class="float"> 0.010183</span>
+average duration<span class="operator"> -</span> heapSort<span class="operator">(</span><span class="int">50000</span><span class="operator">):</span><span class="float"> 0.030169</span>
+average duration<span class="operator"> -</span> heapSort2<span class="operator">(</span><span class="int">50000</span><span class="operator">):</span><span class="float"> 0.014783</span>
+
+
+
+</pre>
+</body>
+</html>
