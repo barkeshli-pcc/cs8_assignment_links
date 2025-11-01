@@ -1,16 +1,7 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Assignment: 11_90_b_plus_tree</title>
-<link rel="stylesheet" href="modern-style.css">
-
-    <link rel="stylesheet" href="/cs8_assignment_links/assets/css/style.css">
-</head>
-<body>
 <h2 style="text-align: center;"><strong>B+ Tree Class</strong></h2>
 <p>&nbsp;</p>
 <h3>&nbsp;</h3>
-<p><strong> <img style="display: block; margin-left: auto; margin-right: auto;" src="https://www.dropbox.com/s/v3c5kpmqjrxf4au/Screenshot%202017-11-08%2009.54.16.png?dl=1" loading="lazy"> </strong></p>
+<p><strong> <img style="display: block; margin-left: auto; margin-right: auto;" src="https://www.dropbox.com/s/v3c5kpmqjrxf4au/Screenshot%202017-11-08%2009.54.16.png?dl=1" /> </strong></p>
 <p><strong>NOTE:&nbsp;</strong>As you may have discovered in the BTree project that bugs in array functions prove detrimental to the success of your project. Please test these functions well.</p>
 <h3><strong>Introduction:</strong></h3>
 <pre><span class="comment">/*
@@ -105,21 +96,26 @@
  *                   look for entry in this subset and replace it (data[i]) with smallest of subset[i+1]
  *                   else look for entry in the subset resulting from fix_shortage
  *                                     and replace it with that subset's smallest
+
+ *      Is this more clear?
+ *        - Remove from subset[i+1]
+ *        - If shortage: fix_shortage, then search for entry in resulting subset and replace
+ *        - If no shortage: replace data[i] with subset[i+1]-&gt;smallest
+
  * 3. if not found (yet) call loose_remove of the subset[i] and fix shortage if needed.
  *
  *
  *
  * BPlusTree* fix_shortage(i): fixing shortage in subset[i] of this node:
+ *  1. transfer_left(i+1)           // borrow from right sibling, updates data[i]
+ *  2. transfer_right(i-1)          // borrow from left sibling, updates data[i-1]
+ *  3. merge_with_next_subset(i-1)  // merge with left sibling, removes data[i-1]
+ *  4. merge_with_next_subset(i)    // merge with right sibling, removes data[i]
  *
- *  1. transfer_right(i-1)
- *  2. transfer_left(i+1)
- *  3. merge_with_next_subset(i-1)
- *  4. merge_with_next_subset(i)
- *
+ *  (Note: Operations 1 and 4 affect data[i]; operations 2 and 3 affect data[i-1])
  *  (all these functions edit/remove data[i] and could adjust next pointer)
  *
  *  return the resulting subset back to loose_remove
- * .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .
  *
  * transfer_left
  * note: when in transfer left, subset[i-1] is being fixed
@@ -131,14 +127,16 @@
  * transfer subset[i]'s last data[ ] to the beginning of subset[i+1]
  * data[i] is updated with subset[i+1]-&gt;data[0]
  * .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .   .
- * merge_with_next_subset:
- *  leaf or non-leaf are the same, except, with leaf nodes, deleted data[i]
+ * merge_with_next_subset(i):
+ *   Merges subset[i] with subset[i+1]. Removes data[i] from parent.
+ *   For non-leaf: data[i] is brought down into subset[i] before merge
+ *   For leaf: data[i] is deleted (not brought down) before merge
  *
  * -------------------------------------------------------------------------
  */</span></pre>
 <h3><strong>class BPlusTree:</strong></h3>
 <div style="background: #ffffff; overflow: auto; width: auto; border: solid gray; border-width: .1em .1em .1em .8em; padding: .2em .6em;">
-<pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">class</span> <span style="color: #bb0066;">T</span><span style="color: #333333;">&gt;</span>
+    <pre style="margin: 0; line-height: 125%;"><span style="color: #008800;">template</span> <span style="color: #333333;">&lt;</span><span style="color: #008800;">class</span> <span style="color: #bb0066;">T</span><span style="color: #333333;">&gt;</span>
 <span style="color: #008800;">class</span> <span style="color: #bb0066;">BPlusTree</span>
 {
 <span style="color: #997700;">public:</span>
@@ -622,8 +620,9 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      * --------------------------------------------------------------
      * transfer_left: from subset[i] to subset[i-1]
      *      non-leaf: same as BTree
-     *      leaves  : rotate and leave and update data[i-1] with subset[i]-&gt;data[0]
-     *                  leftmost key after you borrowed goes to replace data[i-1]
+     *      leaves  : rotate and leave and update data[i-1] with
+     *                subset[i]-&gt;data[0] leftmost key after you borrowed goes
+     *                to replace data[i-1]
      * --------------------------------------------------------------
      *
      * non-leaf keys: BTree's rotate_left
@@ -642,7 +641,7 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      *  [  ]         [65 75]       ....
      *   [a]      [b]  [c]  [d]
      *
-     *  65 move up to replace 50 (data[i])
+     *  65 move up to replace 50 (data[i-1])
      *  65's child (its child 0) moves over to be the future child of 50
      *  50 moves down to the right of subset[i]-&gt;data
      *
@@ -650,13 +649,12 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      *   [50]         [ 75 ]       ....
      * [a]  [b]      [c]  [d]
      *
-     * ****This does not belong here:
-     * last item of subset[i-1]-&gt;data moves up to data to replace data[i],
-     * data[i] moves down to the RIGHT of subset[i]-&gt;data
+     * first item of subset[i]-&gt;data moves up to data to replace data[i-1],
+     * data[i-1] moves down to the RIGHT of subset[i-1]-&gt;data
      *
      * leaf keys:
      * -------------
-     *  fix_shortage(0) calls trnasfer_left(1) so, i = 1
+     *  fix_shortage(0) calls transfer_left(1) so, i = 1
      *          [7 | 10]
      *        /    |     \
      * [( )]&lt;=[(7) | 8]  [10]
@@ -666,7 +664,8 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      *      /    |     \
      *   [7]    [8]   [10]
      *
-     * 2. update parent of the transfered subset: data[i-1 (0)] = subset[i(1)]-&gt;data[0]
+     * 2. update parent of the transfered subset:
+     *                  data[i-1 (0)] = subset[i(1)]-&gt;data[0]
      *
      *        [(8) | 10]
      *      /      |     \
@@ -674,7 +673,8 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      *
      *
      *
-     */</span><span class="operator">
+     */
+</span><span class="operator">
 }</span><span class="keyword">
 
 template</span><span class="operator"> &lt;</span><span class="keyword">typename</span> T<span class="operator">&gt;</span><span class="type">
@@ -690,7 +690,7 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      *
      * non-leaf keys: BTree's rotate_right
      * ---------------
-     * (i &lt; child_count - 1) and (subset[i-1]-&gt;data_count &gt; MINIMUM)
+     * (i &lt; child_count) and (subset[i-1]-&gt;data_count &gt; MINIMUM)
      * subset[i+ 1] has only MINIMUM - 1 entries.
      *
      * item transfers from child[i] to child [i+1]
@@ -711,12 +711,12 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      *      [20 30]          [65]          [100]
      *  [..] [..] [..]     [a] [b]        [c] [..]
      *
-     * last item of subset[i-1]-&gt;data moves up to data,
-     * data[i] moves down to the RIGHT of subset[i]-&gt;data
+     * last item of subset[i]-&gt;data moves up to data,
+     * data[i] moves down to the LEFT of subset[i+1]-&gt;data
      *
      * leaf keys:
      * -------------
-     *  fix_shortage(2) calls trnasfer_right(1) so, i = 1 subset[i] is ([7|8])
+     *  fix_shortage(2) calls transfer_right(1) so, i = 1 subset[i] is ([7|8])
      *  subset[i+1] is the one being fixed.
      *        [7 | 10]
      *      /    |     \
@@ -727,14 +727,16 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
      *      /    |     \
      *   [5|6]-&gt;[7]-&gt; [8]
      *
-     * 2. update parent of the transfered subset: data[i (1)] = subset[i+1(2)]-&gt;data[0]
+     * 2. update parent of the transfered subset:
+     *                  data[i (1)] = subset[i+1(2)]-&gt;data[0]
      *
      *        [7 | 8]
      *      /    |    \
      *   [5|6]-&gt;[7]-&gt; [8]
      *
      *
-     */</span><span class="keyword">
+     */
+</span><span class="keyword">
 
     const</span><span class="type"> bool</span> debug<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;
 
@@ -860,12 +862,10 @@ void</span> BPlusTree<span class="operator">&lt;</span>T<span class="operator">&
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <h3><strong>TESTING:</strong></h3>
-<p>Please see&nbsp;&nbsp;<a title="BTree / B+Tree main.cpp" href="11-80-bt-btree-slash-b+tree-main-dot-cpp.html" data-api-returntype="Assignment">BTree / B+Tree main.cpp</a></p>
+<p>Please see&nbsp;&nbsp;<a title="BTree / B+Tree main.cpp" href="https://canvas.pasadena.edu/courses/1157722/assignments/10683335" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1157722/assignments/10683335" data-api-returntype="Assignment">BTree / B+Tree main.cpp</a></p>
 <h3><strong>BPlusTree ARRAY FUNCTIONS:</strong></h3>
-<p>&nbsp;Please see&nbsp;<a title="BTree / B+Tree Array Functions" href="11-80-bt-btree-slash-b+tree-array-functions.html" data-api-returntype="Assignment">BTree / B+Tree Array Functions</a></p>
+<p>&nbsp;Please see&nbsp;<a title="BTree / B+Tree Array Functions" href="https://canvas.pasadena.edu/courses/1157722/assignments/10683333" data-api-endpoint="https://canvas.pasadena.edu/api/v1/courses/1157722/assignments/10683333" data-api-returntype="Assignment">BTree / B+Tree Array Functions</a></p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-</body>
-</html>
