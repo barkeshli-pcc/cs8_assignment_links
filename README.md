@@ -40,8 +40,8 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
-| - | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/string_tokenizer/basic_test.cpp) | [st-03-string-tokenizer](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/st-03-string-tokenizer.html) |
-| [file tokenizer](https://classroom.github.com/a/C_lZom_a) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/file_tokenizer/basic_test.cpp) | [st-05-file-tokenizer](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/st-05-file-tokenizer.html) |
+| String Tokenizer | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/string_tokenizer/basic_test.cpp) | [st-03-string-tokenizer](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/st-03-string-tokenizer.html) |
+| [File Fokenizer](https://classroom.github.com/a/C_lZom_a) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/file_tokenizer/basic_test.cpp) | [st-05-file-tokenizer](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/st-05-file-tokenizer.html) |
 
 ## Recursion
 
