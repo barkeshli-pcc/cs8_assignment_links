@@ -1,4 +1,5 @@
-| |  Important links  |  |
+## Important Links:
+| |    |  |
 |:-------------------|:------------|:---------|
 | Instructor: | | S. Barkeshli   |
 | Contact: | |  Discord: @barkeshli   |
