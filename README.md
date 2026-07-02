@@ -33,13 +33,17 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
-| - | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/08-stack_n_queue/basic_test.cpp) | [08-00-stack-n-queue](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/08-00-stack-n-queue.html) |
+| Nested Classes | - | [Nested Classes](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/12-dot-00-a-simple-iterator-nested-classes-cs3.html) |
+| Iterated Lists | - | [Iterated Lists](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/12-dot-00-iterated-list-cs3.html) |
+| Stack and Queue | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/08-stack_n_queue/basic_test.cpp) | [08-00-stack-n-queue](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/08-00-stack-n-queue.html) |
 | [8.9 airport](https://classroom.github.com/a/NHBpCkVF) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/08-airport/basic_test.cpp) | [08-09-airport](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/08-09-airport.html) |
 
 ## Tokenizer
 
+
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
+| State Machines | - | [State Machines](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/st-dot-00-the-state-machine.html) |
 | String Tokenizer | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/string_tokenizer/basic_test.cpp) | [st-03-string-tokenizer](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/st-03-string-tokenizer.html) |
 | [File Fokenizer](https://classroom.github.com/a/C_lZom_a) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/file_tokenizer/basic_test.cpp) | [st-05-file-tokenizer](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/st-05-file-tokenizer.html) |
 
@@ -54,16 +58,17 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
-| - | - | [BST / AVL Discussin](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/10-bst-slash-avl-discussion.html) |
-| - | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/bst_functions/basic_test.cpp) | [bst-functions](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/10-bst-functions.html) |
-| [bst class](https://classroom.github.com/a/zXduxg_C) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/bst/basic_test.cpp) | [bst-class](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/10-bst-class.html) |
-| [avl class](https://classroom.github.com/a/D_Evcm5-) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/avl/basic_test.cpp) | [avl-class](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-avl-class.html) |
+| binary search study | - | [binary search study](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/9-dot-03-binary-search-study.html) |
+| BST/AVL Discussion | - | [BST / AVL Discussin](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/10-bst-slash-avl-discussion.html) |
+| bst functions | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/bst_functions/basic_test.cpp) | [bst-functions](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/10-bst-functions.html) |
+| [BST](https://classroom.github.com/a/zXduxg_C) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/bst/basic_test.cpp) | [bst-class](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/10-bst-class.html) |
+| [AVL](https://classroom.github.com/a/D_Evcm5-) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/avl/basic_test.cpp) | [avl-class](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-avl-class.html) |
 
 ## Heap
 
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
-| - | - | [heap-class](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-heap-class.html) |
+| Heap | - | [heap-class](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-heap-class.html) |
 | [priority queue](https://classroom.github.com/a/STPJj2Kp) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/11-pqueue/basic_test.cpp) | [priority-queue](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-2-priority-queue.html) |
 
 ## Hash
@@ -96,6 +101,7 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
+| [BTree, B+Tree array functions] | - | [BTree/B+Tree functions ](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-80-bt-btree-slash-b+tree-array-functions.html) || [BTree, B+Tree main.cpp example] | - | [BTree/B+Tree main.cpp example ](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-80-bt-btree-slash-b+tree-main-dot-cpp.html) |
 | [btree class](https://classroom.github.com/a/0woyWQi5) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/btree/basic_test.cpp) | [btree](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-80-btree.html) |
 | - | - | - |
 
@@ -104,6 +110,7 @@
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
 | [b+tree class](https://classroom.github.com/a/EfLVN9st) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/bplustree/basic_test.cpp) | [b+tree](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-90-b-plus-tree.html) |
+| Map/MMap classes |  | [Map/MMap](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/11-90-bplustree-map.html) |
 
 ## Final Four 
 
