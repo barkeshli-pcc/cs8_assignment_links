@@ -1,4 +1,8 @@
+@import "{{ site.theme }}";
+
+
 body {
+
   font-family: 'Roboto', sans-serif;
   background-color: #eef1f5;
   padding: 40px;
@@ -32,4 +36,19 @@ p {
 a {
   color: #0077cc;
   font-weight: bold;
+}
+
+
+.assignment-table {
+  table-layout: fixed;
+  width: 100%;
+}
+.assignment-table th:nth-child(1),
+.assignment-table td:nth-child(1) { width: 45%; }
+.assignment-table th:nth-child(2),
+.assignment-table td:nth-child(2) { width: 25%; }
+.assignment-table th:nth-child(3),
+.assignment-table td:nth-child(3) { width: 30%; }
+.assignment-table td {
+  overflow-wrap: break-word;
 }
