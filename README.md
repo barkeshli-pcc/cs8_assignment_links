@@ -1,12 +1,16 @@
-<p><iframe id="iframe_container" src="https://prezi.com/embed/bjwt3neto0cn/?bgcolor=ffffff&amp;lock_to_path=0&amp;autoplay=0&amp;autohide_ctrls=0&amp;landing_data=bHVZZmNaNDBIWnNjdEVENDRhZDFNZGNIUE43MHdLNWpsdFJLb2ZHanI0cXhKK0VjSDNDUkxPVkdmQXRTWUhSRXVnPT0&amp;landing_sign=RC1uLWikVa2SQneK0cAqxL5CpHcfKeyyE3u6Yy4gWS4" width="550" height="400" loading="lazy" allowfullscreen="allowfullscreen" webkitallowfullscreen="webkitallowfullscreen" mozallowfullscreen="mozallowfullscreen"></iframe></p>
+| Important links |  |  |
+|-------------------|------------|---------|
+| Instructor: | S. Barkeshli  |  |
+| Contact: | Discord: @barkeshli  |  |
+| [Lab0 assignment on github](https://classroom.github.com/a/DYb_nBnE) | [lab0 basic test](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/lab-00/basic_test.cpp) | [lab0 writeup](https://github.com/barkeshli-pcc/lab-00-writeup) |
+| Class Folder| [here](https://drive.google.com/drive/folders/12w4Nq1FjVCNE2qbVZjksBcb_oM6aL8ga?usp=sharing) | - |
+| - | - | - |
 
-# <p align="center">DO NOT _accept_ these assignments </p>
 
-## <p align="center">until you are told to do so by me.</p>
 
 <br/>
 
-# <p align="center">CS 8 Assignment links:</p>
+# <h1 align="center">CS 8 Assignment links:</h1>
 
 ## Review
 
@@ -25,8 +29,8 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
-| [lab-01 Deque](https://classroom.github.com/a/Dha1UGCk) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/l1_deque/basic_test.cpp) | - |
-| [lab-02](https://classroom.github.com/a/0K2bBC5i) | - | - |
+| lab-01 Deque | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/l1_deque/basic_test.cpp) | - |
+| lab-02 | - | - |
 | - | - | - |
 | - | - | - |
 | - | - | - |
