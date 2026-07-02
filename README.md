@@ -10,7 +10,7 @@
 
 <br/>
 
-# <h1 align="center">CS 8 Assignment links:</h1>
+# CS 8 Assignment links:
 
 ## Review
 
