@@ -1,10 +1,11 @@
-| Important links |  |  |
+| |  Important links  |  |
 |-------------------|------------|---------|
-| Instructor: | S. Barkeshli  |  |
-| Contact: | Discord: @barkeshli  |  |
-| [Lab0 assignment on github](https://classroom.github.com/a/DYb_nBnE) | [lab0 basic test](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/lab-00/basic_test.cpp) | [lab0 writeup](https://github.com/barkeshli-pcc/lab-00-writeup) |
-| Class Folder| [here](https://drive.google.com/drive/folders/12w4Nq1FjVCNE2qbVZjksBcb_oM6aL8ga?usp=sharing) | - |
-| - | - | - |
+| Instructor: | | S. Barkeshli   |
+| Contact: | |  Discord: @barkeshli   |
+| Class Folder| | [here](https://drive.google.com/drive/folders/12w4Nq1FjVCNE2qbVZjksBcb_oM6aL8ga?usp=sharing)|
+| Syllabus |  | on Canvas |
+| [Lab0 ](https://classroom.github.com/a/DYb_nBnE) | [basic test](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/lab-00/basic_test.cpp) | [lab0 writeup](https://github.com/barkeshli-pcc/lab-00-writeup) |
+|  |  |  |
 
 
 
@@ -16,7 +17,7 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |-------------------|------------|---------|
-| - | - | - |
+| -- | -- | -- |
 
 ## Lab 00
 
@@ -38,7 +39,7 @@
 ## Stack and Queue
 
 | GitHub Assignment | Basic Test | Writeup |
-|-------------------|------------|---------|
+|---------------------------|--------------------|-----------------|
 | Nested Classes | - | [Nested Classes](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/12-dot-00-a-simple-iterator-nested-classes-cs3.html) |
 | Iterated Lists | - | [Iterated Lists](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/12-dot-00-iterated-list-cs3.html) |
 | Stack and Queue | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/08-stack_n_queue/basic_test.cpp) | [08-00-stack-n-queue](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/08-00-stack-n-queue.html) |
