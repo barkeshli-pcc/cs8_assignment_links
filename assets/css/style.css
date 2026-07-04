@@ -1,9 +1,10 @@
 @import url("{{ site.theme }}");
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Fira+Code&display=swap');
 
-/* Support for browser's native dark/light mode */
+/* Force light mode regardless of the visitor's OS/browser
+   preference — no longer following prefers-color-scheme */
 :root {
-  color-scheme: light dark;
+  color-scheme: light;
 }
 
 /* =====================================================
@@ -143,8 +144,6 @@ a {
   text-decoration: underline;
 }
 
-/* Fixed dark text so this stays readable on its yellow
-   background in every mode, light or dark */
 .doc-modern .highlight {
   background-color: #ffff00;
   color: #1a1a1a;
@@ -153,10 +152,8 @@ a {
 
 /* =====================================================
    C++ CODE BLOCKS & SYNTAX HIGHLIGHTING
-   Light-mode colors below are unchanged from the original.
-   Dark-mode versions live in the @media block further down,
-   so code blocks blend into a dark page instead of glaring
-   out as bright rectangles.
+   Page is fixed to light mode (see :root above), so these
+   are the only colors in play — no dark variant needed.
    ===================================================== */
 pre {
   background-color: #f5f5f5;
@@ -199,97 +196,3 @@ code {
 .function  { color: #0066bb; }
 .typename  { color: #008800; }
 .type      { color: #333399; }
-
-/* =====================================================
-   DARK MODE
-   Every rule below that changes a background ALSO checks
-   that any text color drawn over it is re-checked here.
-   ===================================================== */
-@media (prefers-color-scheme: dark) {
-  body {
-    background-color: #121212;
-    color: #e0e0e0;
-  }
-
-  .container {
-    background-color: #1e1e1e;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  }
-
-  .assignment-table,
-  .assignment-table th,
-  .assignment-table td {
-    border-color: #444;
-  }
-
-  a {
-    color: #4da3ff;
-  }
-
-  /* .doc-modern was authored with dark text (#1a1a1a / #2a2a2a)
-     for a light background. Since it has no background-color
-     of its own, it inherits whatever ancestor (body/.container)
-     is behind it — so if that ancestor goes dark, these must
-     flip too, or you get dark text on a dark page. */
-  .doc-modern {
-    color: #e0e0e0;
-  }
-
-  .doc-modern h2,
-  .doc-modern h3,
-  .doc-modern h4 {
-    color: #f0f0f0;
-  }
-
-  .doc-modern h2 {
-    border-bottom-color: #555;
-  }
-
-  .doc-modern a {
-    color: #4da3ff;
-    border-bottom-color: #4da3ff;
-  }
-
-  .doc-modern a:hover {
-    color: #8cc8ff;
-    border-bottom-color: #8cc8ff;
-  }
-
-  /* .highlight keeps its fixed yellow bg + dark text pairing
-     defined above — no override needed, it never changes. */
-
-  /* Code blocks: dark charcoal, not pitch black, so they read
-     as a distinct "card" against the page without glaring. */
-  pre {
-    background-color: #262626;
-    border-left-color: #6b6b6b;
-    color: #d4d4d4;
-  }
-
-  .bordered-code {
-    background: #1e1e1e;
-    border-color: #777;
-  }
-
-  code {
-    background-color: #333333;
-    color: #d4d4d4;
-  }
-
-  /* Syntax colors shifted to muted, lighter variants that keep
-     the same hue relationships as light mode (green=keyword,
-     orange=string, magenta=class, etc.) but sit comfortably on
-     a dark background instead of looking neon. */
-  .keyword   { color: #8fd19e; }
-  .operator  { color: #c8c8c8; }
-  .string    { color: #ce9178; }
-  .flow      { color: #8fd19e; }
-  .comment   { color: #9aa5b1; }
-  .int       { color: #e0847d; }
-  .float     { color: #e0847d; }
-  .class     { color: #e0a3c7; }
-  .public    { color: #dcc97a; }
-  .function  { color: #6cb6ff; }
-  .typename  { color: #8fd19e; }
-  .type      { color: #9cdcfe; }
-}
