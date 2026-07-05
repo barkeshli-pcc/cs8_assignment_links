@@ -147,7 +147,7 @@
 | [99_binary_files](https://classroom.github.com/a/HjQZKMIq) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/binary_files/basic_test.cpp) | [binary-files](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-binary-files.html)|
 | [99_table](https://classroom.github.com/a/dgg4laMK) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/table/basic_test.cpp) | [table](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-table.html) |
 | [99_parser](https://classroom.github.com/a/F5P1JfBa) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/parser/basic_test.cpp) | [parser](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-parser.html) |
-| [99_final_project](https://classroom.github.com/a/ZcsJG7zr) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/sql/basic_test.cpp) | [final-project](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-99-final-project.html) |
+| [99_final_project](https://classroom.github.com/a/ZcsJG7zr) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/sql/basic_test.cpp) | [final-project](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-sql.html) |
 {: .assignment-table}
 
 
