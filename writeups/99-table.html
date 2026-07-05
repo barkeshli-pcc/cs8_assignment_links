@@ -1,12 +1,135 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Assignment: 99_table</title>
-<link rel="stylesheet" href="modern-style.css">
-
-    <link rel="stylesheet" href="/cs8_assignment_links/assets/css/style.css">
+<meta charset="UTF-8">
+<title>CS — Data Structures · Project: Table</title>
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+
+<h1>CS — Data Structures · Project: Table</h1>
+<p><em>A component of the final SQL Database project</em></p>
+<h2>Before You Start: System-Wide Constraints</h2>
+<p>These two rules apply to every project in this sequence, not just this one:</p>
+<ul>
+<li><strong>No STL containers or algorithms beyond <code>string</code> and <code>vector</code>.</strong> Every ordered or lookup structure — B+ tree, Map, Multimap, Stack, Queue, Set — is one you build yourself. Do not substitute <code>std::map</code>, <code>std::set</code>, <code>std::stack</code>, <code>std::queue</code>, <code>std::find</code>, or any other STL container or algorithm for functionality this system is asking you to implement.</li>
+<li><strong>No sequential search, anywhere, for any reason.</strong> Any time your code needs to look something up — a keyword, a field name, a table name, a stored value — that lookup must go through a B+ tree-backed Map or Multimap. A linear scan is not acceptable, no matter how short the list being scanned is or how the scan is written.</li>
+</ul>
+<h2>1. Overview</h2>
+<p>You've already built the pieces that store data on disk (FileRecord) and the pieces that turn raw SQL text into a structured request (the Parser). This project builds the piece in between: a <strong>Table</strong> that actually holds rows of data and can answer questions about them — insert a row, print every row, or select rows matching a condition, including compound conditions with <code>AND</code>, <code>OR</code>, and parentheses.</p>
+<p>Answering a compound condition efficiently takes two supporting pieces, which you'll build alongside Table:</p>
+<ul>
+<li>A small family of <strong>condition token types</strong> (a field name or value, a relational operator, a logical operator, parentheses) that know how to evaluate themselves against the table's data.</li>
+<li>A <strong>ShuntingYard</strong> that takes a condition written in the order a person would type it (infix) and reorders it into the order it should be evaluated in (postfix), the same way a calculator turns <code>2 + 3 * 4</code> into an evaluation order that respects <code>*</code> binding tighter than <code>+</code>.</li>
+</ul>
+<p>None of this touches SQL syntax directly — Table never sees the string <code>"select ... where ..."</code>. It receives a table name, a list of fields, and a condition already broken into tokens. Turning SQL text into that form is the Parser's job, not this one.</p>
+
+<h2>2. What It Must Accept / Do</h2>
+
+<h3>Condition tokens</h3>
+<p>A condition is built out of a small set of token types:</p>
+<ul>
+<li>A <strong>string token</strong> — a bare field name (<code>age</code>) or a literal value (<code>20</code>, <code>Smith</code>). The token type itself doesn't distinguish a field name from a value; that distinction is made by position (an operator's left operand is always a field name, its right operand always a value).</li>
+<li>A <strong>relational operator</strong> — one of <code>=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>. Applied to a field name and a value, it produces the set of record numbers whose stored value for that field satisfies the comparison.</li>
+<li>A <strong>logical operator</strong> — <code>and</code> or <code>or</code>. Applied to two already-evaluated sets of record numbers, it produces their intersection (<code>and</code>) or union (<code>or</code>).</li>
+<li><strong>Parentheses</strong> — used only to override default evaluation order; they carry no meaning once that order has been determined.</li>
+</ul>
+<p><strong>Operator precedence</strong> (needed to evaluate a condition correctly when parentheses are absent): relational operators bind tighter than logical operators, and among logical operators, <code>and</code> binds tighter than <code>or</code>. So <code>age &lt; 20 and lname = Smith or age &gt; 65</code> is evaluated as <code>(age &lt; 20 and lname = Smith) or (age &gt; 65)</code>, not left-to-right.</p>
+<p><strong>Not required:</strong> the <code>!=</code> operator and unary <code>not</code> are not exercised by this project's tests — you do not need to implement evaluation for them.</p>
+
+<h3>ShuntingYard</h3>
+<p>Given a condition as a flat list of tokens in infix order — either already-typed condition tokens, or plain strings like <code>{"age", "&gt;", "18", "and", "lname", "=", "Smith"}</code> — produce the same tokens reordered into postfix order, ready to be evaluated left to right with a stack. Parentheses in the input must correctly override the default precedence described above.</p>
+
+<h3>Table</h3>
+<p>A Table must support:</p>
+<ul>
+<li><strong>Creating a new table</strong>, given a name and a list of field names. This persists both the (currently empty) row storage and the field-name list, so the table can be reopened later.</li>
+<li><strong>Loading an existing table</strong>, given only a name. This reads back the persisted field-name list and reconstructs whatever in-memory structures are needed to answer queries efficiently, from the persisted rows alone — a freshly loaded table must be immediately queryable without requiring every row to be re-inserted.</li>
+<li><strong>Inserting a row</strong>, given a list of field values in field order. The row is persisted, and becomes visible to subsequent selects on this table object.</li>
+<li><strong>Selecting rows</strong>, in three forms, all returning a new table containing only the matching rows, projected onto a requested list of fields:
+  <ul>
+    <li>A single condition given directly as <code>(field, operator, value)</code> — no token machinery involved.</li>
+    <li>A condition given as an already-built postfix sequence of condition tokens (as described above).</li>
+    <li>A condition given as a flat infix list — plain strings, with parentheses allowed — which must be converted to postfix internally before being evaluated.</li>
+  </ul>
+</li>
+<li><strong>Reporting which original rows matched</strong> the most recent select, by record number (referring to the row's position in the table that was searched, not in the result table).</li>
+<li><strong>Printing</strong> a table: its name, its row count, a header of field names, and then every row, in the same tabular, fixed-width-column style used for individual records elsewhere in this system.</li>
+</ul>
+<p><strong>Storing comparable values:</strong> every field value is stored and compared as text, including values that look numeric. Relational comparisons (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>) are performed on that text directly, not converted to a number first — so <code>"9"</code> compares as greater than <code>"18"</code>. If a field is meant to be compared as a number (like an age), the values you insert must all be padded to the same width (e.g., always two digits) so that text comparison and numeric comparison agree.</p>
+
+<h2>3. Where It Fits</h2>
+<pre>Parser (produces a command + field list + flat condition tokens)
+   |
+   v
+Table  --  uses FileRecord to store/retrieve rows
+       --  uses ShuntingYard + condition tokens to evaluate WHERE clauses
+   |
+   v
+Result printed to screen
+</pre>
+<p>Table doesn't parse SQL, doesn't know keywords like <code>select</code> or <code>where</code>, and doesn't validate that a condition's field names actually exist before evaluating — it trusts the field names and values it's given.</p>
+
+<h2>4. Input/Output Contract</h2>
+
+<p>Creating a table and inserting rows:</p>
+<pre>Table t("employee", {"fname", "dept", "level"});
+t.insert_into({"Priya", "eng", "05"});
+t.insert_into({"Marco", "sales", "12"});
+t.insert_into({"Priya", "sales", "12"});
+t.insert_into({"Wei", "eng", "09"});</pre>
+
+<p>Printing a table shows its name, its row count, a header row, then each stored row, right-justified in fixed-width columns:</p>
+<pre>Table name: employee, records: 4
+                   record                    fname                     dept                    level
+
+                        0                    Priya                      eng                       05
+                        1                    Marco                    sales                       12
+                        2                    Priya                    sales                       12
+                        3                      Wei                      eng                       09
+</pre>
+
+<p>A single-condition select projects onto the requested fields and returns a new table of just the matching rows:</p>
+<pre>t.select({"fname", "level"}, "dept", "=", "sales");</pre>
+<pre>Table name: _select_table_1, records: 2
+                   record                    fname                    level
+
+                        0                    Marco                       12
+                        1                    Priya                       12
+</pre>
+<p>After any select call, the record numbers of the matching rows — as they were numbered in the table that was searched, not in the result — are available separately; their order reflects how the underlying lookup encountered them and is not guaranteed to be sorted by record number.</p>
+
+<p>A compound condition, given as a flat infix list with parentheses, is also accepted directly:</p>
+<pre>vector&lt;string&gt; condition = {"(", "level", "&gt;", "10", "and", "dept", "=", "sales", ")", "or", "fname", "=", "Wei"};
+t.select({"fname", "dept", "level"}, condition);</pre>
+<pre>Table name: _select_table_2, records: 3
+                   record                    fname                     dept                    level
+
+                        0                    Marco                    sales                       12
+                        1                    Priya                    sales                       12
+                        2                      Wei                      eng                       09
+</pre>
+
+<h2>5. Design</h2>
+<p>Two ideas make compound conditions practical:</p>
+<ul>
+<li><strong>Per-field indexing.</strong> Rather than scanning every row to answer <code>dept = "sales"</code> or <code>level &gt; "10"</code>, maintain, for each field, a structure that maps a value to the record numbers holding that value — built once when a table is loaded or created, and kept up to date as rows are inserted. This is what makes a single-condition select answer directly from the index rather than reading the whole table.</li>
+<li><strong>Evaluating postfix with a stack.</strong> A relational operator consumes a field name and a value and produces a set of record numbers (using that field's index). A logical operator consumes two sets of record numbers and produces their intersection or union. Walking a postfix token sequence left to right with a single stack — pushing operands, and replacing an operator's operands with its result — evaluates any condition, however deeply nested, without needing to know its structure in advance.</li>
+</ul>
+<p>Think of "evaluate this operator" as something each token type knows how to do to itself, given the data (or the previously-computed operand sets) it needs — rather than one large function with a branch for every operator.</p>
+<p>You are free to choose how a "set of record numbers" is represented internally, and how set-combination (intersection/union) is implemented, as long as the observable results match Section 4.</p>
+
+<h2>6. What You Are Building</h2>
+<ul>
+<li>Condition token types for: a bare string (field name or value), each of the five required relational operators, both logical operators, and parentheses.</li>
+<li>Correct operator precedence when a condition has no parentheses: relational tighter than logical, <code>and</code> tighter than <code>or</code>.</li>
+<li>A ShuntingYard that converts a flat infix token/string list into correct postfix order, honoring explicit parentheses.</li>
+<li>A Table constructible either as brand-new (name + field list) or as a load of an existing table (name only), immediately queryable in both cases.</li>
+<li><code>insert_into</code> that persists a row and keeps per-field indexing consistent with what's on disk.</li>
+<li>All three select forms described in Section 2, each returning a new table of matching rows projected onto the requested fields.</li>
+<li>Correct reporting of which original record numbers matched the most recent select.</li>
+<li>Printing that matches the header-plus-rows, fixed-width-column format shown in Section 4.</li>
+</ul>
 
 </body>
 </html>

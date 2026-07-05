@@ -92,6 +92,8 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |:-------------------|:------------|:---------|
+| double hash | - | [double-hash](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/12-3-double-hashing.html) |
+| chain hash | - | [chain-hash](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/12-1-chained-hash-class.html) |
 | [Hash](https://classroom.github.com/a/8wkuCax6) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/hash/basic_test.cpp) | [hash-demo](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/12-05-hash-demo.html) |
 {: .assignment-table}
 
@@ -141,9 +143,10 @@
 
 | GitHub Assignment | Basic Test | Writeup |
 |:-------------------|:------------|:---------|
-| [99_binary_files](https://classroom.github.com/a/HjQZKMIq) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/binary_files/basic_test.cpp) | [binary-files]|
-| [99_table](https://classroom.github.com/a/dgg4laMK) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/table/basic_test.cpp) | [table] |
-| [99_parser](https://classroom.github.com/a/F5P1JfBa) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/parser/basic_test.cpp) | [parser] |
+| system overview | !important | [system overview](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-system-overview.html)|
+| [99_binary_files](https://classroom.github.com/a/HjQZKMIq) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/binary_files/basic_test.cpp) | [binary-files](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-binary-files.html)|
+| [99_table](https://classroom.github.com/a/dgg4laMK) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/table/basic_test.cpp) | [table](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-table.html) |
+| [99_parser](https://classroom.github.com/a/F5P1JfBa) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/parser/basic_test.cpp) | [parser](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-parser.html) |
 | [99_final_project](https://classroom.github.com/a/ZcsJG7zr) | [basic_test.cpp](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/sql/basic_test.cpp) | [final-project](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/99-99-final-project.html) |
 {: .assignment-table}
 

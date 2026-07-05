@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CS — Data Structures · SQL Database Project: System Overview</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<h1>CS — Data Structures · SQL Database Project</h1>
+<p><em>System Overview — read this before starting the first project below</em></p>
+
+<h2>What You're Building</h2>
+<p>Over the semester, you're building a working, interactive database engine that responds to SQL-like commands — <code>make table</code>, <code>insert into</code>, and <code>select</code> — typed as plain text. It stores its data in binary files on disk, so it remembers everything between separate runs of the program, the same way a real database does.</p>
+<p>Nothing in this system is one big program. It's built as a sequence of small, separately-tested pieces, each depending only on the pieces before it. This page exists to show you the whole shape before you dive into the first piece.</p>
+
+<h2>The Pieces, in Build Order</h2>
+<p>Earlier in the semester you built the foundation this all sits on:</p>
+<ul>
+<li><strong>B+ Tree</strong> — the ordered, disk-friendly tree structure everything else indexes through.</li>
+<li><strong>Map / Multimap</strong> — key-value and key-multivalue containers built on top of your B+ Tree.</li>
+<li><strong>Tokenizer</strong> — splits a raw string into a list of tokens.</li>
+<li><strong>Stack / Queue</strong> — used by expression evaluation later in the sequence.</li>
+</ul>
+<p>The four projects that follow — the ones with their own detailed writeups — build the database itself, in this order:</p>
+<ol>
+<li><strong>Parser</strong> — turns a raw SQL command string into a structured parse tree (which command, which table, which fields, which condition), using a finite state machine over the tokens your tokenizer produces.</li>
+<li><strong>Binary File Records (FileRecord)</strong> — stores a single table row as a fixed-size binary "envelope" on disk, addressable directly by row number.</li>
+<li><strong>Table</strong> — manages one table's rows and per-field indices; evaluates conditions (including compound <code>AND</code>/<code>OR</code>/parenthesized ones) via a small typed-token hierarchy and a shunting-yard infix-to-postfix conversion.</li>
+<li><strong>SQL</strong> — ties Parser and Table together: takes one command string, dispatches it, and remembers which tables exist across separate runs of the program.</li>
+</ol>
+
+<h2>How a Command Flows Through the System</h2>
+<pre>User types a SQL command string
+        |
+        v
+     Parser   -- raw string -> parse tree
+        |
+        v
+      SQL     -- reads the parse tree, calls the matching Table operation
+        |
+        v
+     Table    -- stores rows (via FileRecord), evaluates conditions
+        |
+        v
+Result table printed to screen
+</pre>
+<p>Each arrow above is a boundary between two of your own classes, and each class only knows about the layer directly below it. The Parser never sees a Table. The Table never sees a parse tree. This separation is deliberate — it's what lets each piece be built and tested independently, and it's why the four writeups can be read and built one at a time.</p>
+
+<h2>Before You Start: System-Wide Constraints</h2>
+<p>These two rules apply to every project in this sequence:</p>
+<ul>
+<li><strong>No STL containers or algorithms beyond <code>string</code> and <code>vector</code>.</strong> Every ordered or lookup structure — B+ tree, Map, Multimap, Stack, Queue, Set — is one you build yourself. Do not substitute <code>std::map</code>, <code>std::set</code>, <code>std::stack</code>, <code>std::queue</code>, <code>std::find</code>, or any other STL container or algorithm for functionality this system is asking you to implement.</li>
+<li><strong>No sequential search, anywhere, for any reason.</strong> Any time your code needs to look something up — a keyword, a field name, a table name, a stored value — that lookup must go through a B+ tree-backed Map or Multimap. A linear scan is not acceptable, no matter how short the list being scanned is or how the scan is written.</li>
+</ul>
+
+<h2>How to Use the Four Project Writeups</h2>
+<p>Each of the four projects (Parser, FileRecord, Table, SQL) has its own writeup with a full specification, worked examples, and a checklist of what you're building. Read them in the order listed above — each one assumes the previous ones are already done and working.</p>
+
+</body>
+</html>

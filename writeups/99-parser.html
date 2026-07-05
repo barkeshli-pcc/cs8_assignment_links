@@ -1,12 +1,152 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Assignment: 99_parser</title>
-<link rel="stylesheet" href="modern-style.css">
 
-    <link rel="stylesheet" href="/cs8_assignment_links/assets/css/style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CS — Data Structures · Project: SQL Parser</title>
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-
+ 
+<h1>CS — Data Structures · Project: SQL Parser</h1>
+<p><em>A component of the final SQL Database project</em></p>
+<h2>Before You Start: System-Wide Constraints</h2>
+<p>These two rules apply to every project in this sequence, not just this one:</p>
+<ul>
+<li><strong>No STL containers or algorithms beyond <code>string</code> and <code>vector</code>.</strong> Every ordered or lookup structure — B+ tree, Map, Multimap, Stack, Queue, Set — is one you build yourself. Do not substitute <code>std::map</code>, <code>std::set</code>, <code>std::stack</code>, <code>std::queue</code>, <code>std::find</code>, or any other STL container or algorithm for functionality this system is asking you to implement.</li>
+<li><strong>No sequential search, anywhere, for any reason.</strong> Any time your code needs to look something up — a keyword, a field name, a table name, a stored value — that lookup must go through a B+ tree-backed Map or Multimap. A linear scan is not acceptable, no matter how short the list being scanned is or how the scan is written.</li>
+</ul> 
+<h2>1. Overview</h2>
+<p>Over the course of this semester you are building a working, interactive SQL database from the ground up. Each project builds on the last: you have already implemented a B+ tree, used it to build Map and MMap containers, and written a tokenizer. This project brings those pieces together in a new role — parsing user input.</p>
+<p>The SQL Parser is the front door of the database. Every time a user types a SQL command, the parser is the first thing that runs. Its job is straightforward: take the raw string the user typed, figure out what they asked for, and hand a clean, structured result to the rest of the system. It does not touch any data. It does not open any files. It only reads and classifies.</p>
+<p>The output of a successful parse is a parse tree — a multimap (your MMap&lt;string,string&gt;) whose keys describe what the user asked: which command, which table, which fields, which conditions. Everything downstream reads from this map.</p>
+ 
+<h2>2. What the Parser Must Accept</h2>
+<p>The parser handles three SQL commands. For each one, you will design a finite state machine that accepts exactly the strings described by the grammar below and rejects everything else.</p>
+<p><strong>Case sensitivity:</strong> keywords (select, from, where, insert, into, values, make, table, fields, and, or) are recognized only in lowercase. An input that types a keyword in uppercase or mixed case is not a keyword match and will be rejected — you are not required to fold case.</p>
+ 
+<h3>SELECT</h3>
+<p>Retrieves rows from a table. The WHERE clause is optional. When present, it supports compound conditions joined by AND or OR, with optional parentheses for grouping.</p>
+<pre>select * from student
+select lname, fname from student
+select lname from student where lname = "Barkeshli"
+select * from student where age > 18 and lname = Smith
+select * from student where (age > 18 and lname = Smith) or fname = "Joe"</pre>
+<p><strong>Relational operators.</strong> The grammar recognizes five relational operators: =, &lt;, &gt;, &lt;=, and &gt;=. Your test cases should exercise more than just = and &gt;.</p>
+<p><strong>Parentheses are not balance-checked.</strong> A parenthesis may appear before a condition's field name or after its value, and this can repeat — for example, ((age &gt; 18)) and (age &gt; 18) and (lname = Smith) are both syntactically valid under this grammar. Your state machine is only required to accept parentheses in these positions; it does not need to verify that the count of ( matches the count of ).</p>
+ 
+<h3>INSERT INTO</h3>
+<p>Adds one row of values to a table. Values may be quoted (for multi-word strings) or unquoted. Multiple values are comma-separated.</p>
+<pre>insert into student values "Flo", "Yao", 18
+insert into student values Smith, John, 20</pre>
+ 
+<h3>MAKE TABLE</h3>
+<p>Creates a new table with a specified list of field names.</p>
+<pre>make table student fields lname, fname, age</pre>
+ 
+<h2>3. Where the Parser Fits</h2>
+<p>The parser sits between the user and the rest of the database system. It is called once per query, before anything else happens.</p>
+<pre>User types SQL string
+        |
+        v
+     Parser
+        |  (parse tree)
+        v
+SQL class -- reads parse tree, opens table, runs query
+        |
+        v
+Results printed to screen</pre>
+<p>The parser is intentionally isolated. It knows nothing about files, records, or indexes. It only knows grammar. This separation of concerns is deliberate: if the grammar changes, only the parser changes. If the storage format changes, only the lower layers change.</p>
+ 
+<h2>4. The Parse Tree — Input and Output</h2>
+<p>A successful parse produces a MMap&lt;string,string&gt; called the parse tree. This is the only output of the parser — a structured description of what the user asked for. Here are four examples.</p>
+ 
+<pre>select fname, age from student where age >= 21</pre>
+<table>
+<tr><th>Key</th><th>Values</th></tr>
+<tr><td>command</td><td>select</td></tr>
+<tr><td>fields</td><td>fname · age</td></tr>
+<tr><td>table_name</td><td>student</td></tr>
+<tr><td>where</td><td>yes</td></tr>
+<tr><td>condition</td><td>age · &gt;= · 21</td></tr>
+</table>
+ 
+<pre>insert into student values Smith, John, 20</pre>
+<table>
+<tr><th>Key</th><th>Values</th></tr>
+<tr><td>command</td><td>insert</td></tr>
+<tr><td>table_name</td><td>student</td></tr>
+<tr><td>values</td><td>Smith · John · 20</td></tr>
+</table>
+ 
+<pre>make table employee fields fname, lname, salary</pre>
+<table>
+<tr><th>Key</th><th>Values</th></tr>
+<tr><td>command</td><td>make</td></tr>
+<tr><td>table_name</td><td>employee</td></tr>
+<tr><td>col</td><td>fname · lname · salary</td></tr>
+</table>
+ 
+<pre>select * from student where (age > 18 and lname = Smith) or fname = "Joe"</pre>
+<table>
+<tr><th>Key</th><th>Values</th></tr>
+<tr><td>command</td><td>select</td></tr>
+<tr><td>fields</td><td>*</td></tr>
+<tr><td>table_name</td><td>student</td></tr>
+<tr><td>where</td><td>yes</td></tr>
+<tr><td>condition</td><td>( · age · &gt; · 18 · and · lname · = · Smith · ) · or · fname · Joe</td></tr>
+</table>
+ 
+<p><strong>No WHERE clause:</strong> when a SELECT has no WHERE clause, the "where" key is omitted from the tree entirely — it is not present with a default or empty value.</p>
+<p><strong>Quoting:</strong> quotes delimit a multi-word string value but are not themselves stored in the tree. "Flo" becomes the single token Flo in the output.</p>
+<p><strong>Parentheses and logical operators:</strong> "(", ")", "and", and "or" are stored as flat tokens in the condition list, in the exact order they appear in the input — see the fourth example above. The parser does not evaluate logical precedence or grouping; it only records tokens. Interpreting the condition list is the SQL class's responsibility, not the parser's.</p>
+ 
+<h2>5. Design</h2>
+ 
+<h3>Finite State Machine</h3>
+<p>The core of the parser is a finite state machine — the same technique you used in the tokenizer, now applied to grammar instead of characters. The machine walks through the token list one token at a time. Each token causes a transition to a new state. If the machine ends in a designated success state, the input was valid SQL. If it ends anywhere else, the input is rejected.</p>
+<p>The transition rules are stored in a 2-D integer array. Rows are states; columns are token types. Each cell holds the next state to go to, or -1 if that token is illegal at that point. The grammar is encoded entirely in this table — the loop that drives the machine never changes.</p>
+ 
+<h3>Token Classification</h3>
+<p>Before the machine can run, each token from the input string must be classified into a type. Reserved words like select, from, and where map to named constants. Everything else — field names, table names, literal values — becomes SYMBOL, the catch-all type. The machine does not need to know the actual string; it only needs to know what kind of token appeared.</p>
+<p>This classification is done by a Map&lt;string, long&gt; — a B+ tree lookup. Given a token string, it returns the column number for the transition table in O(log n) time. There is no sequential search anywhere in this project. All lookups go through B+ tree structures, regardless of how small they are.</p>
+ 
+<h3>Input Assumption</h3>
+<p>You are not writing a tokenizer for this project — you already built one. The parser's job begins after the input string has already been split into a list of tokens. Splitting an input string into tokens, and classifying each token into a type, are two separate steps; make sure your design keeps them separate.</p>
+ 
+<h3>The Parse Tree</h3>
+<p>The parse tree is a MMap&lt;string, string&gt; — your multimap. Keys like "fields" and "condition" naturally hold multiple values, and the MMap handles this without any special-case code. A single-value map would require awkward workarounds for list-valued keys.</p>
+ 
+<h3>Determining the Command</h3>
+<p>A given input string matches at most one of the three grammars. Your parser must determine which command the user entered. This is a design decision left to you.</p>
+ 
+<h2>6. What You Are Building</h2>
+<p>Your implementation must:</p>
+<ul>
+<li>Accept valid SQL. The parser must correctly parse all three command types, including SELECT with multi-condition WHERE clauses and parenthesised groups, INSERT with any number of quoted or unquoted values, and MAKE TABLE with any number of field names.</li>
+<li>Reject invalid SQL. Any string that does not match the grammar must be rejected cleanly. The parser must set a failure flag and return an empty parse tree.</li>
+<li>Produce a correct parse tree. The keys and values in the output MMap must match the specification in Section 4 exactly. The SQL class depends on these keys by name.</li>
+<li>Use no sequential search. All token lookups must use the B+ tree Map. No linear scans of any structure, for any reason.</li>
+<li>Encode the grammar in a table. The state-machine loop must be generic — it should not know anything about SELECT, INSERT, or MAKE TABLE specifically. All grammar knowledge lives in the transition table your setup code builds. Adding a new SQL command should require only new table entries, not changes to the loop.</li>
+</ul>
+<p>You are not required to handle SQL errors gracefully or produce error messages. A failed parse simply results in a failure flag. Error reporting is a future extension.</p>
+<p><em>Note: if your starter files already declare specific method names for building the transition table or running the machine, use those names — the interface is fixed by the skeleton. Where no skeleton constrains you, the internal design (helper functions, state numbering, etc.) is yours to choose.</em></p>
+ 
+<table>
+<tr><th>Requirement</th><th>Points</th></tr>
+<tr><td>Correct parse tree for all SELECT variants (with and without WHERE)</td><td>30</td></tr>
+<tr><td>Correct parse tree for INSERT INTO</td><td>20</td></tr>
+<tr><td>Correct parse tree for MAKE TABLE</td><td>15</td></tr>
+<tr><td>Invalid input correctly rejected (fail flag set, empty tree)</td><td>15</td></tr>
+<tr><td>No sequential search — all lookups via B+ tree Map</td><td>10</td></tr>
+<tr><td>Grammar encoded in the transition table — loop is generic</td><td>10</td></tr>
+</table>
+ 
 </body>
 </html>
+ 
+
+
+
+
+

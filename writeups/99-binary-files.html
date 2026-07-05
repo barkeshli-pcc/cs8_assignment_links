@@ -1,12 +1,107 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<title>Assignment: 99_binary_files</title>
-<link rel="stylesheet" href="modern-style.css">
-
-    <link rel="stylesheet" href="/cs8_assignment_links/assets/css/style.css">
+<meta charset="UTF-8">
+<title>CS — Data Structures · Project: Binary File Records</title>
+<link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
+
+<h1>CS — Data Structures · Project: Binary File Records</h1>
+<p><em>A component of the final SQL Database project</em></p>
+<h2>Before You Start: System-Wide Constraints</h2>
+<p>These two rules apply to every project in this sequence, not just this one:</p>
+<ul>
+<li><strong>No STL containers or algorithms beyond <code>string</code> and <code>vector</code>.</strong> Every ordered or lookup structure — B+ tree, Map, Multimap, Stack, Queue, Set — is one you build yourself. Do not substitute <code>std::map</code>, <code>std::set</code>, <code>std::stack</code>, <code>std::queue</code>, <code>std::find</code>, or any other STL container or algorithm for functionality this system is asking you to implement.</li>
+<li><strong>No sequential search, anywhere, for any reason.</strong> Any time your code needs to look something up — a keyword, a field name, a table name, a stored value — that lookup must go through a B+ tree-backed Map or Multimap. A linear scan is not acceptable, no matter how short the list being scanned is or how the scan is written.</li>
+</ul>
+<h2>1. Overview</h2>
+<p>Earlier in the semester you wrote a small program that stores single strings in a binary file — one <code>Record</code> per fixed-size slot, written and read back by slot number. That version only ever held one piece of information per record: a single word or name.</p>
+<p>A real table row is not one string — it's several: a name, an ID, an age, a department, however many columns the table has. This project generalizes your <code>Record</code> into a <strong>FileRecord</strong>: a single binary "envelope" that holds an entire row's worth of string fields, still stored and retrieved as a fixed-size slot in a binary file. You will also factor out the general-purpose file-handling helpers you already have into their own reusable module, and add two new ones for saving and loading simple lists of strings as plain text.</p>
+<p>This is infrastructure, not database logic. Nothing here knows about SQL, table schemas, or column types — it only knows how to store and retrieve fixed-size binary rows, and how to persist small lists of text. The Table class you'll build afterward is the first thing that will actually use this to store real rows on disk.</p>
+
+<h2>2. What It Must Accept / Do</h2>
+
+<h3>FileRecord</h3>
+<p>A FileRecord holds a fixed maximum number of fields, each field itself a fixed-length string. Concretely:</p>
+<ul>
+<li>A FileRecord can hold up to <strong>50 fields</strong>. Each field can hold up to <strong>49 characters</strong> (plus its terminator). You are not required to guard against a caller exceeding either limit — that's out of scope for this project.</li>
+<li>A FileRecord can be constructed in two ways:
+  <ul>
+    <li>From a <code>vector&lt;string&gt;</code> — one entry per field, in order. This is the form used to build a row of real data.</li>
+    <li>From a single <code>long</code> (defaulting to 0) — this produces a record whose first field holds that number (as text) and every other field empty. This form exists to create an empty placeholder object to be filled in by a subsequent <code>read()</code>, not to hold real row data.</li>
+  </ul>
+</li>
+<li><code>rec_no()</code> reads field 0 and returns it as a <code>long</code>. This only makes sense when field 0 actually contains numeric text — if you call it on a record whose field 0 holds something like a name, the result is undefined. It is the caller's responsibility to only call <code>rec_no()</code> when that assumption holds.</li>
+</ul>
+
+<h3>Utilities</h3>
+<p>Alongside FileRecord, provide a small set of file-handling helpers, usable independently of any specific record type:</p>
+<ul>
+<li><code>file_exists(filename)</code> — true if the file can currently be opened, false otherwise.</li>
+<li><code>open_fileW(f, filename)</code> — open filename for output only, in binary mode, creating or truncating it. Throws on failure.</li>
+<li><code>open_fileRW(f, filename)</code> — open filename for combined reading and writing, in binary mode. If the file does not already exist, create it first.
+  <br><strong>Behavioral note:</strong> when the file has to be created, this call leaves it open for <em>output only</em> — not for reading yet. If you need both read and write access on a brand-new file, call it a second time (the file now exists, so the second call opens it with both read and write access). Design your callers with this in mind rather than assuming a single call always yields a read/write-capable stream.</li>
+<li><code>read_info(filename, v)</code> — open filename as plain text, read it line by line, and append each line (in order) onto the end of the given <code>vector&lt;string&gt;</code>. Return false if the file cannot be opened; true otherwise, even if the file is empty (in which case nothing is appended).</li>
+<li><code>write_info(filename, v)</code> — write the given <code>vector&lt;string&gt;</code> to filename as plain text, one entry per line, overwriting anything already there. Return false if the file cannot be opened for writing.</li>
+<li><code>show_vector(v)</code> — print every element of a vector to standard output, separated by <code>|</code>, for debugging. Works for any element type that supports <code>&lt;&lt;</code>.</li>
+</ul>
+
+<h2>3. Where It Fits</h2>
+<pre>Table class (not yet built)
+   |
+   |-- uses FileRecord to write/read individual rows,
+   |     one FileRecord per row, in a binary data file
+   |
+   |-- uses read_info / write_info to save and load
+         a table's field-name list as a plain text file
+</pre>
+<p>FileRecord and the utilities module know nothing about column names, column types, or SQL. They don't validate what's inside a field, and they don't know how many fields a "real" table row is supposed to have beyond the fixed maximum. That knowledge belongs to the Table class layer above this one.</p>
+
+<h2>4. Input/Output Contract</h2>
+
+<p>Building a record from field values and writing it:</p>
+<pre>FileRecord r(vector&lt;string&gt;{"Ada Lovelace", "101"});
+long slot = r.write(outfile);</pre>
+<p><code>write()</code> writes the entire fixed-size record — all fields, not just the ones you filled in — to the stream at the stream's <em>current</em> write position. It does not seek to the end of the file itself; it assumes the stream is already positioned where you want this record to land (for sequential writes to a freshly opened output file, that position naturally advances after each call). It returns the slot number for this record, computed as position ÷ record size — so writing three records in a row to an empty file yields slot numbers 0, 1, 2.</p>
+
+<p>Reading a specific slot back — including one you haven't read before, out of order:</p>
+<pre>FileRecord r2;
+r2.read(infile, 1);   // jump directly to slot 1, no need to read slot 0 first
+cout &lt;&lt; r2 &lt;&lt; endl;</pre>
+<p>Given a slot number, <code>read()</code> seeks directly to that slot's byte offset (slot number × record size) and reads one full record's worth of bytes, regardless of what was previously in memory. It returns the number of bytes actually read. At or past the end of the file, this is less than a full record's worth — as low as 0 — which is how a caller detects there's no more data to read, without needing to know how many records the file holds in advance.</p>
+
+<p>Printing a record (via <code>operator&lt;&lt;</code>) prints each field, left to right, right-justified in a fixed 25-character column, stopping at the first field whose stored value is empty:</p>
+<pre>              Ada Lovelace                      101
+                Alan Turing                      102</pre>
+<p>Fields after the first empty one are never printed, no matter what bytes happen to be sitting in them. A record built from a two-entry vector prints exactly two fields — never more, even though the underlying storage physically holds up to 50.</p>
+
+<p>Saving and loading a simple text list — for example, a table's field names:</p>
+<pre>write_info("student.fields", vector&lt;string&gt;{"lname", "fname", "age"});
+...
+vector&lt;string&gt; fields;
+read_info("student.fields", fields);   // fields is now {"lname", "fname", "age"}</pre>
+
+<h2>5. Design</h2>
+<p>The core idea is a <strong>fixed-size binary record</strong>: every record, no matter how many fields it actually uses, occupies exactly the same number of bytes on disk. That's what makes direct access possible — to fetch record number <em>k</em>, you compute <em>k</em> × (record size) and seek straight there, with no need to scan through the file or know where previous records ended. Contrast this with your original single-field <code>Record</code>: that class demonstrated the fixed-slot idea with one string per slot; FileRecord applies the same idea to a slot that holds several strings at once.</p>
+<p>Concretely, you need a way to store a bounded, ordered collection of fixed-length strings inside a single fixed-size structure, such that:</p>
+<ul>
+<li>The whole structure has one constant size in bytes, known ahead of time, so slot arithmetic always lands correctly.</li>
+<li>An unused field is distinguishable from a used one, so printing (and later, the Table class's row-parsing) knows where real data ends.</li>
+</ul>
+<p>How you organize the fields inside that fixed structure — and how you decide "this field is empty" — is your design choice to make; the contract in Section 4 is what has to hold true regardless of how you build it.</p>
+<p>For the utilities module: this is mostly relocating helpers you've already written and tested in your primitive version, plus adding the two text list functions. No new data structure concepts are required here — <code>read_info</code>/<code>write_info</code> are straightforward line-oriented text I/O.</p>
+
+<h2>6. What You Are Building</h2>
+<ul>
+<li>A FileRecord type constructible from a <code>vector&lt;string&gt;</code>, holding up to 50 fields of up to 49 characters each.</li>
+<li>A FileRecord constructible from a single <code>long</code>, for use as an empty placeholder to be filled by <code>read()</code>.</li>
+<li><code>write()</code> that writes the full fixed-size record at the stream's current position and returns the resulting slot number.</li>
+<li><code>read()</code> that seeks directly to a given slot number and returns the number of bytes actually read, including partial/zero reads at end of file.</li>
+<li><code>rec_no()</code> that returns field 0 interpreted as a number.</li>
+<li>Printing that stops at the first empty field and right-justifies each printed field in a 25-character column.</li>
+<li>A separate, reusable utilities module containing <code>file_exists</code>, <code>open_fileW</code>, <code>open_fileRW</code> (matching the behavior described in Section 2, including the create-then-reopen note), <code>read_info</code>, <code>write_info</code>, and <code>show_vector</code>.</li>
+</ul>
 
 </body>
 </html>

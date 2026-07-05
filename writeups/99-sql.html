@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>CS — Data Structures · Project: SQL</title>
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<h1>CS — Data Structures · Project: SQL</h1>
+<p><em>A component of the final SQL Database project</em></p>
+<h2>Before You Start: System-Wide Constraints</h2>
+<p>These two rules apply to every project in this sequence, not just this one:</p>
+<ul>
+<li><strong>No STL containers or algorithms beyond <code>string</code> and <code>vector</code>.</strong> Every ordered or lookup structure — B+ tree, Map, Multimap, Stack, Queue, Set — is one you build yourself. Do not substitute <code>std::map</code>, <code>std::set</code>, <code>std::stack</code>, <code>std::queue</code>, <code>std::find</code>, or any other STL container or algorithm for functionality this system is asking you to implement.</li>
+<li><strong>No sequential search, anywhere, for any reason.</strong> Any time your code needs to look something up — a keyword, a field name, a table name, a stored value — that lookup must go through a B+ tree-backed Map or Multimap. A linear scan is not acceptable, no matter how short the list being scanned is or how the scan is written.</li>
+</ul>
+<h2>1. Overview</h2>
+<p>You now have a Parser that turns a raw SQL string into a structured request, and a Table that can store rows and answer conditional queries. Neither one talks to the other. This project builds the piece that connects them: <strong>SQL</strong>, a single object that accepts one command string at a time, figures out what kind of command it is, and carries out the corresponding operation against the right table.</p>
+<p>SQL also remembers which tables exist from one run of the program to the next. A table you create today should still be there — and still queryable — the next time you start the program, without re-running <code>make table</code>.</p>
+<p>This project does not add any new parsing logic or any new query-evaluation logic. Everything SQL needs, it gets by reading specific values out of the Parser's parse tree and calling the corresponding Table methods. If you find yourself re-implementing condition matching or grammar checking here, that logic belongs in Table or Parser instead.</p>
+
+<h2>2. What It Must Accept / Do</h2>
+<p>SQL must accept one full command string at a time (the same three command shapes from the Parser project — MAKE TABLE, INSERT INTO, SELECT) and produce the result of running it. A command that creates a table or inserts a row has no rows to return; a command that selects returns the resulting table, exactly as Table produces it.</p>
+
+<h3>MAKE TABLE</h3>
+<p>Creates a new table with the given name and field list. This must be usable immediately — you can insert into and select from it within the same run — and it must be remembered: a table created in one run of the program must still be found and queryable in a later run, without repeating the <code>make table</code> command.</p>
+
+<h3>INSERT INTO</h3>
+<p>Adds one row of values to an existing table, by name. As with Table itself, every value is stored as text — SQL does not assign or track a column "type," regardless of whether a value looks numeric.</p>
+
+<h3>SELECT</h3>
+<ul>
+<li><code>select * from &lt;table&gt;</code> must expand to every field in that table, in the table's own field order — the same as if you had typed them all out explicitly.</li>
+<li>A condition, when present, follows the same grammar as the Parser project (compound, with <code>and</code>/<code>or</code> and optional parentheses) and is handled the same way Table already handles it — SQL's job is just to notice whether a condition is present and pass it along, not to interpret it.</li>
+<li>The returned table contains only the requested fields, for only the matching rows.</li>
+<li>After any select, the matching record numbers from the table that was searched — not the result table — must be available separately.</li>
+</ul>
+
+<h3>Validating the request</h3>
+<p>Two things must never happen silently:</p>
+<ul>
+<li>A command that references a table name which hasn't been created (or isn't known from a previous run) is invalid input. It must not be treated as if it succeeded.</li>
+<li>A command that references a field name — in a SELECT's field list, or inside a condition — which is not actually one of the target table's fields is invalid input. It must not silently return data from some other column instead, and it must not silently be treated as "no rows match" if the field simply doesn't exist. How you signal this (refusing to run the command, some other clear failure indication) is up to you — but the output must never look like a correct, matching result when the request itself didn't make sense.</li>
+</ul>
+
+<h2>3. Where It Fits</h2>
+<pre>User types a SQL command string
+        |
+        v
+     Parser  (raw string -> parse tree: command, table name, fields, condition)
+        |
+        v
+      SQL    (reads the parse tree, calls the matching Table operation,
+              remembers which tables exist across runs)
+        |
+        v
+     Table   (stores rows, evaluates conditions, returns a result table)
+        |
+        v
+Result table printed to screen
+</pre>
+<p>SQL is the only layer that knows about both Parser and Table. Table never sees a parse tree; Parser never sees a Table.</p>
+
+<h2>4. Input/Output Contract</h2>
+
+<p>Creating a table and inserting rows:</p>
+<pre>SQL sql;
+sql.command("make table gadget fields name, category, price");
+sql.command("insert into gadget values Widget, Tools, 12");
+sql.command("insert into gadget values Gizmo, Tools, 22");
+sql.command("insert into gadget values Sprocket, Parts, 12");</pre>
+
+<p><code>select *</code> expands to every field, in the table's own order:</p>
+<pre>Table t = sql.command("select * from gadget");</pre>
+<pre>Table name: _select_table_1, records: 3
+                   record                     name                 category                    price
+
+                        0                   Widget                    Tools                       12
+                        1                    Gizmo                    Tools                       22
+                        2                 Sprocket                    Parts                       12
+</pre>
+
+<p>An explicit field list with a condition:</p>
+<pre>Table t = sql.command("select name, price from gadget where category = Tools");
+sql.select_recnos();   // the matching record numbers from gadget itself</pre>
+<pre>Table name: _select_table_2, records: 2
+                   record                     name                    price
+
+                        0                   Widget                       12
+                        1                    Gizmo                       22
+</pre>
+<p>Values are stored and compared as text, exactly as in the Table project — if you plan to compare a field like <code>price</code> with <code>&lt;</code> or <code>&gt;</code>, the values you insert need to share a consistent width for the comparison to behave numerically.</p>
+
+<p>Running <code>make table gadget ...</code> again in a separate execution of the program is not required to recreate anything — <code>gadget</code> should already be there, with all three rows, ready to be selected from immediately.</p>
+
+<h2>5. Design</h2>
+<p>SQL's core job is translation, not computation: read a handful of named values out of the parse tree (which command, which table, which fields, which condition, if any) and turn them into a call to the matching Table method. The condition, when present, is handed to Table exactly as the Parser produced it — SQL does not need to understand what's inside it.</p>
+<p>The other piece of design work is persistence of table identity: some record of which table names exist must survive between separate runs of the program, so that a newly started SQL object can find and reopen tables it didn't create in this run. You already have the tools for this from the FileRecord/utilities project — this is a small list of names, not row data.</p>
+<p><em>A tip: a small "batch mode" that reads a sequence of commands from a file and runs them one after another is not exercised by the autograder, but it's a genuinely useful thing to build, and early. Typing every test command by hand, one at a time, gets old fast — students who build a batch runner early tend to spend a lot less time on manual testing later.</em></p>
+
+<h2>6. What You Are Building</h2>
+<ul>
+<li>A single entry point that accepts one SQL command string and returns the resulting table (empty for MAKE TABLE and INSERT INTO, populated for SELECT).</li>
+<li>Correct dispatch to the matching operation based on the parsed command.</li>
+<li>Tables that persist — by name — across separate runs of the program.</li>
+<li>Correct <code>*</code> expansion using the target table's own field list and order.</li>
+<li>Rejection of requests that reference a table name that doesn't exist.</li>
+<li>Rejection of requests that reference a field name that isn't part of the target table's schema — in either the field list or a condition — without ever returning look-alike-correct output for such a request.</li>
+<li>Correct exposure of the matching record numbers after a select.</li>
+</ul>
+<h2>Batch Mode Format</h2>
+<p>Not exercised by the autograder — this is here only so that if you build a batch mode (see the tip in Section 5), your output is easy to verify by eye and consistent with what other tools/scripts might expect.</p>
+<p>A batch file is a plain text file, one command per line:</p>
+<ul>
+<li>A line beginning with <code>//</code> is a comment: print it back to the screen exactly as written, and do not attempt to run it as a command.</li>
+<li>Every other non-empty line is a command. Number commands starting from 0, in the order they appear in the file — comment lines don't consume a number.</li>
+<li>Before running a command, print its number and its exact text, e.g.:
+<pre>[3] select * from student where age &gt; 20</pre>
+</li>
+<li>Then print the command's result exactly as it would print if typed interactively (the table name, record count, header row, and rows for a select; nothing extra for make/insert beyond what those already print).</li>
+</ul>
+</body>
+</html>
