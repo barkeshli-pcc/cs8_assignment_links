@@ -4,8 +4,8 @@
 |:-------------------|:------------|:---------|
 | Instructor: | | S. Barkeshli   |
 | Contact: | |  on Discord: @barkeshli   |
+| syllabus | | [syllabus](https://barkeshli-pcc.github.io/cs8_assignment_links/writeups/00-syllabus-CS008.html)|
 | Class Folder| | [here](https://drive.google.com/drive/folders/12w4Nq1FjVCNE2qbVZjksBcb_oM6aL8ga?usp=sharing)|
-| Syllabus |  | See Canvas |
 | [Lab0 ](https://classroom.github.com/a/DYb_nBnE) | [basic test](https://barkeshli-pcc.github.io/cs8_assignment_links/basic_tests/lab-00/basic_test.cpp) | [lab0 writeup](https://github.com/barkeshli-pcc/lab-00-writeup) |
 {: .assignment-table}
 
